@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 50%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+    <title>Test list of packages</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<table>
+	<thead>
+		<tr>
+			<th>Address</th>
+			<th>Content</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr th:each="package : ${packages}">
+			<td th:text="${package.address}"> </td>
+  			<td th:text="${package.content}"> </td>
+		</tr>
+	</tbody>
+</table>
+<p><a href="/package/addPackageForm">Add a new Package</a></p>
+</body>
+</html>

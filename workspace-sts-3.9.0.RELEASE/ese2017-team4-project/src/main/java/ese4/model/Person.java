@@ -1,4 +1,4 @@
-package ese4;
+package ese4.model;
 
 public abstract class Person {
 	protected String name;

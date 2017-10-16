@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Implementation-Title: ESEApp
 Implementation-Version: 0.1.0
-Built-By: simon
+Built-By: Hokori
 Implementation-Vendor-Id: ch.unibe.eseteam04
-Build-Jdk: 1.8.0_131
+Build-Jdk: 1.8.0_144
 Implementation-URL: http://projects.spring.io/spring-boot/ESEApp/
 Created-By: Maven Integration for Eclipse
 Implementation-Vendor: Pivotal Software, Inc.

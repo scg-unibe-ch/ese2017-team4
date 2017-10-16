@@ -1,4 +1,4 @@
-package ese4;
+package ese4.model;
 
 /**
  * Has a name and has a tour.
