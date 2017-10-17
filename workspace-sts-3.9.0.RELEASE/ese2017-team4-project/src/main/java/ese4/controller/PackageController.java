@@ -63,6 +63,8 @@ public class PackageController {
     		//packageRepository.delete(testpacks);
     	}
     	
+    	packageRepository.deleteByIsDelivered(true);
+    	
     	return "testRead";
     }
 }

@@ -2,7 +2,9 @@ package ese4.model;
 
 import java.util.List;
 
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.transaction.annotation.Transactional;
 
 
 public interface PackageRepository extends CrudRepository<Package, Long> {
@@ -16,6 +18,9 @@ public interface PackageRepository extends CrudRepository<Package, Long> {
 	List<Package> findFirst2ByOrderByIdAsc();
 	
 	List<Package> findFirst2ByIsDeliveredFalse();
+	
+	@Transactional
+	void deleteByIsDelivered(boolean isDelivered);
 	
 	//List<Package> findFirst2ByOrderByIdAscAndIsDeliveredFalse();
 	
