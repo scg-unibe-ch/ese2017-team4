@@ -1,6 +1,8 @@
 package ese4.controller;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -46,6 +48,21 @@ public class PackageController {
     
     @GetMapping("/test")
     public String viewAllPackages(final Package pack) {
+    	List<Package> testpacks;
+  
+    	System.out.println(packageRepository.count());
+    	testpacks = packageRepository.findFirst2ByIsDeliveredFalse();	//we can later use this for extracting packages from repository
+    	System.out.println("size is: " + testpacks.size());
+    	if(testpacks.size()>1)
+    	{
+    		System.out.println(testpacks.get(0).getContent() + " and " + testpacks.get(1).getContent());
+    		System.out.println(testpacks.get(0).getIsDelivered());
+    		testpacks.get(0).setToDelivered();
+    		packageRepository.save(testpacks.get(0));
+    		System.out.println(testpacks.get(0).getIsDelivered());
+    		//packageRepository.delete(testpacks);
+    	}
+    	
     	return "testRead";
     }
 }
