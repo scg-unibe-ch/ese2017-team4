@@ -26,7 +26,7 @@ public class PackageController {
 	
     @GetMapping()
     public String get() {
-    	return "whatNext";
+    	return "homeScreen";
     }	
 	
     @GetMapping("/addPackagesForTesting")
@@ -37,19 +37,19 @@ public class PackageController {
     		pack.setContent("" + i);
     		packageRepository.save(pack);    		
     	}
-    	return "";
+    	return "homeScreen";
     }
     
     @GetMapping("/addPackageForm")
     public String addPackage(Model model) {
         model.addAttribute("package", new Package());
-        return "addPackageForm";
+        return "package/addPackageForm";
     }
 
     @PostMapping("/addPackageForm")
     public String formSubmit(@ModelAttribute Package pack) {
     	packageRepository.save(pack);
-        return "whatNext";
+        return "homeScreen";
     }
     
     @ModelAttribute("packages")
@@ -57,25 +57,9 @@ public class PackageController {
     	return this.packageRepository.findAll();
     }
     
-    @GetMapping("/test")
+    @GetMapping("/listAll")
     public String viewAllPackages(final Package pack) {
-    	List<Package> testpacks;
-  
-    	System.out.println(packageRepository.count());
-    	testpacks = packageRepository.findFirst2ByIsDeliveredFalse();	//we can later use this for extracting packages from repository
-    	System.out.println("size is: " + testpacks.size());
-    	if(testpacks.size()>1)
-    	{
-    		System.out.println(testpacks.get(0).getContent() + " and " + testpacks.get(1).getContent());
-    		System.out.println(testpacks.get(0).getIsDelivered());
-    		testpacks.get(0).setToDelivered();
-    		packageRepository.save(testpacks.get(0));
-    		System.out.println(testpacks.get(0).getIsDelivered());
-    		//packageRepository.delete(testpacks);
-    	}
     	
-    	packageRepository.deleteByIsDelivered(true);
-    	
-    	return "testRead";
+    	return "package/listAllPackages";
     }
 }

@@ -30,11 +30,14 @@ public class TourController {
 	private UserRepository userRepository;
 	
 	
-
+	@GetMapping()
+	    public String get() {
+	    	return "homeScreen";
+	    }	
 	
-    @GetMapping("/all")
-    public @ResponseBody Iterable<Tour> allTours() {        
-    	return tourRepository.findAll();
+    @GetMapping("/listAll")
+    public String allTours() {        
+    	return "tour/listAllTours";
     }	
 	
     @GetMapping("/makeTour/{driverId}")
@@ -47,10 +50,10 @@ public class TourController {
     	}
     	tour.setDriver(userRepository.findById(driverId));
         tourRepository.save(tour);
-        return "demo";
+        return "tour/listAllTours";
     }
     
-    @ModelAttribute("packages")
+    @ModelAttribute("tours")
     public Iterable<Tour> allTourAsList() {
     	return this.tourRepository.findAll();
     }

@@ -25,17 +25,17 @@ tr:nth-child(even) {
 <table>
 	<thead>
 		<tr>
-			<th>Address</th>
-			<th>Content</th>
+			<th>TourId</th>
+			<th>DriverId</th>
 		</tr>
 	</thead>
 	<tbody>
-		<tr th:each="package : ${packages}">
-			<td th:text="${package.address}"> </td>
-  			<td th:text="${package.content}"> </td>
+		<tr th:each="tour : ${tours}">
+			<td th:text="${tour.id}"> </td>
+  			<td th:text="${tour.driver.id}"> </td>  			
 		</tr>
 	</tbody>
 </table>
-<p><a href="/package/addPackageForm">Add a new Package</a></p>
+<p><a href="/user/addUserForm">Add a new User</a></p>
 </body>
 </html>

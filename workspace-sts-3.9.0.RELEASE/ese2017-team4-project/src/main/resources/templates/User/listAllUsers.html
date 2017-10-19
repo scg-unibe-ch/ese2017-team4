@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 50%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+    <title>Test list of packages</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<table>
+	<thead>
+		<tr>
+			<th>Id</th>
+			<th>Name</th>
+			<th>Type</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr th:each="user : ${users}">
+			<td th:text="${user.id}"> </td>
+  			<td th:text="${user.name}"> </td>
+  			<td th:text="${user.type}"> </td>
+  			
+		</tr>
+	</tbody>
+</table>
+<p><a href="/user/addUserForm">Add a new User</a></p>
+</body>
+</html>
