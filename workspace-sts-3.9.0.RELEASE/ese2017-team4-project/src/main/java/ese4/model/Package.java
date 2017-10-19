@@ -1,9 +1,13 @@
 package ese4.model;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 /**
  * Keeps track of it's content, where it has to be delivered and it's expected delivery time.
@@ -17,6 +21,10 @@ public class Package {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
+    
+    @ManyToOne
+    @JoinColumn(name = "tourId")
+    private Tour tour;
     
 	private String address;
 	private String content;
@@ -44,48 +52,47 @@ public class Package {
 	
 	
 	//setters - getters
-	
+	public Integer getId() {
+		return this.id;
+	}
 	public void setId(Integer id) {
 		this.id = id;
 	}
 	
-	public String getAddress()
-	{
+	public String getAddress() {
 		return address;
 	}
-	public void setAddress(String address)
-	{
+	public void setAddress(String address) {
 		this.address = address;
 	}
 	
-	public String getContent()
-	{
+	public String getContent() {
 		return content;
 	}
-	
-	public void setContent(String content)
-	{
+	public void setContent(String content) {
 		this.content = content;
 	}
 	
-	public boolean getIsDelivered()
-	{
+	public boolean getIsDelivered() {
 		return isDelivered;
 	}
-	
-	public void setToDelivered() 
-	{
+	public void setToDelivered() {
 		isDelivered = true;
 	}
 	
-	public int getExpectedDeliveryTime()
-	{
+	public int getExpectedDeliveryTime() {
 		return expectedDeliveryTime;
 	}
-	
-	public void setExpectedDeliveryTime(int expectedDeliveryTime)
-	{
+	public void setExpectedDeliveryTime(int expectedDeliveryTime) {
 		this.expectedDeliveryTime = expectedDeliveryTime;
 	}
+	
+	public Tour getTour() {
+		return this.tour;
+	}
+	public void setTour(Tour tour) {
+		this.tour = tour;
+	}
+
 
 }

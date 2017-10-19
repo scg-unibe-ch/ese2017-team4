@@ -24,11 +24,22 @@ public class PackageController {
 	private PackageRepository packageRepository;
 
 	
-    @GetMapping("/all")
-    public @ResponseBody Iterable<Package> allPackages() {        
-    	return packageRepository.findAll();
+    @GetMapping()
+    public String get() {
+    	return "whatNext";
     }	
 	
+    @GetMapping("/addPackagesForTesting")
+    public String testPackages() {
+    	for(int i = 0; i < 10; i++) {
+    		Package pack = new Package();
+    		pack.setAddress("test");
+    		pack.setContent("" + i);
+    		packageRepository.save(pack);    		
+    	}
+    	return "";
+    }
+    
     @GetMapping("/addPackageForm")
     public String addPackage(Model model) {
         model.addAttribute("package", new Package());

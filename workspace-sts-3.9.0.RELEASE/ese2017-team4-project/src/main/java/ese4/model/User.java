@@ -1,9 +1,12 @@
 package ese4.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  * 
@@ -16,6 +19,9 @@ public class User {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
+    
+    @OneToMany(mappedBy="driver")
+    private List<Tour> tours;
     
     private String name;
     private int type;		//0 = logistician, 1 = driver

@@ -1,6 +1,17 @@
 package ese4.model;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 
 /**
  * A Tour contains one or more Package.
@@ -9,15 +20,51 @@ import java.util.ArrayList;
  * @author ese4
  *
  */
+@Entity
 public class Tour {
-	private ArrayList<Package> packs;
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private int id;
+	
+	@ManyToOne
+	@JoinColumn(name="driverId")
+	private User driver;
+	
+	@OneToMany(mappedBy="tour")
+	private List<Package> packages;
+	
+	@Transient
 	private int numberDeliveredPacks;	//TODO CHANGE
+	
 	private boolean isFinished;			//true if the tour is finished aka all packages are delivered
 	
 	public Tour() {
 		isFinished=false;
-		packs = new ArrayList<Package>();
 		numberDeliveredPacks=0;
+	}
+	
+	public User getDriver()
+	{
+		return this.driver;
+	}
+	public void setDriver(User driver)
+	{
+		this.driver = driver;
+	}
+	public List<Package> getPacks() {
+		return this.packages;
+	}
+	public void setPacks(List<Package> packages)
+	{
+		this.packages = packages;
+	}
+	public int getId()
+	{
+		return this.id;
+	}
+	public void setId(int id)
+	{
+		this.id = id;
 	}
 	
 	/**
@@ -26,7 +73,7 @@ public class Tour {
 	 */
 	public void addPackageToTour(Package pack)
 	{
-		packs.add(pack);
+		packages.add(pack);
 	}
 	
 	/**
@@ -38,7 +85,7 @@ public class Tour {
 	{
 		String address;
 		if(isFinished == false)
-			address = packs.get(numberDeliveredPacks).getAddress();
+			address = packages.get(numberDeliveredPacks).getAddress();
 		else
 			address = "No more Packages to deliver, go home";
 		return address;
@@ -53,7 +100,7 @@ public class Tour {
 	{
 		pack.setToDelivered();
 		numberDeliveredPacks++;
-		if(numberDeliveredPacks == packs.size()) {
+		if(numberDeliveredPacks == packages.size()) {
 			setFinished();
 		}
 	}
