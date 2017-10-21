@@ -1,12 +1,15 @@
 package ese4.controller;
 
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,19 +32,53 @@ public class TourController {
 	@Autowired
 	private UserRepository userRepository;
 	
+	private TourForm tourForm;
+	
 	
 	@GetMapping()
-	    public String get() {
-	    	return "homeScreen";
-	    }	
+    public String get() {
+    	return "homeScreen";
+    }
+	
+	@GetMapping("/makeTour")
+	public String makeTour(Model model) {
+		//List<Integer> packageIds = new ArrayList<Integer>();
+		//model.addAttribute("packageIds", packageIds );
+		return "tour/packageSelection";
+	}
+	
+	@PostMapping("/packageSelection")
+	public String packageSelection(@RequestParam("packageId") List<Integer> packageIds) {
+		tourForm = new TourForm();
+		tourForm.setPackIds(packageIds);
+		return "tour/driverSelection";
+	}
+	
+	@PostMapping("/driverSelection")
+	public String driverSelection(@RequestParam("driverId") Integer driverId) {
+		tourForm.setDriverId(driverId);
+		saveTourBuild();		
+		return "homeScreen";
+	}
 	
     @GetMapping("/listAll")
     public String allTours() {        
     	return "tour/listAllTours";
     }	
 	
+    public void saveTourBuild() {
+    	Tour tour = new Tour();
+    	List<Package> packs = packageRepository.findByIdIn(tourForm.getPackIds());
+    	for(Package pack : packs) {
+    		pack.setTour(tour);
+    		pack.setToDelivered();
+    	}
+    	tour.setDriver(userRepository.findById(tourForm.getDriverId()));
+    	tourRepository.save(tour);
+    }
+    
     @GetMapping("/makeTour/{driverId}")
-    public String makeTour(@PathVariable int driverId) {
+    public String makeRandomTour(@PathVariable int driverId) {
     	Tour tour = new Tour();
     	List<Package> packs = packageRepository.findFirst2ByIsDeliveredFalse();
     	for(Package pack : packs) {
@@ -50,7 +87,17 @@ public class TourController {
     	}
     	tour.setDriver(userRepository.findById(driverId));
         tourRepository.save(tour);
-        return "tour/listAllTours";
+        return "homeScreen";
+    }
+    
+    @ModelAttribute("packagesNotDelivered")
+    public Iterable<Package> allPackagesAsList() {
+    	return this.packageRepository.findByIsDelivered(false);
+    }
+    
+    @ModelAttribute("drivers")
+    public Iterable<User> allDriversAsList() {
+    	return this.userRepository.findByType(1);	//1 = driver
     }
     
     @ModelAttribute("tours")

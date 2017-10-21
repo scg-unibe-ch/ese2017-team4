@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> <style>
+	table {
+	    font-family: arial, sans-serif;
+	    border-collapse: collapse;
+	    width: 50%;
+	}
+	
+	td, th {
+	    border: 1px solid #dddddd;
+	    text-align: left;
+	    padding: 8px;
+	}
+	
+	tr:nth-child(even) {
+	    background-color: #dddddd;
+	}
+	</style>
+    <title>Select Packages for next Tour</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>PackageSelection</h1>
+    <form action="#" th:action="@{/tour/packageSelection}" th:object="${packageIds}" method="post">
+		<table>
+		<thead>
+			<tr>
+				<th>PackageId</th>
+				<th>Delivery Address</th>
+				<th>Content</th>
+				<th> </th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="pack : ${packagesNotDelivered}">
+				<td th:text="${pack.id}"> </td>
+	  			<td th:text="${pack.address}"> </td>
+	  			<td th:text="${pack.content}"> </td>	
+	  			<td> <input type="checkbox" name="packageId" th:value="${pack.id}" /> </td>		 
+			</tr>
+		</tbody>
+		</table>	
+
+        
+        <p><input type="submit" value="Submit" /> </p>
+    </form>
+
+	
+
+</body>
+</html>

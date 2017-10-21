@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> <style>
+	table {
+	    font-family: arial, sans-serif;
+	    border-collapse: collapse;
+	    width: 50%;
+	}
+	
+	td, th {
+	    border: 1px solid #dddddd;
+	    text-align: left;
+	    padding: 8px;
+	}
+	
+	tr:nth-child(even) {
+	    background-color: #dddddd;
+	}
+	</style>
+    <title>Select User for next Tour</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>UserSelection</h1>
+    <form action="#" th:action="@{/tour/driverSelection}" th:object="${driverId}" method="post">
+		<table>
+		<thead>
+			<tr>
+				<th>UserId</th>
+				<th>Name</th>
+				<th> </th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="user : ${drivers}">
+				<td th:text="${user.id}"> </td>
+	  			<td th:text="${user.name}"> </td>
+	  			<td> <input type="radio" name="driverId" th:value="${user.id}" /> </td>		 
+			</tr>
+		</tbody>
+		</table>	
+
+        
+        <p><input type="submit" value="Submit" /> </p>
+    </form>
+
+	
+
+</body>
+</html>

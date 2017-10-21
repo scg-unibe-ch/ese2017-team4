@@ -43,6 +43,13 @@ public class Tour {
 		numberDeliveredPacks=0;
 	}
 	
+	public Tour(List<Package> packages, User driver) {
+		this.packages = packages;
+		this.driver = driver;
+		isFinished=false;
+		numberDeliveredPacks=0;
+	}
+	
 	public User getDriver()
 	{
 		return this.driver;

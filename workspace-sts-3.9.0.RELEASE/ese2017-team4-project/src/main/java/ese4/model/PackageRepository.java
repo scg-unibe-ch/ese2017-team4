@@ -11,11 +11,15 @@ public interface PackageRepository extends CrudRepository<Package, Long> {
 	
 	
 	//we can make queries by making methods in here
-	List<Package> findById(int id);
+	List<Package> findById(Integer id);
+	
+	List<Package> findByIdIn(List<Integer> ids);
 	
 	List<Package> findByContent(String content);
 	
 	List<Package> findFirst2ByOrderByIdAsc();
+	
+	List<Package> findByIsDelivered(boolean isDelivered);
 	
 	List<Package> findFirst2ByIsDeliveredFalse();
 	
