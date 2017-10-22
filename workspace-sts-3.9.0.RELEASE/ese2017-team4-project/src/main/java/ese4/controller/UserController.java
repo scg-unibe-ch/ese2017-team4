@@ -42,7 +42,7 @@ public class UserController {
     @PostMapping("/addUserForm")
     public String formSubmit(@ModelAttribute User user) {
     	userRepository.save(user);
-        return "user/listAllUsers";
+        return "redirect:/user/listAll";
     }
     
     @ModelAttribute("users")

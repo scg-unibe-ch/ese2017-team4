@@ -29,7 +29,12 @@ public class PackageController {
     	return "homeScreen";
     }	
 	
-    @GetMapping("/addPackagesForTesting")
+    /**
+     * Just for testing. will add 10 packages to the packageRepository
+     * 
+     * @return
+     */
+    @GetMapping("/addPackagesForTesting")	
     public String testPackages() {
     	for(int i = 0; i < 10; i++) {
     		Package pack = new Package();
