@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 /**
- * 
+ * Resembles a user. Users have different responsibilities determined by their type.
  * 
  * @author ese4
  *
@@ -33,28 +33,46 @@ public class User {
 	}
 	
 	
-	//setters - getters
-	
+	/**
+	 * Returns its id.
+	 * @return id
+	 */
 	public Integer getId() {
 		return this.id;
 	}
+	/**
+	 * Sets its parameter input as id.
+	 * @param id
+	 */
 	public void setId(Integer id) {
 		this.id = id;
 	}
+	/**
+	 * Returns its name.
+	 * @return name
+	 */
 	public String getName() {
 		return this.name;
 	}
+	/**
+	 * Sets its parameter input as name.
+	 * @param name
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
+	/**
+	 * Returns its type.
+	 * @return type
+	 */
 	public int getType() {
 		return this.type;
 	}
+	/**
+	 * Sets its parameter input as type.
+	 * @param type
+	 */
 	public void setType(int type) {
 		this.type = type;
 	}
-	
-	
-	
-
 }

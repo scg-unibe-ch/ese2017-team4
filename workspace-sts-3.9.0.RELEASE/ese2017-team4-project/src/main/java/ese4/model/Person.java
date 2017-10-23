@@ -11,7 +11,11 @@ public abstract class Person {
 	protected String name;
 	protected int id;
 	
-
+	/**
+	 * Constructor of a person. Takes its name and id as input and assigns them. 
+	 * @param name
+	 * @param id
+ 	*/
 	public Person(String name, int id)
 	{
 		this.name = name;
