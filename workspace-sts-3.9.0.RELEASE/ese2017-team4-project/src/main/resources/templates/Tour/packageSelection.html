@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head> <style>
 	table {
-	    font-family: arial, sans-serif;
+	    font-family: "Times New Roman";
 	    border-collapse: collapse;
 	    width: 50%;
 	}
@@ -17,18 +17,19 @@
 	    background-color: #dddddd;
 	}
 	</style>
-    <title>Select Packages for next Tour</title>
+    <title>Paketauswahl</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-	<h1>PackageSelection</h1>
+	<h1>Paketauswahl</h1>
+		<p>Wählen Sie nun die Pakete aus, welche Sie im nächsten Schritt einem Fahrer zuordnen möchten.</p>
     <form action="#" th:action="@{/tour/packageSelection}" th:object="${packageIds}" method="post">
 		<table>
 		<thead>
 			<tr>
-				<th>PackageId</th>
-				<th>Delivery Address</th>
-				<th>Content</th>
+				<th>PaketId</th>
+				<th>Lieferadresse</th>
+				<th>Paketinhalt</th>
 				<th> </th>
 			</tr>
 		</thead>
@@ -43,10 +44,9 @@
 		</table>	
 
         
-        <p><input type="submit" value="Submit" /> </p>
+        <p><input type="submit" value="Übermitteln" /> </p>
     </form>
-
-	
-
+    <br></br>
+<p><a href="/">Zurück zum Startbildschirm</a></p>
 </body>
 </html>
