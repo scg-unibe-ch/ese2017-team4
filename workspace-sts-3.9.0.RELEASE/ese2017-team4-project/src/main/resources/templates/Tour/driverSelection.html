@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head> <style>
 	table {
-	    font-family: arial, sans-serif;
+	    font-family: "Times New Roman";
 	    border-collapse: collapse;
 	    width: 50%;
 	}
@@ -17,16 +17,16 @@
 	    background-color: #dddddd;
 	}
 	</style>
-    <title>Select User for next Tour</title>
+    <title>Fahrerauswahl</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-	<h1>UserSelection</h1>
+	<h1>Fahrerauswahl</h1>
     <form action="#" th:action="@{/tour/driverSelection}" th:object="${driverId}" method="post">
 		<table>
 		<thead>
 			<tr>
-				<th>UserId</th>
+				<th>BenutzerId</th>
 				<th>Name</th>
 				<th> </th>
 			</tr>
@@ -41,10 +41,9 @@
 		</table>	
 
         
-        <p><input type="submit" value="Submit" /> </p>
+        <p><input type="submit" value="Übermitteln" /> </p>
     </form>
-
-	
-
+    <br></br>
+<p><a href="/">Zurück zum Startbildschirm</a></p>
 </body>
 </html>

@@ -1,16 +1,17 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head> 
-    <title>Add Package</title>
+    <title>Paket hinzufügen</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-	<h1>Form</h1>
+	<h1>Paket hinzufügen</h1>
     <form action="#" th:action="@{/package/addPackageForm}" th:object="${package}" method="post">
-    	<p>Address: <input type="text" th:field="*{address}" /></p>
-        <p>Content: <input type="text" th:field="*{content}" /></p>
-        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    	<p>Lieferadresse: <input type="text" th:field="*{address}" /></p>
+        <p>Paketinhalt: <input type="text" th:field="*{content}" /></p>
+        <p><input type="submit" value="Übermitteln" /> <input type="reset" value="Zurücksetzen" /></p>
     </form>
-    <p><a href="/">HomeScreen</a></p>
+    <br></br>
+    <p><a href="/">Zurück zum Startbildschirm</a></p>
 </body>
 </html>

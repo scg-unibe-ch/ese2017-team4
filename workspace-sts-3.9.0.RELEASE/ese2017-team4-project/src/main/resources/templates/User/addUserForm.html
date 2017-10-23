@@ -1,16 +1,17 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head> 
-    <title>Add User</title>
+    <title>Benutzer hinzufügen</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-	<h1>Form</h1>
+	<h1>Erfasse einen neuen Benutzer</h1>
     <form action="#" th:action="@{/user/addUserForm}" th:object="${user}" method="post">
     	<p>Name: <input type="text" th:field="*{name}" /></p>
-        <p>Type(0=Logistiker, 1=Fahrer): <input type="text" th:field="*{type}" /></p>
-        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+        <p>Benutzertyp (0=Logistiker, 1=Fahrer): <input type="text" th:field="*{type}" /></p>
+        <p><input type="submit" value="Übermitteln" /> <input type="reset" value="Zurücksetzen" /></p>
     </form>
-    <p><a href="/">HomeScreen</a></p>
+    <br></br>
+    <p><a href="/">Zurück zum Startbildschirm</a></p>
 </body>
 </html>
