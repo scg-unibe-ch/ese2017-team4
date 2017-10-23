@@ -14,6 +14,13 @@ import javax.persistence.OneToOne;
  * The Package knows if its delivered yet or not.
  * 
  * @author ese4
+ * @Param id Used to differentiate all the packets even if they have the same contents and 
+ * adress
+ * @Param tour Tour The tour which a package is designated to
+ * @Param address String Where the package goes to
+ * @Param content String What is inside the package
+ * @Param isDelivered Boolean wether the package got delivered or not
+ * @Param expectedDeliveryTime Int Time in minutes we get from the logisticians experience
  *
  */
 @Entity

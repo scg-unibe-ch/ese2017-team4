@@ -5,6 +5,7 @@ import java.util.ArrayList;
  * contains all the packages that later will be sent to customers
  * 
  * @author ese4
+ * @Param packs ArrayList Contains all the package objects.
  *
  */
 public class Warehouse {
