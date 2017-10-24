@@ -25,13 +25,7 @@ public class User {
     
     private String name;
     private int type;		//0 = logistician, 1 = driver
-    
-	
-	public User()
-	{
-		
-	}
-	
+    	
 	
 	/**
 	 * Returns its id.

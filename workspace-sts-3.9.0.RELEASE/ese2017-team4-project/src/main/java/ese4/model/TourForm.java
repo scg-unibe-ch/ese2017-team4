@@ -2,7 +2,7 @@ package ese4.model;
 
 import java.util.List;
 /**
- * Is used in the tour form.
+ * Wrapper class to collect Data for a creating new Tour
  * 
  * @author ese4
  *
