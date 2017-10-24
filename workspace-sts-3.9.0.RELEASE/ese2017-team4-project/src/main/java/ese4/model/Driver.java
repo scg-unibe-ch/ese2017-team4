@@ -5,6 +5,7 @@ package ese4.model;
  * There is one tour per day.
  * 
  * @author ese4
+ * Driver is a type of person
  *
  */
 public class Driver extends Person {

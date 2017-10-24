@@ -4,8 +4,6 @@ package ese4.model;
  * 
  * @author ese4
  * The base type of a person which is used to create Logins with a name and an ID
- * @Param id Int To keep track of different users even if they have the same names
- * @Param name String The name of a person
  */
 public abstract class Person {
 	protected String name;
@@ -13,8 +11,9 @@ public abstract class Person {
 	
 	/**
 	 * Constructor of a person. Takes its name and id as input and assigns them. 
-	 * @param name
-	 * @param id
+	 * @param name Name of a person
+	 * @param id Each person has an individual ID so we can differentiate them even if they
+	 * have the same name
  	*/
 	public Person(String name, int id)
 	{

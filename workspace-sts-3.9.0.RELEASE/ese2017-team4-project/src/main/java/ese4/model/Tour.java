@@ -48,7 +48,7 @@ public class Tour {
 	 * parameter and assigns them.
 	 * 
 	 * @param packages
-	 * @param driver
+	 * @param driver The driver which is responsible for this tour
 	 */
 	public Tour(List<Package> packages, User driver) {
 		this.packages = packages;
