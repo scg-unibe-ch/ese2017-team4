@@ -157,4 +157,22 @@ public class Tour {
 		isFinished = true;
 	}
 	
+	/**
+	 * Looks if the Tour is Finished
+	 * 
+	 * @return isFinished
+	 */
+	public boolean getIsFinished() 
+	{
+		return isFinished;
+	}
+	
+	/**
+	 * 
+	 * @return amount of delivered Packs
+	 */
+	public int getDeliveredPacks() 
+	{
+		return this.numberDeliveredPacks;
+	}
 }
