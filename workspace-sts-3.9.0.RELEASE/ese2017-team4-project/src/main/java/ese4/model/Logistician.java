@@ -7,6 +7,8 @@ package ese4.model;
  */
 public class Logistician extends Person {
 	
+	//TODO: make logistician an entity dependent on person
+	
 	public Logistician(String name, int id)
 	{
 		super(name, id);

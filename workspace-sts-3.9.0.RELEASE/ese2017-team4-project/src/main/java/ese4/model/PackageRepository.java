@@ -17,16 +17,11 @@ public interface PackageRepository extends CrudRepository<Package, Long> {
 	
 	List<Package> findByContent(String content);
 	
-	List<Package> findFirst2ByOrderByIdAsc();
-	
 	List<Package> findByIsDelivered(boolean isDelivered);
-	
-	List<Package> findFirst2ByIsDeliveredFalse();
 	
 	@Transactional
 	void deleteByIsDelivered(boolean isDelivered);
 	
-	//List<Package> findFirst2ByOrderByIdAscAndIsDeliveredFalse();
 	
 	// This will be AUTO IMPLEMENTED by Spring into a Bean called PackageRepository
 	// CRUD refers Create, Read, Update, Delete

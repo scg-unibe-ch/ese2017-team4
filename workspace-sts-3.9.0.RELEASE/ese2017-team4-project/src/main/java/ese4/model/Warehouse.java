@@ -5,6 +5,8 @@ import java.util.ArrayList;
  * Contains all the packages that later will be sent to customers. Has methods to manage its
  * packages.
  * 
+ * TODO: maybe use later, still deciding if needed
+ * 
  * @author ese4
  * @Param packs ArrayList Contains all the package objects.
  *

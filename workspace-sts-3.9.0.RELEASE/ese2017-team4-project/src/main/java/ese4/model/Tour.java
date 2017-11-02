@@ -109,9 +109,10 @@ public class Tour {
 		this.id = id;
 	}
 	
+	
+	
 	/**
 	 * Adds single packages to the list of packages.
-	 * TODO The packages should be added in the order they have to be delivered.
 	 * @param pack
 	 */
 	public void addPackageToTour(Package pack) 
@@ -121,7 +122,8 @@ public class Tour {
 	
 	/**
 	 * Gets address of next package to be delivered.
-	 * TODO should go through the packages of the tour and shows the address of the first package that is not yet delivered
+	 * 
+	 * TODO: use later 
 	 * 
 	 * @return the next address
 	 */
@@ -137,6 +139,8 @@ public class Tour {
 	
 	/**
 	 * Sets the selected Package to delivered.
+	 * 
+	 * TODO: use later
 	 * 
 	 * @param package that was delivered
 	 */

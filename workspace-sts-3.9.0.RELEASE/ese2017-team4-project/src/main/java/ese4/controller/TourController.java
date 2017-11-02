@@ -76,20 +76,7 @@ public class TourController {
     	tour.setDriver(userRepository.findById(tourForm.getDriverId()));
     	tourRepository.save(tour);
     }
-    
-    @GetMapping("/makeTour/{driverId}")
-    public String makeRandomTour(@PathVariable int driverId) {
-    	Tour tour = new Tour();
-    	List<Package> packs = packageRepository.findFirst2ByIsDeliveredFalse();
-    	for(Package pack : packs) {
-    		pack.setTour(tour);	
-    		pack.setToDelivered();		//TODO: for now set them to delivered instantly
-    	}
-    	tour.setDriver(userRepository.findById(driverId));
-        tourRepository.save(tour);
-        return "homeScreen";
-    }
-    
+        
     @ModelAttribute("packagesNotDelivered")
     public Iterable<Package> allPackagesAsList() {
     	return this.packageRepository.findByIsDelivered(false);

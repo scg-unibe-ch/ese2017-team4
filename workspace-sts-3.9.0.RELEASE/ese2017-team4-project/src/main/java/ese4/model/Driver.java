@@ -11,6 +11,8 @@ package ese4.model;
 public class Driver extends Person {
 	private Tour tour;
 	
+	//TODO: make driver an entity dependent on person
+	
 	public Driver(String name, int id)
 	{
 		super(name, id);

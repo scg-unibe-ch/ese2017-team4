@@ -56,7 +56,7 @@ public class Package {
 		this.isDelivered = false;	//should not be delivered on creation
 	}
 	
-	public Package() //delete?
+	public Package()
 	{
 		this.isDelivered = false;
 		this.expectedDeliveryTime = 0;
