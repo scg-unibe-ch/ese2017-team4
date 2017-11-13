@@ -1,6 +1,17 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head> <style>
+
+	body {
+    	background-color: lightblue;
+    	text-align: center;
+ 		}
+ 		
+ 	table.center {
+ 		margin-left: auto;
+ 		margin-right: auto;
+ 	}
+    
 	table {
 	    font-family: "Times New Roman";
 	    border-collapse: collapse;
@@ -23,7 +34,7 @@
 <body>
 	<h1>Fahrerauswahl</h1>
     <form action="#" th:action="@{/tour/driverSelection}" th:object="${driverId}" method="post">
-		<table>
+		<table class="center">
 		<thead>
 			<tr>
 				<th>BenutzerId</th>
