@@ -61,7 +61,7 @@ public class TourController {
 		return "homescreen";
 	}
 	
-	@GetMapping("confirm")
+	@GetMapping("/confirm")
 	public String unconfirmedTours() {
 		return "tour/confirmTours";
 	}
@@ -94,7 +94,8 @@ public class TourController {
     	List<Tour> tours = tourRepository.findByIdIn(tourIds);
     	for(Tour tour : tours) {
     		tour.setFinished();
-    	}
+    		tourRepository.save(tour);
+    	}    	
     }
         
     @ModelAttribute("packagesNotDelivered")

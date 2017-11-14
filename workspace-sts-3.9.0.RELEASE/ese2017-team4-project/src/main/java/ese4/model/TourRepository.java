@@ -9,6 +9,8 @@ public interface TourRepository extends CrudRepository<Tour, Long> {
 	List<Tour> findByIsFinished(boolean isFinished);
 	
 	List<Tour> findByIdIn(List<Integer> ids);
+	
+	Tour findById(int id);
 
 	//Auto implemented
 }
