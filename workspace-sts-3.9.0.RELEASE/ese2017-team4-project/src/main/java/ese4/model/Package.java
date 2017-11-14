@@ -8,6 +8,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.Transient;
+
+import ese4.model.Status;
 
 /**
  * Keeps track of it's content, where it has to be delivered and it's expected delivery time.
@@ -34,10 +37,17 @@ public class Package {
     private Tour tour;
     
 	private String address;
-	private String content;
 	
-	private Boolean isDelivered;
-	private int expectedDeliveryTime; //expected time in minutes?
+	private double weight;
+	private double height;
+	private double length;
+	private double width;
+	
+	@Transient
+	private Status isDelivered;
+	
+	public String isStatus;
+	private int expectedDeliveryTime; //expected time in minutes???
 	
 	
 	/**
@@ -48,20 +58,23 @@ public class Package {
 	 * @param expectedDeliveryTime 
 	 * @param content
 	 */
-	public Package(String address, int expectedDeliveryTime, String content) 
+	public Package(String address, int expectedDeliveryTime, double weight, double height, double length, double width) 
 	{
 		this.address = address;
 		this.expectedDeliveryTime = expectedDeliveryTime;
-		this.content = content;
-		this.isDelivered = false;	//should not be delivered on creation
+		this.weight = weight;
+		this.height = height;
+		this.length = length;
+		this.width = width;
+		this.isDelivered = Status.PENDANT;		//should not be delivered on creation
 	}
 	
 	public Package()
 	{
-		this.isDelivered = false;
+		this.isDelivered = Status.PENDANT;
 		this.expectedDeliveryTime = 0;
+		this.isStatus = this.isDelivered.getDisplayName();
 	}
-	
 	
 	/**
 	 * Returns its id.
@@ -71,6 +84,40 @@ public class Package {
 	public Integer getId() {
 		return this.id;
 	}
+	
+	public double getWeight() {
+		return this.weight;
+	}
+	
+	public void setWeight(double weight) {
+		this.weight = weight;
+	}
+	
+	public double getHeight() {
+		return this.height;
+	}
+	
+	public void setHeight(double height) {
+		this.height = height;
+	}
+	
+	public double getLength() {
+		return this.length;
+	}
+	
+	public void setLength(double length) {
+		this.length = length;
+	}
+	
+	public double getWidth() {
+		return this.width;
+	}
+	
+	public void setWidth(double width) {
+		this.width = width;
+	}
+	
+	
 	/**
 	 * Sets its parameter input as id.
 	 * @param id
@@ -87,6 +134,7 @@ public class Package {
 	public String getAddress() {
 		return address;
 	}
+	
 	/**
 	 * Sets its parameter input as address.
 	 * 
@@ -97,28 +145,11 @@ public class Package {
 	}
 	
 	/**
-	 * Returns its content.
-	 * 
-	 * @return content
-	 */
-	public String getContent() {
-		return content;
-	}
-	/**
-	 * Sets its parameter input as content.
-	 * 
-	 * @param content
-	 */
-	public void setContent(String content) {
-		this.content = content;
-	}
-	
-	/**
 	 * Returns its delivery status.
 	 * 
 	 * @return isDeliverd
 	 */
-	public boolean getIsDelivered() {
+	public Status getIsDelivered() {
 		return isDelivered;
 	}
 	/**
@@ -127,7 +158,8 @@ public class Package {
 	 * @param isDeliverd
 	 */
 	public void setToDelivered() {
-		isDelivered = true;
+		isDelivered = Status.ZUGESTELLT;
+		this.isStatus = this.isDelivered.getDisplayName();
 	}
 	
 	/**
@@ -155,11 +187,21 @@ public class Package {
 	public Tour getTour() {
 		return this.tour;
 	}
+	
 	/**
 	 * Sets its parameter input as tour.
 	 * @param tour
 	 */
 	public void setTour(Tour tour) {
 		this.tour = tour;
+	}
+	
+	public String toString() {
+		return this.getId().toString();
+	}
+	
+	public void placedInTour() {
+		this.isDelivered = Status.GEPLANT;
+		this.isStatus = this.isDelivered.getDisplayName();
 	}
 }

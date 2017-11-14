@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+<style>
+  body {
+    	background-color: lightblue;
+    	text-align: center;
+    	}
+
+table.center {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+table {
+    font-family: "Times New Roman";
+    border-collapse: collapse;
+    width: 50%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+    <title>Bestätige Touren</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Liste offener Touren</h1>
+		<form action="#" th:action="@{/tour/confirmTours}" th:object="${tourId}" method="post">
+			<table class ="center">
+				<thead>
+					<tr>
+						<th>TourId</th>
+						<th>Name des Fahrers</th>
+						<th>Pakete</th>
+						<th>Bestätige</th>
+					</tr>
+				</thead>
+			<tbody>
+				<tr th:each="tour : ${toursNotConfirmed}">
+				<td th:text="${tour.id}"> </td>
+				<td th:text="${tour.driver.name}"> </td>
+				<td th:text="${tour.order}"> </td>
+				<td> <input type="checkbox" name="tourId" th:value="${tour.id}" /> </td>
+			</tr>
+		</tbody>
+		</table>
+	
+		<p><input type="submit" value="Übermitteln" /> </p>
+		</form>
+	<br></br>
+	<p><a href="/">Zurück zum Startbildschirm</a></p>
+</body>
+</html>

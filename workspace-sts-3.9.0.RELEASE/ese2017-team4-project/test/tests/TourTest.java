@@ -20,8 +20,8 @@ public class TourTest {
 	@Before
 	public void constructor()
 	{
-		testPackage1 = new Package("Bern", 4,"Banane");
-		testPackage2 = new Package("Zürich", 5,"Apfel");
+		testPackage1 = new Package("Bern", 4, 4, 4, 4, 4);
+		testPackage2 = new Package("Zürich", 5, 5, 5, 5, 5);
 		testTour = new Tour(packages, testUser);
 	}
 	
@@ -53,6 +53,19 @@ public class TourTest {
 		testTour.setPackageToDelivered(testPackage2);
 		assertEquals(testTour.getDeliveredPacks(),1);
 		assertTrue(testTour.getIsFinished());
+	}
+	
+	@Test
+	public void setOrderTest() {
+		assertEquals(null, testTour.getOrder());
+		
+		testPackage1.setId(1);
+		testPackage2.setId(2);
+		testTour.addPackageToTour(testPackage1);
+		testTour.addPackageToTour(testPackage2);
+		testTour.setOrder();
+		
+		assertEquals("  1 2", testTour.getOrder());
 	}
 
 }

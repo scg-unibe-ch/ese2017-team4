@@ -37,19 +37,24 @@ tr:nth-child(even) {
 	<thead>
 		<tr>
 			<th>Lieferadresse</th>
-			<th>Paketinhalt</th>
+			<th>Gewicht</th>
+			<th>Höhe</th>
+			<th>Länge</th>
+			<th>Breite</th>
 			<th>zugestellt?</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr th:each="package : ${packages}">
 			<td th:text="${package.address}"> </td>
-  			<td th:text="${package.content}"> </td>
-  			<td th:text="${package.isDelivered}"> </td>
-  			
+			<td th:text="${package.weight}"> </td>
+			<td th:text="${package.height}"> </td>
+			<td th:text="${package.length}"> </td>
+			<td th:text="${package.width}"> </td>
+			<td th:text="${package.isStatus}"> </td>
 		</tr>
 	</tbody>
-</table>
+	</table>
 <br></br>
 <p><a href="/">Zurück zum Startbildschirm</a></p>
 </body>

@@ -44,42 +44,62 @@ public class TourController {
 	public String makeTour(Model model) {
 		//List<Integer> packageIds = new ArrayList<Integer>();
 		//model.addAttribute("packageIds", packageIds );
-		return "tour/packageSelection";
-	}
-	
-	@PostMapping("/packageSelection")
-	public String packageSelection(@RequestParam("packageId") List<Integer> packageIds) {
-		tourForm = new TourForm();
-		tourForm.setPackIds(packageIds);
 		return "tour/driverSelection";
 	}
 	
 	@PostMapping("/driverSelection")
 	public String driverSelection(@RequestParam("driverId") Integer driverId) {
-		tourForm.setDriverId(driverId);
-		saveTourBuild();		
-		return "homeScreen";
+		tourForm = new TourForm();
+		tourForm.setDriverId(driverId);		
+		return "tour/packageSelection";
+	}
+	
+	@PostMapping("/packageSelection")
+	public String packageSelection(@RequestParam("packageId") List<Integer> packageIds) {
+		tourForm.setPackIds(packageIds);
+		saveTourBuild();
+		return "homescreen";
+	}
+	
+	@GetMapping("confirm")
+	public String unconfirmedTours() {
+		return "tour/confirmTours";
+	}
+	
+	@PostMapping("/confirm")
+	public String confirmTours(@RequestParam("tourId") List<Integer> tourIds) {
+		confirmation(tourIds);
+		return "homescreen";
 	}
 	
     @GetMapping("/listAll")
     public String allTours() {        
     	return "tour/listAllTours";
-    }	
+    }
 	
     public void saveTourBuild() {
     	Tour tour = new Tour();
     	List<Package> packs = packageRepository.findByIdIn(tourForm.getPackIds());
     	for(Package pack : packs) {
     		pack.setTour(tour);
-    		pack.setToDelivered();
+    		pack.placedInTour();
+    		tour.addPackageToTour(pack);
     	}
+    	tour.setOrder();
     	tour.setDriver(userRepository.findById(tourForm.getDriverId()));
     	tourRepository.save(tour);
+    }
+    
+    public void confirmation(List<Integer> tourIds) {
+    	List<Tour> tours = tourRepository.findByIdIn(tourIds);
+    	for(Tour tour : tours) {
+    		tour.setFinished();
+    	}
     }
         
     @ModelAttribute("packagesNotDelivered")
     public Iterable<Package> allPackagesAsList() {
-    	return this.packageRepository.findByIsDelivered(false);
+    	return this.packageRepository.findByIsStatus("pendant");
     }
     
     @ModelAttribute("drivers")
@@ -90,5 +110,10 @@ public class TourController {
     @ModelAttribute("tours")
     public Iterable<Tour> allTourAsList() {
     	return this.tourRepository.findAll();
+    }
+    
+    @ModelAttribute("toursNotConfirmed")
+    public Iterable<Tour> allToursAsList(){
+    	return this.tourRepository.findByIsFinished(false);
     }
 }

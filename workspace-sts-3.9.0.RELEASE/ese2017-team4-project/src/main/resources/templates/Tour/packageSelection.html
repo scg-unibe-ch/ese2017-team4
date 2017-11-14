@@ -39,21 +39,26 @@
 			<tr>
 				<th>PaketId</th>
 				<th>Lieferadresse</th>
-				<th>Paketinhalt</th>
+				<th>Gewicht</th>
+				<th>Höhe</th>
+				<th>Länge</th>
+				<th>Breite</th>
 				<th> </th>
 			</tr>
 		</thead>
 		<tbody>
-			<tr th:each="pack : ${packagesNotDelivered}">
-				<td th:text="${pack.id}"> </td>
-	  			<td th:text="${pack.address}"> </td>
-	  			<td th:text="${pack.content}"> </td>	
-	  			<td> <input type="checkbox" name="packageId" th:value="${pack.id}" /> </td>		 
+			<tr th:each="package : ${packagesNotDelivered}">
+				<td th:text="${package.id}"> </td>
+	  			<td th:text="${package.address}"> </td>	
+	  			<td th:text="${package.weight}"> </td>
+				<td th:text="${package.height}"> </td>
+				<td th:text="${package.length}"> </td>
+				<td th:text="${package.width}"> </td>
+	  			<td> <input type="checkbox" name="packageId" th:value="${package.id}" /> </td>		 
 			</tr>
 		</tbody>
 		</table>	
 
-        
         <p><input type="submit" value="Übermitteln" /> </p>
     </form>
     <br></br>

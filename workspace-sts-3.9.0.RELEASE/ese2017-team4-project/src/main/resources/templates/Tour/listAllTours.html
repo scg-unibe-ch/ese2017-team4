@@ -37,16 +37,20 @@ tr:nth-child(even) {
 	<thead>
 		<tr>
 			<th>TourId</th>
-			<th>FahrerId</th>
+			<th>Name des Fahrers</th>
+			<th>Pakete</th>
+			<th>Zugestellt?</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr th:each="tour : ${tours}">
 			<td th:text="${tour.id}"> </td>
-  			<td th:text="${tour.driver.id}"> </td>			
+			<td th:text="${tour.driver.name}"> </td>
+			<td th:text="${tour.order}"> </td>
+			<td th:text="${tour.isFinished}"> </td>
 		</tr>
 	</tbody>
-</table>
+	</table>
 <br></br>
 <p><a href="/">Zurück zum Startbildschirm</a></p>
 </body>

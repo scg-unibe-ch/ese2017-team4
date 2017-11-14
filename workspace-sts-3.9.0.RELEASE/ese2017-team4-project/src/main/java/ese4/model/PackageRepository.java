@@ -15,12 +15,10 @@ public interface PackageRepository extends CrudRepository<Package, Long> {
 	
 	List<Package> findByIdIn(List<Integer> ids);
 	
-	List<Package> findByContent(String content);
+	List<Package> findByIsStatus(String isStatus);
 	
-	List<Package> findByIsDelivered(boolean isDelivered);
-	
-	@Transactional
-	void deleteByIsDelivered(boolean isDelivered);
+	//@Transactional
+	//void deleteByIsDelivered(String isStatus);
 	
 	
 	// This will be AUTO IMPLEMENTED by Spring into a Bean called PackageRepository

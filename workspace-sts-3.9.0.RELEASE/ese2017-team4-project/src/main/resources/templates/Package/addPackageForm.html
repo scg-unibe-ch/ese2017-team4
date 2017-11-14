@@ -28,7 +28,11 @@
 	<h1>Paket hinzufügen</h1>
     <form action="#" th:action="@{/package/addPackageForm}" th:object="${package}" method="post">
     	<p>Lieferadresse: <input type="text" th:field="*{address}" /></p>
-        <p>Paketinhalt: <input type="text" th:field="*{content}" /></p>
+    	<p>ungefähre Lieferzeit(in min): <input type="number" th:field="*{expectedDeliveryTime}" /></p>
+        <p>Gewicht: <input type="number" th:field="*{weight}" /></p>
+        <p>Höhe: <input type="number" th:field="*{height}" /></p>
+        <p>Länge: <input type="number" th:field="*{length}" /></p>
+        <p>Breite: <input type="number" th:field="*{width}" /></p>
         <p><input type="submit" value="Übermitteln" class ="button" /> <input type="reset" value="Zurücksetzen" class ="button"/></p>
     </form>
     <br></br>

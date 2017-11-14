@@ -28,22 +28,6 @@ public class PackageController {
     public String get() {
     	return "homeScreen";
     }	
-	
-    /**
-     * Just for testing. will add 10 packages to the packageRepository
-     * 
-     * @return
-     */
-    @GetMapping("/addPackagesForTesting")	
-    public String testPackages() {
-    	for(int i = 0; i < 10; i++) {
-    		Package pack = new Package();
-    		pack.setAddress("test");
-    		pack.setContent("" + i);
-    		packageRepository.save(pack);    		
-    	}
-    	return "homeScreen";
-    }
     
     @GetMapping("/addPackageForm")
     public String addPackage(Model model) {
@@ -54,7 +38,7 @@ public class PackageController {
     @PostMapping("/addPackageForm")
     public String formSubmit(@ModelAttribute Package pack) {
     	packageRepository.save(pack);
-        return "homeScreen";
+        return "homescreen";
     }
     
     @ModelAttribute("packages")
@@ -63,8 +47,7 @@ public class PackageController {
     }
     
     @GetMapping("/listAll")
-    public String viewAllPackages(final Package pack) {
-    	
+    public String viewAllPackages() {
     	return "package/listAllPackages";
-    }
+    }  
 }

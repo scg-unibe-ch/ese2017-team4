@@ -36,11 +36,15 @@ public class Tour {
 	@Transient
 	private int numberDeliveredPacks;	//TODO CHANGE
 	
-	private boolean isFinished;			//true if the tour is finished aka all packages are delivered
+	private boolean isFinished;		//true if the tour is finished aka all packages are delivered
+	
+	@Transient
+	public String order;
 	
 	public Tour() {
 		isFinished=false;
 		numberDeliveredPacks=0;
+		packages = new ArrayList<Package>();
 	}
 	
 	/**
@@ -65,6 +69,7 @@ public class Tour {
 	{
 		return this.driver;
 	}
+	
 	/**
 	 * Sets its parameter input as driver.
 	 * 
@@ -74,6 +79,7 @@ public class Tour {
 	{
 		this.driver = driver;
 	}
+	
 	/**
 	 * Returns its packages.
 	 * @return packages
@@ -81,6 +87,7 @@ public class Tour {
 	public List<Package> getPacks() {
 		return this.packages;
 	}
+	
 	/**
 	 * Sets its parameter input as packages.
 	 * 
@@ -90,6 +97,7 @@ public class Tour {
 	{
 		this.packages = packages;
 	}
+	
 	/**
 	 * Returns its id.
 	 * 
@@ -99,6 +107,7 @@ public class Tour {
 	{
 		return this.id;
 	}
+	
 	/**
 	 * Sets its parameter input as id.
 	 * 
@@ -108,8 +117,6 @@ public class Tour {
 	{
 		this.id = id;
 	}
-	
-	
 	
 	/**
 	 * Adds single packages to the list of packages.
@@ -158,6 +165,9 @@ public class Tour {
 	 */
 	public void setFinished()
 	{
+		for(Package pack : packages) {
+			pack.setToDelivered();
+		}
 		isFinished = true;
 	}
 	
@@ -178,5 +188,24 @@ public class Tour {
 	public int getDeliveredPacks() 
 	{
 		return this.numberDeliveredPacks;
+	}
+	
+	/**
+	 * Creates a String representation of the order
+	 */
+	public String toString() {
+		 String Ids = " "; 
+		 for(Package pack : this.packages) {
+			 Ids += " " + pack.toString();
+		 }
+		return Ids;
+	}
+	
+	public void setOrder() {
+		this.order = this.toString();
+	}
+	
+	public String getOrder() {
+		return this.order;
 	}
 }
