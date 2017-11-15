@@ -1,8 +1,10 @@
-package ese4.model;
+package ese4.repository;
 
 import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
+
+import ese4.model.Tour;
 
 public interface TourRepository extends CrudRepository<Tour, Long> {
 	

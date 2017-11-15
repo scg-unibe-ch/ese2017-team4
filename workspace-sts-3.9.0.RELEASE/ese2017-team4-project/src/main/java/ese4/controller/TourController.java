@@ -18,6 +18,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import ese4.model.*;
 import ese4.model.Package;
+import ese4.repository.PackageRepository;
+import ese4.repository.TourRepository;
+import ese4.repository.UserRepository;
 
 @Controller    // This means that this class is a Controller
 @RequestMapping(path="/tour") // This means URL's start with /demo (after Application path)
@@ -105,7 +108,7 @@ public class TourController {
     
     @ModelAttribute("drivers")
     public Iterable<User> allDriversAsList() {
-    	return this.userRepository.findByType(1);	//1 = driver
+    	return this.userRepository.findByRoles(null);	//TODO: change
     }
     
     @ModelAttribute("tours")

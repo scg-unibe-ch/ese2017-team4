@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import ese4.model.Package;
-import ese4.model.PackageRepository;
+import ese4.repository.PackageRepository;
 
 @Controller    // This means that this class is a Controller
 @RequestMapping(path="/package") // This means URL's start with /demo (after Application path)

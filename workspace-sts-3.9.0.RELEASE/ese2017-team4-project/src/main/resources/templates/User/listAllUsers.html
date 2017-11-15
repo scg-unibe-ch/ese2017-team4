@@ -38,14 +38,12 @@ tr:nth-child(even) {
 		<tr>
 			<th>Id</th>
 			<th>Name</th>
-			<th>Benutzertyp</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr th:each="user : ${users}">
 			<td th:text="${user.id}"> </td>
   			<td th:text="${user.name}"> </td>
-  			<td th:text="${user.type}"> </td>
   			
 		</tr>
 	</tbody>

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import ese4.model.Package;
 import ese4.model.User;
-import ese4.model.UserRepository;
+import ese4.repository.UserRepository;
 
 @Controller    // This means that this class is a Controller
 @RequestMapping(path="/user") // This means URL's start with /user (after Application path)
