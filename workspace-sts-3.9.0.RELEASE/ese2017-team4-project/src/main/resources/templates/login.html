@@ -3,33 +3,57 @@
 	xmlns:th="http://www.thymeleaf.org">
 
 <head>
-	<title>Spring Security Tutorial</title>
-	<link rel="stylesheet" type="text/css" th:href="@{/css/login.css}" />
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+	<style>
+body  {
+	background-color: lightblue;
+    text-align: center;
+}
+table {
+    font-family: "Times New Roman";
+    border-collapse: collapse;
+    width: 50%;
+    text-align: center;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+}
+
+table.center{
+	margin-left: auto;
+    margin-right: auto;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+	<title>Anmelden</title>
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
 <body>
-	<form th:action="@{/registration}" method="get">
-		<button class="btn btn-md btn-warning btn-block" type="Submit">Go To Registration Page</button>
-	</form>	
-	
+        <h1>Anmelden</h1>
 	<div class="container">
 		<form th:action="@{/login}" method="POST" class="form-signin">
-			<h3 class="form-signin-heading" th:text="Welcome"></h3>
+			<h3 class="form-signin-heading" th:text="Willkomen"></h3>
 			<br/>
 			 
-			<input type="text" id="name" name="name"  th:placeholder="Name"
+			<input type="text" id="name" name="name"  th:placeholder="Benutzername"
 				class="form-control" /> <br/> 
-			<input type="password"  th:placeholder="Password"
+			<input type="password"  th:placeholder="Passwort"
 				id="password" name="password" class="form-control" /> <br /> 
 				
 			<div align="center" th:if="${param.error}">
-				<p style="font-size: 20; color: #FF1C19;">Email or Password invalid, please verify</p>
+				<p style="font-size: 20; color: #FF1C19;">Benutzername oder Password falsch, bitte versuchen Sie es erneut.</p>
 			</div>
-			<button class="btn btn-lg btn-primary btn-block" name="Submit" value="Login" type="Submit" th:text="Login"></button>
+			<button class="btn btn-lg btn-primary btn-block" name="Submit" value="Login" type="Submit" th:text="Anmelden"></button>
 		</form>
 	</div>
+	<br></br>
+<p><a href="/">Zurück zum Startbildschirm</a></p>
 </body>
 </html>

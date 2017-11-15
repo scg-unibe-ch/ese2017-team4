@@ -32,6 +32,11 @@ tr:nth-child(even) {
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
+<h4 th:inline="text">Willkommen [[${#httpServletRequest.remoteUser}]]!</h4>
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Abmelden"/>
+        </form>
+        <hr width="75%"></hr>
 <h1>Liste aller Pakete</h1>
 <table class ="center">
 	<thead>
