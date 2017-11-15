@@ -9,6 +9,9 @@ mit Name 'Faherer1', email 'fahrer1@test.ch', passwort '1234'
 mit Name 'Faherer2', email 'fahrer2@test.ch', passwort '1234'
 mit Name 'Faherer3', email 'fahrer3@test.ch', passwort '1234'
 
+Alle Benutzer anzeigen
+Prüfen ob alle erfasst sind.
+
 Abmelden
 
 ------------------------------------------------------------------------
@@ -18,11 +21,12 @@ Login als	'Logistiker1'
 mit Passwort 	'1234'
 
 Erfasse neue Pakete
-mit Adresse 'Adresse1', anderen Eingaben egal
-mit Adresse 'Adresse2', anderen Eingaben egal
-mit Adresse 'Adresse3', anderen Eingaben egal
+mit Adresse 'Adresse1', ungefähre Lieferzeit '60', Gewicht '10', Höhe '100', Länge '20', Breite '20';
+mit Adresse 'Adresse2', ungefähre Lieferzeit '40', Gewicht '5', Höhe '50', Länge '50', Breite '50';
+mit Adresse 'Adresse3', ungefähre Lieferzeit '70', Gewicht '12', Höhe '120', Länge '30', Breite '40';
 
-�berpr�fen ob die Pakete richtig erfasst wurden, und status pending ist.
+Alle Pakete anzeigen
+Überprüfen ob die Pakete richtig erfasst wurden, und Status pendant ist.
 
 Abmelden
 
@@ -33,8 +37,9 @@ Login als	'Logistiker1'
 mit Passwort 	'1234'
 
 Neue Tour erstellen
-f�r 'Fahrer1'
-mit Paketen mit Adressen: 'Adresse1' und 'Adresse3'
+'Fahrer1' anwählen und übermitteln
+Pakete mit Adressen: 'Adresse1' und 'Adresse3' auswählen
+Bestätigen
 
 Abmelden
 
@@ -44,17 +49,21 @@ Scenario 4:
 Login als	'Fahrer1'
 mit Passwort 	'1234'
 
-Best�tige gefahrene Tour
+Bestätige gefahrene Tour
 
 Abmelden
 
 ------------------------------------------------------------------------
 Scenario 5:
 
-Login als	'Logistiker1'
+Login als 'Logistiker1'
 mit Passwort	'1234'
 
-Nachpr�fuen ob Pakete ausgeliefert sind, Tour best�tigt ist.
+Alle Pakete anzeigen
+Nachprüfuen ob Pakete ausgeliefert sind.
+
+Alle Touren anzeigen
+Nachprüfen ob die Tour abgeschlossen ist.
 
 Abmelden
 
