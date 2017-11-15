@@ -108,7 +108,7 @@ public class TourController {
     
     @ModelAttribute("drivers")
     public Iterable<User> allDriversAsList() {
-    	return this.userRepository.findByRoles(null);	//TODO: change
+    	return this.userRepository.findAll();	//TODO: change
     }
     
     @ModelAttribute("tours")
