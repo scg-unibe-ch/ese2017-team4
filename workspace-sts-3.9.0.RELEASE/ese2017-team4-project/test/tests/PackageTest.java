@@ -15,10 +15,28 @@ public class PackageTest {
 	}
 
 	@Test
-	public void isDeliveredPackageTest() {	
-		assertEquals(testPackage.getIsDelivered(), Status.PENDANT);
-		testPackage.setToDelivered();
-		assertEquals(testPackage.getIsDelivered(), Status.ZUGESTELLT);
+	public void pendantPackageTest() {	
+		assertEquals(Status.PENDANT, testPackage.getIsDelivered());
+		assertEquals("pendant", testPackage.isStatus);
 	}
-
+	
+	@Test
+	public void isPlacedInTourTest() {
+		testPackage.placedInTour();
+		assertEquals(Status.GEPLANT, testPackage.getIsDelivered());
+		assertEquals("geplant", testPackage.isStatus);
+	}
+	
+	@Test
+	public void setToDeliveredTest() {
+		testPackage.setToDelivered();
+		assertEquals( Status.ZUGESTELLT, testPackage.getIsDelivered());
+		assertEquals("zugestellt", testPackage.isStatus);
+	}
+	
+	@Test
+	public void toStringTest() {
+		testPackage.setId(33);
+		assertEquals("33", testPackage.toString());
+	}
 }

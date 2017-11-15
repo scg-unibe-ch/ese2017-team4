@@ -36,14 +36,14 @@ public class TourTest {
 	@Test
 	public void numberDeliveredPacksTest()
 	{
-		assertEquals(testTour.getDeliveredPacks(), 0);
+		assertEquals(0, testTour.getDeliveredPacks());
 	}
 	
 	@Test
 	public void addPackagesToTourTest()
 	{
 		testTour.addPackageToTour(testPackage1);
-		assertEquals(testTour.getPacks().get(0), testPackage1);
+		assertEquals(testPackage1, testTour.getPacks().get(0));
 	}
 	
 	@Test
@@ -51,13 +51,14 @@ public class TourTest {
 	{
 		testTour.addPackageToTour(testPackage2);
 		testTour.setPackageToDelivered(testPackage2);
-		assertEquals(testTour.getDeliveredPacks(),1);
+		assertEquals(1, testTour.getDeliveredPacks());
 		assertTrue(testTour.getIsFinished());
 	}
 	
 	@Test
 	public void setOrderTest() {
-		assertEquals(null, testTour.getOrder());
+		testTour.setOrder();
+		assertEquals(" ", testTour.getOrder());
 		
 		testPackage1.setId(1);
 		testPackage2.setId(2);

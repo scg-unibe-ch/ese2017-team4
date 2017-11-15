@@ -156,7 +156,7 @@ public class Tour {
 		pack.setToDelivered();
 		numberDeliveredPacks++;
 		if(numberDeliveredPacks == packages.size()) {
-			setFinished();
+			this.setFinished();
 		}
 	}
 	

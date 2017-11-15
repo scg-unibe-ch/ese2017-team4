@@ -13,16 +13,17 @@ import javax.persistence.Transient;
 import ese4.model.Status;
 
 /**
- * Keeps track of it's content, where it has to be delivered and it's expected delivery time.
- * The Package knows if its delivered yet or not.
+ * Keeps track of its size and weight, where it has to be delivered and it's expected delivery time.
+ * The Package which status its currently in.
  * 
  * @author ese4
- *  id Used to differentiate all the packets even if they have the same contents and 
+ *  id Used to differentiate all the packets even if they have the same dimensions and 
  *  address
  *  tour Tour The tour which a package is designated to
  *  address String Where the package goes to
- *  content String What is inside the package
- *  isDelivered Boolean whether the package got delivered or not
+ *  weight, height, length, width how big the package is and how much it weights.
+ *  isDelivered enum where the package currently stands
+ *  isStatus String represantation of isDelivered
  *  expectedDeliveryTime Int Time in minutes we get from the logisticians experience
  *
  */
@@ -46,7 +47,7 @@ public class Package {
 	@Transient
 	private Status isDelivered;
 	
-	public String isStatus;
+	public String isStatus = "pendant";
 	private int expectedDeliveryTime; //expected time in minutes???
 	
 	
@@ -66,23 +67,13 @@ public class Package {
 		this.height = height;
 		this.length = length;
 		this.width = width;
-		this.isDelivered = Status.PENDANT;		//should not be delivered on creation
+		this.isDelivered = Status.PENDANT;          
 	}
 	
 	public Package()
 	{
 		this.isDelivered = Status.PENDANT;
 		this.expectedDeliveryTime = 0;
-		this.isStatus = this.isDelivered.getDisplayName();
-	}
-	
-	/**
-	 * Returns its id.
-	 * 
-	 * @return id
-	 */
-	public Integer getId() {
-		return this.id;
 	}
 	
 	public double getWeight() {
@@ -117,6 +108,14 @@ public class Package {
 		this.width = width;
 	}
 	
+	/**
+	 * Returns its id.
+	 * 
+	 * @return id
+	 */
+	public Integer getId() {
+		return this.id;
+	}
 	
 	/**
 	 * Sets its parameter input as id.
@@ -142,24 +141,6 @@ public class Package {
 	 */
 	public void setAddress(String address) {
 		this.address = address;
-	}
-	
-	/**
-	 * Returns its delivery status.
-	 * 
-	 * @return isDeliverd
-	 */
-	public Status getIsDelivered() {
-		return isDelivered;
-	}
-	/**
-	 * Sets its parameter input as isDelivered.
-	 * 
-	 * @param isDeliverd
-	 */
-	public void setToDelivered() {
-		isDelivered = Status.ZUGESTELLT;
-		this.isStatus = this.isDelivered.getDisplayName();
 	}
 	
 	/**
@@ -190,18 +171,44 @@ public class Package {
 	
 	/**
 	 * Sets its parameter input as tour.
+	 * 
 	 * @param tour
 	 */
 	public void setTour(Tour tour) {
 		this.tour = tour;
 	}
 	
+	/**
+	 * Get the String representation of a Package
+	 */
 	public String toString() {
 		return this.getId().toString();
 	}
 	
+	/**
+	 * Returns its delivery status.
+	 * 
+	 * @return isDeliverd
+	 */
+	public Status getIsDelivered() {
+		return isDelivered;
+	}
+	
+	/**
+	 * Sets isDelivered parameter to geplant
+	 * and updates isStatus
+	 */
 	public void placedInTour() {
 		this.isDelivered = Status.GEPLANT;
+		this.isStatus = this.isDelivered.getDisplayName();
+	}
+	
+	/**
+	 * Sets isDelivered parameter to zugestellt
+	 * and updates isStatus
+	 */
+	public void setToDelivered() {
+		isDelivered = Status.ZUGESTELLT;
 		this.isStatus = this.isDelivered.getDisplayName();
 	}
 }
