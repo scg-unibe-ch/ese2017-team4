@@ -28,6 +28,16 @@
     </style>
 </head>
 <body>
+	<div sec:authorize="isAuthenticated()">
+	<h4 th:inline="text">Willkommen [[${#httpServletRequest.remoteUser}]]!</h4>
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Abmelden"/>
+            </form>
+</div>
+        <form th:action="@{/login}" method="get">
+            <input type="submit" value="Anmelden"/>
+            </form>
+        <hr width="75%"></hr>
 	<h1>Tourverwalter</h1>
 	<p><a href="/package/addPackageForm" class="button">Erfasse ein neues Paket</a></p>
 	<p><a href="/package/listAll" class="button">Zeige alle Pakete</a></p>

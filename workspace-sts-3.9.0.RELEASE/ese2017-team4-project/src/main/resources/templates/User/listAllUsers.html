@@ -32,6 +32,11 @@ tr:nth-child(even) {
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
+<h4 th:inline="text">Willkommen [[${#httpServletRequest.remoteUser}]]!</h4>
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Abmelden"/>
+        </form>
+        <hr width="75%"></hr>
 <h1>Liste aller Benutzer</h1>
 <table class="center">
 	<thead>
@@ -48,7 +53,6 @@ tr:nth-child(even) {
 		</tr>
 	</tbody>
 </table>
-<p>Benutzertyp 0=Logistiker, 1=Fahrer</p>
 <br></br>
 <p><a href="/">Zurück zum Startbildschirm</a></p>
 </body>
