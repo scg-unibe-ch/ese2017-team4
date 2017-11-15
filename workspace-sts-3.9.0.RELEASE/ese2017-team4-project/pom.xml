@@ -59,15 +59,12 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-<<<<<<< HEAD
-
+        
         <dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-=======
->>>>>>> 114798d7fd6dc6a0f10cd3148fab5e6d49d6365b
 
         <dependency>
         	<groupId>org.springframework.security</groupId>
@@ -81,10 +78,7 @@
         	<groupId>org.springframework.security</groupId>
         	<artifactId>spring-security-web</artifactId>
         </dependency>
-<<<<<<< HEAD
 
-=======
->>>>>>> 114798d7fd6dc6a0f10cd3148fab5e6d49d6365b
     </dependencies>
 
     <properties>

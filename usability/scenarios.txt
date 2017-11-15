@@ -1,13 +1,12 @@
-Scenario 1:
+﻿Scenario 1:
 
 Login als 	'admin'
 mit Passwort 	'1234'
 
 Erfasse neue Benutzer:
 mit Name 'Logistiker1', email 'logistiker1@test.ch', passwort '1234'
-mit Name 'Faherer1', email 'fahrer1@test.ch', passwort '1234'
-mit Name 'Faherer2', email 'fahrer2@test.ch', passwort '1234'
-mit Name 'Faherer3', email 'fahrer3@test.ch', passwort '1234'
+mit Name 'Fahrer1', email 'fahrer1@test.ch', passwort '1234'
+mit Name 'Fahrer2', email 'fahrer2@test.ch', passwort '1234'
 
 Alle Benutzer anzeigen
 Prüfen ob alle erfasst sind.
