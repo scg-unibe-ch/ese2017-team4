@@ -1,0 +1,61 @@
+Scenario 1:
+
+Login als 	'admin'
+mit Passwort 	'1234'
+
+Erfasse neue Benutzer:
+mit Name 'Logistiker1', email 'logistiker1@test.ch', passwort '1234'
+mit Name 'Faherer1', email 'fahrer1@test.ch', passwort '1234'
+mit Name 'Faherer2', email 'fahrer2@test.ch', passwort '1234'
+mit Name 'Faherer3', email 'fahrer3@test.ch', passwort '1234'
+
+Abmelden
+
+------------------------------------------------------------------------
+Scenario 2:
+
+Login als	'Logistiker1'
+mit Passwort 	'1234'
+
+Erfasse neue Pakete
+mit Adresse 'Adresse1', anderen Eingaben egal
+mit Adresse 'Adresse2', anderen Eingaben egal
+mit Adresse 'Adresse3', anderen Eingaben egal
+
+Überprüfen ob die Pakete richtig erfasst wurden, und status pending ist.
+
+Abmelden
+
+------------------------------------------------------------------------
+Scenario 3:
+
+Login als	'Logistiker1'
+mit Passwort 	'1234'
+
+Neue Tour erstellen
+für 'Fahrer1'
+mit Paketen mit Adressen: 'Adresse1' und 'Adresse3'
+
+Abmelden
+
+------------------------------------------------------------------------
+Scenario 4:
+
+Login als	'Fahrer1'
+mit Passwort 	'1234'
+
+Bestätige gefahrene Tour
+
+Abmelden
+
+------------------------------------------------------------------------
+Scenario 5:
+
+Login als	'Logistiker1'
+mit Passwort	'1234'
+
+Nachprüfuen ob Pakete ausgeliefert sind, Tour bestätigt ist.
+
+Abmelden
+
+
