@@ -76,10 +76,12 @@ tr:nth-child(even) {
 					<div class="form-group">
 						<div class="col-sm-9">
 							<select th:field="*{roleInput}">
-								<option value="0" th:text="Wählen Sie eine Rolle" ></option>
-  								<option th:each="role : ${allRoles}" 
+  								<!--<option th:each="role : ${allRoles}" 
           							th:value="${role.role}" 
-          							th:text="${role.role}"></option>
+          							th:text="${role.role}"></option>-->
+          					<option value="DRIVER">Fahrer</option>
+          					<option value="LOGISTICIAN">Logistiker</option>
+          					<option value="ADMIN">Admin</option>
 							</select>
 						</div>
 					</div>
