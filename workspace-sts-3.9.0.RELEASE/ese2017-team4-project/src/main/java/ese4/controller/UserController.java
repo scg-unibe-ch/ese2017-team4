@@ -32,18 +32,6 @@ public class UserController {
     public String listAllUsers() {        
     	return "user/listAllUsers";
     }	
-	
-    @GetMapping("/addUserForm")
-    public String addPackage(Model model) {
-        model.addAttribute("user", new User());
-        return "user/addUserForm";
-    }
-
-    @PostMapping("/addUserForm")
-    public String formSubmit(@ModelAttribute User user) {
-    	userRepository.save(user);
-        return "redirect:/user/listAll";
-    }
     
     @ModelAttribute("users")
     public Iterable<User> allUserssAsList() {

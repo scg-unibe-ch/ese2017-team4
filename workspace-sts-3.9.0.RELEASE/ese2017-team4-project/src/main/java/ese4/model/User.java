@@ -34,23 +34,18 @@ public class User {
 	@Column(name = "user_id")
 	private int id;
     
-	@Column(name = "email")
-	@Email(message = "*Please use a valid Email")
-	@NotEmpty(message = "*Please Type your email")
-	private String email;
-	
 	@Column(name = "password")
-	@Length(min = 4, message = "*atleast 4 characters")
-	@NotEmpty(message = "*Please Type your password")
+	@Length(min = 4, message = "*Passwort muss mindestens 4 Buchstaben haben!")
+	@NotEmpty(message = "*Bitte geben Sie ein Passwort ein.")
 	@Transient
 	private String password;
 	
 	@Column(name = "name")
-	@NotEmpty(message = "*Please Type your Name")
+	@NotEmpty(message = "*Bitte geben Sie einen Benutzernamen ein.")
 	private String name;
 	
 	@Column(name = "roleInput")
-	@NotEmpty(message = "*Please choose the role")
+	@NotEmpty(message = "*Bitte wählen Sie eine Rolle.")
 	private String roleInput;
 		
 	@Column(name = "active")
@@ -85,14 +80,6 @@ public class User {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
 	}
 	
 	public String getRoleInput() {

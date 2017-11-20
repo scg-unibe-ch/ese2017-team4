@@ -44,30 +44,17 @@ public class LoginController {
 		if (userExists != null) {
 			bindingResult
 					.rejectValue("name", "error.user",
-							"user with the provided Name already exists");
+							"Ein Nutzer mit diesem Namen besteht bereits.");
 		}
 		if (bindingResult.hasErrors()) {
 			modelAndView.setViewName("registration");
 		} else {
 			userService.saveUser(user);
-			modelAndView.addObject("successMessage", "User has been registered successfully");
+			modelAndView.addObject("successMessage", "Benutzer konnte erfolgreich registriert werden.");
 			modelAndView.addObject("user", new User());
 			modelAndView.setViewName("registration");
 			
 		}
 		return modelAndView;
 	}
-	
-	@RequestMapping(value="/admin/home", method = RequestMethod.GET)
-	public ModelAndView home(){
-		ModelAndView modelAndView = new ModelAndView();
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		User user = userService.findUserByName(auth.getName());
-		modelAndView.addObject("userName", "Welcome " + user.getName() + " (" + user.getEmail() + ")");
-		modelAndView.addObject("adminMessage","Content Available Only for Users with Admin Role");
-		modelAndView.setViewName("admin/home");
-		return modelAndView;
-	}
-	
-
 }
