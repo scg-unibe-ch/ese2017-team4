@@ -47,7 +47,7 @@ public class Package {
 	@Transient
 	private Status isDelivered;
 	
-	public String isStatus = "pendant";
+	public String isStatus = "pendent";
 	private int expectedDeliveryTime; //expected time in minutes???
 	
 	
@@ -67,12 +67,12 @@ public class Package {
 		this.height = height;
 		this.length = length;
 		this.width = width;
-		this.isDelivered = Status.PENDANT;          
+		this.isDelivered = Status.PENDENT;          
 	}
 	
 	public Package()
 	{
-		this.isDelivered = Status.PENDANT;
+		this.isDelivered = Status.PENDENT;
 		this.expectedDeliveryTime = 0;
 	}
 	

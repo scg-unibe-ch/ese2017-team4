@@ -3,7 +3,7 @@ package ese4.model;
 public enum Status {
 	ZUGESTELLT("zugestellt"),
 	GEPLANT("geplant"),
-	PENDANT("pendant");
+	PENDENT("pendent");
 	
 	private final String displayName;
 	
