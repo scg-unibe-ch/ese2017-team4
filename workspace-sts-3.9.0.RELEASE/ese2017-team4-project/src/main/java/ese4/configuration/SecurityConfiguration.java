@@ -36,8 +36,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		http
 			.authorizeRequests()
 				.antMatchers("/login").permitAll()
-				.antMatchers("/registration").permitAll()
-				.antMatchers("/admin/**").hasAuthority("ADMIN")
+				.antMatchers("/registration").permitAll() //später nur für ADMIN freigeben
+				.antMatchers("/package/**").hasAuthority("LOGISTICIAN")
+				.antMatchers("/user/**").hasAuthority("ADMIN")
+				.antMatchers("/tour/confirm").hasAuthority("DRIVER")
+				.antMatchers("/tour/makeTour").hasAuthority("LOGISTICIAN")
+				.antMatchers("/tour/driverSelection").hasAuthority("LOGISTICIAN")
+				.antMatchers("/tour/listAll").hasAuthority("LOGISTICIAN")
+				//.antMatchers("/tour/listToursByDriver").hasAuthority("DRIVER") muss noch implementiert werden
 				.anyRequest().authenticated().and().csrf().disable()
 			.formLogin()
 				.loginPage("/login")

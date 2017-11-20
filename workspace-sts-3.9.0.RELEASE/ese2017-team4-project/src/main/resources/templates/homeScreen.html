@@ -42,17 +42,23 @@
         <hr width="75%"></hr>
         </div>
 	<h1>Tourverwalter</h1>
+	
+	<div sec:authorize="hasAuthority('ADMIN')">
+	<p><a href="/registration" class="button">Erfasse einen neuen Benutzer</a></p>
+	<p><a href="/user/listAll" class="button">Zeige alle Benutzer</a></p>
+	</div>
+	
+	<div sec:authorize="hasAuthority('LOGISTICIAN')">
 	<p><a href="/package/addPackageForm" class="button">Erfasse ein neues Paket</a></p>
 	<p><a href="/package/listAll" class="button">Zeige alle Pakete</a></p>
 	<br></br>
-	<div sec:authorize="isAuthenticated()">
-	<p><a href="/registration" class="button">Erfasse einen neuen Benutzer</a></p>
-	</div>
-	<p><a href="/user/listAll" class="button">Zeige alle Benutzer</a></p>
 	<br></br>
 	<p><a href="/tour/makeTour" class="button">Erstelle eine neue Tour</a></p>
-	<p><a href="/tour/confirm" class="button">Bestätige Touren</a></p>
 	<p><a href="/tour/listAll" class="button">Zeige alle Touren</a></p>
+	</div>
 	
+	<div sec:authorize="hasAuthority('DRIVER')">
+	<p><a href="/tour/confirm" class="button">Bestätige Tour</a></p>
+	</div>
 </body>
 </html>
