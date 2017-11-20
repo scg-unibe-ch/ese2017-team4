@@ -1,11 +1,14 @@
 package ese4.controller;
 
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +24,7 @@ import ese4.model.Package;
 import ese4.repository.PackageRepository;
 import ese4.repository.TourRepository;
 import ese4.repository.UserRepository;
+import ese4.service.UserService;
 
 @Controller    // This means that this class is a Controller
 @RequestMapping(path="/tour") // This means URL's start with /demo (after Application path)
@@ -34,6 +38,9 @@ public class TourController {
 	
 	@Autowired
 	private UserRepository userRepository;
+	
+	@Autowired
+	private UserService userService;
 	
 	private TourForm tourForm;
 	
@@ -76,8 +83,23 @@ public class TourController {
 	}
 	
     @GetMapping("/listAll")
-    public String allTours() {        
+    public String allTours() {    
     	return "tour/listAllTours";
+    }
+    
+    User getCurrentUser() {
+    	Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		User user = userService.findUserByName(auth.getName());
+    	return user;
+    }
+    
+    /*
+     * zeige tour für den momentan eingeloggten fahrer an
+     */
+    @GetMapping("/listMyTour")
+    public String listMyTour() {
+    	
+    	return "tour/listMyTour";
     }
 	
     public void saveTourBuild() {
@@ -114,6 +136,11 @@ public class TourController {
     @ModelAttribute("tours")
     public Iterable<Tour> allTourAsList() {
     	return this.tourRepository.findAll();
+    }
+    
+    @ModelAttribute("myTour")
+    public Tour myTour() {
+    	return this.tourRepository.findTourByDriver(getCurrentUser());
     }
     
     @ModelAttribute("toursNotConfirmed")

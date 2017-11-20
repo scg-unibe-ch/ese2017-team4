@@ -1,35 +1,35 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head> 
-<style>
-body  {
-	background-color: lightblue;
-    text-align: center;
+    <title>Liste aller Touren</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+  body {
+    	background-color: lightblue;
+    	text-align: center;
+    	}
+
+table.center {
+	margin-left: auto;
+	margin-right: auto;
 }
+
 table {
     font-family: "Times New Roman";
     border-collapse: collapse;
     width: 50%;
-    text-align: center;
 }
 
 td, th {
     border: 1px solid #dddddd;
-    text-align: center;
+    text-align: left;
     padding: 8px;
-}
-
-table.center{
-	margin-left: auto;
-    margin-right: auto;
 }
 
 tr:nth-child(even) {
     background-color: #dddddd;
 }
 </style>
-    <title>Liste aller Pakete</title> 
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
 <h4 th:inline="text">Willkommen [[${#httpServletRequest.remoteUser}]]!</h4>
@@ -37,7 +37,7 @@ tr:nth-child(even) {
             <input type="submit" value="Abmelden"/>
         </form>
         <hr width="75%"></hr>
-<h1>Liste aller Pakete</h1>
+<h1>Meine Tour</h1>
 <table class ="center">
 	<thead>
 		<tr>
@@ -51,7 +51,7 @@ tr:nth-child(even) {
 		</tr>
 	</thead>
 	<tbody>
-		<tr th:each="package : ${packages}">
+		<tr th:each="package : ${myTour?.getPacks()}">
 			<td th:text="${package.id}"> </td>
 			<td th:text="${package.address}"> </td>
 			<td th:text="${package.weight}"> </td>
