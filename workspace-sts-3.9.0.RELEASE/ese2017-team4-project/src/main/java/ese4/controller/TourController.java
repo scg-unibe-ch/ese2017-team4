@@ -103,7 +103,7 @@ public class TourController {
         
     @ModelAttribute("packagesNotDelivered")
     public Iterable<Package> allPackagesAsList() {
-    	return this.packageRepository.findByIsStatus("pendant");
+    	return this.packageRepository.findByIsStatus("pendent");
     }
     
     @ModelAttribute("drivers")
