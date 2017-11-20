@@ -40,7 +40,7 @@ public class User {
 	private String email;
 	
 	@Column(name = "password")
-	@Length(min = 4, message = "*atleast 4 charackters")
+	@Length(min = 4, message = "*atleast 4 characters")
 	@NotEmpty(message = "*Please Type your password")
 	@Transient
 	private String password;
@@ -48,6 +48,10 @@ public class User {
 	@Column(name = "name")
 	@NotEmpty(message = "*Please Type your Name")
 	private String name;
+	
+	@Column(name = "roleInput")
+	@NotEmpty(message = "*Please choose the role")
+	private String roleInput;
 		
 	@Column(name = "active")
 	private boolean active;
@@ -89,6 +93,13 @@ public class User {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	
+	public String getRoleInput() {
+		return roleInput;
+	}
+	public void setRoleInput(String roleInput) {
+		this.roleInput = roleInput;
 	}
 
 	public boolean isActive() {
