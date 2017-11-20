@@ -43,7 +43,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.antMatchers("/tour/makeTour").hasAuthority("LOGISTICIAN")
 				.antMatchers("/tour/driverSelection").hasAuthority("LOGISTICIAN")
 				.antMatchers("/tour/listAll").hasAuthority("LOGISTICIAN")
-				//.antMatchers("/tour/listToursByDriver").hasAuthority("DRIVER") muss noch implementiert werden
+				.antMatchers("/tour/listMyTour").hasAuthority("DRIVER")
 				.anyRequest().authenticated().and().csrf().disable()
 			.formLogin()
 				.loginPage("/login")
