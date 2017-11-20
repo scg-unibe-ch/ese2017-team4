@@ -2,6 +2,9 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org">
 <head>
+<title>Registrierung</title>
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style>
 body  {
 	background-color: lightblue;
@@ -28,21 +31,42 @@ table.center{
 tr:nth-child(even) {
     background-color: #dddddd;
 }
-</style>
-	<title>Registrierung</title>
-  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   	
+	header
+	{
+	vertical-align: top;
+	}
+	.container {
+    width: 75%;
+    height: 30px;
+    padding: 10px;
+	}
+	.left {
+    width: 40%;
+    height:30px;
+    float: left;
+	}
+	.right {
+    margin-left: 60%;
+    height: 30px;
+	}
+    </style>
 </head>
 <body>
-<h4 th:inline="text">Willkommen [[${#httpServletRequest.remoteUser}]]!</h4>
-        <form th:action="@{/logout}" method="post">
-            <input type="submit" value="Abmelden"/>
-        </form>
-        <hr width="75%"></hr>
-	
+	<section class="header">
+		<p></p>
+		<div class="left">
+			<header th:inline="text">Willkommen <strong>[[${#httpServletRequest.remoteUser}]]!</strong></header>
+		</div>
+        <div class="right">
+        		<form th:action="@{/logout}" method="post">
+            		<input type="submit" value="Abmelden"/>
+            	</form>
+        </div>
+    <hr width="75%"></hr>   
+	</section>
 	<h1>Registrierung</h1>
-	<div class="container">
+	<div class="container_registration">
 		<div class="row">
 			<div class="col-md-6 col-md-offset-3">
 				<form autocomplete="off" action="#" th:action="@{/registration}"

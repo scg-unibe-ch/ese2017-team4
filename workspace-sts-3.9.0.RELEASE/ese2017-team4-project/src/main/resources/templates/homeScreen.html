@@ -23,24 +23,40 @@
 	h1 {
 	
 	}
-    
-    	
+	header
+	{
+	vertical-align: top;
+	}
+	.container {
+    width: 75%;
+    height: 30px;
+    padding: 10px;
+	}
+	.left {
+    width: 40%;
+    height:30px;
+    float: left;
+	}
+	.right {
+    margin-left: 60%;
+    height: 30px;
+	}
     </style>
 </head>
 <body>
-	<div sec:authorize="isAuthenticated()">
-	<h4 th:inline="text">Willkommen [[${#httpServletRequest.remoteUser}]]!</h4>
-        <form th:action="@{/logout}" method="post">
-            <input type="submit" value="Abmelden"/>
-            </form>
-            <hr width="75%"></hr>
-</div>	
-		<div sec:authorize="isAnonymous()">
-        <form th:action="@{/login}" method="get">
-            <input type="submit" value="Anmelden"/>
-            </form>
-        <hr width="75%"></hr>
+	<section class="header">
+		<p></p>
+		<div class="left">
+			<header th:inline="text">Willkommen <strong>[[${#httpServletRequest.remoteUser}]]!</strong></header>
+		</div>
+        <div class="right">
+        		<form th:action="@{/logout}" method="post">
+            		<input type="submit" value="Abmelden"/>
+            	</form>
         </div>
+    <hr width="75%"></hr>   
+	</section>
+	
 	<h1>Tourverwalter</h1>
 	
 	<div sec:authorize="hasAuthority('ADMIN')">
