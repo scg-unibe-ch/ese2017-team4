@@ -105,6 +105,7 @@ public class TourController {
     public void saveTourBuild() {
     	Tour tour = new Tour();
     	List<Package> packs = packageRepository.findByIdIn(tourForm.getPackIds());
+    	System.out.println("test");
     	for(Package pack : packs) {
     		pack.setTour(tour);
     		pack.placedInTour();
@@ -130,7 +131,21 @@ public class TourController {
     
     @ModelAttribute("drivers")
     public Iterable<User> allDriversAsList() {
-    	return this.userRepository.findbyRole("Driver");
+    	List<User> allDrivers = (List<User>) this.userRepository.findbyRole("Driver");
+    	List<User> driversWithoutTour = new ArrayList<User>();
+    	for(User driver: allDrivers) {
+    		driversWithoutTour.add(driver);
+    	}
+
+    	for(User driver : allDrivers) {
+    		for(Tour tour : driver.getTours()) {
+    			if(tour.getIsFinished() == false) {
+    				driversWithoutTour.remove(driver);
+    			}
+    			
+    		}
+    	}
+    	return driversWithoutTour;
     }
     
     @ModelAttribute("tours")
@@ -140,7 +155,7 @@ public class TourController {
     
     @ModelAttribute("myTour")
     public Tour myTour() {
-    	return this.tourRepository.findTourByDriver(getCurrentUser());
+    	return this.tourRepository.findTourByDriverNotFinished(getCurrentUser());
     }
     
     @ModelAttribute("toursNotConfirmed")

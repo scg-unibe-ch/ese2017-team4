@@ -15,12 +15,9 @@ public interface UserRepository extends CrudRepository<User, Long> {
 	User findById(int id);
 	
 	@Query( "select u from User u where u.roleInput = :role" )
-	Iterable<User> findbyRole(@Param("role") String role);
+	List<User> findbyRole(@Param("role") String role);
 	
 	User findByName(String name);
 	
-	
-
-
 	//Auto implemented
 }

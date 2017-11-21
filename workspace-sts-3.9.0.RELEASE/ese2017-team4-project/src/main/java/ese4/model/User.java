@@ -104,5 +104,9 @@ public class User {
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
 	}
+	
+	public List<Tour> getTours() {
+		return this.tours;
+	}
     
 }
