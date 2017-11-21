@@ -68,7 +68,6 @@ tr:nth-child(even) {
 		<tr>
 			<th>TourId</th>
 			<th>Name des Fahrers</th>
-			<th>Pakete</th>
 			<th>Status</th>
 		</tr>
 	</thead>
@@ -76,7 +75,6 @@ tr:nth-child(even) {
 		<tr th:each="tour : ${tours}">
 			<td th:text="${tour.id}"> </td>
 			<td th:text="${tour.driver.name}"> </td>
-			<td th:text="${tour.order}"> </td>
 			<td>
 			<div th:if="${tour.isFinished} == true">zugestellt</div>
 			<div th:if="${tour.isFinished} == false">pendent</div>

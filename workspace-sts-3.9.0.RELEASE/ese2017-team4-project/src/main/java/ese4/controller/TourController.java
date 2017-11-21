@@ -71,16 +71,6 @@ public class TourController {
 		return "homescreen";
 	}
 	
-	@GetMapping("/confirm")
-	public String unconfirmedTours() {
-		return "tour/confirmTours";
-	}
-	
-	@PostMapping("/confirm")
-	public String confirmTours(@RequestParam("tourId") List<Integer> tourIds) {
-		confirmation(tourIds);
-		return "homescreen";
-	}
 	
     @GetMapping("/listAll")
     public String allTours() {    
@@ -101,11 +91,42 @@ public class TourController {
     	
     	return "tour/listMyTour";
     }
+    
+    @GetMapping("/confirmMyTour")
+    public String listMyTourToConfirm() {
+    	return "tour/confirmMyTour";
+    }
+    
+    /*
+     * wir bekommen liste aller tour id's wo der fahrer als zugestellt angekreuzt hat
+     */
+    @PostMapping("/confirmMyTour")
+    public String confirmMyTour(@RequestParam("packageId") List<Integer> packageIds) {
+    	//setze pakete mit den Id's als zugestellt
+    	List<Package> packages = packageRepository.findByIdIn(packageIds);
+    	Tour myTour = myTour();
+    	for(Package pack : packages) {
+    		pack.setStatus(Status.ZUGESTELLT);
+    	}
+    	for(Package pack: myTour.getPacks())
+    	{
+    		if(pack.getIsDelivered() == Status.GEPLANT) {
+    			pack.setStatus(Status.PENDENT);			//falls ein packet nach bestätigen der tour noch geplant ist, wird es weder pendent gesetzt.
+    		}
+    	}
+
+    	packageRepository.save(myTour().getPacks());
+    	
+    	//now set tour to finished
+    	myTour.setFinished();
+    	tourRepository.save(myTour);
+    	return "homeScreen";
+    }
+    
 	
     public void saveTourBuild() {
     	Tour tour = new Tour();
     	List<Package> packs = packageRepository.findByIdIn(tourForm.getPackIds());
-    	System.out.println("test");
     	for(Package pack : packs) {
     		pack.setTour(tour);
     		pack.placedInTour();
@@ -116,14 +137,7 @@ public class TourController {
     	tourRepository.save(tour);
     }
     
-    public void confirmation(List<Integer> tourIds) {
-    	List<Tour> tours = tourRepository.findByIdIn(tourIds);
-    	for(Tour tour : tours) {
-    		tour.setFinished();
-    		tourRepository.save(tour);
-    	}    	
-    }
-        
+            
     @ModelAttribute("packagesNotDelivered")
     public Iterable<Package> allPackagesAsList() {
     	return this.packageRepository.findByIsStatus("pendent");

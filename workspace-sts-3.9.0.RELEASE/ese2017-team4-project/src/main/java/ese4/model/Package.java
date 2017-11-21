@@ -43,11 +43,10 @@ public class Package {
 	private double height;
 	private double length;
 	private double width;
-	
-	@Transient
+
 	private Status isDelivered;
 	
-	public String isStatus = "pendent";
+	private String isStatus = "pendent";
 	private int expectedDeliveryTime; //expected time in minutes???
 	
 	
@@ -67,7 +66,8 @@ public class Package {
 		this.height = height;
 		this.length = length;
 		this.width = width;
-		this.isDelivered = Status.PENDENT;          
+		this.isDelivered = Status.PENDENT;  
+		this.isStatus = "pendent";
 	}
 	
 	public Package()
@@ -210,5 +210,14 @@ public class Package {
 	public void setToDelivered() {
 		isDelivered = Status.ZUGESTELLT;
 		this.isStatus = this.isDelivered.getDisplayName();
+	}
+	
+	public void setStatus(Status status) {
+		this.isDelivered = status;
+		this.isStatus = this.isDelivered.getDisplayName();
+	}
+	
+	public String getIsStatus() {
+		return this.isStatus;
 	}
 }

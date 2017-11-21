@@ -144,30 +144,12 @@ public class Tour {
 		return address;
 	}
 	
-	/**
-	 * Sets the selected Package to delivered.
-	 * 
-	 * TODO: use later
-	 * 
-	 * @param package that was delivered
-	 */
-	public void setPackageToDelivered(Package pack)
-	{
-		pack.setToDelivered();
-		numberDeliveredPacks++;
-		if(numberDeliveredPacks == packages.size()) {
-			this.setFinished();
-		}
-	}
-	
+		
 	/**
 	 * Sets boolean isFinished to true.
 	 */
 	public void setFinished()
 	{
-		for(Package pack : packages) {
-			pack.setToDelivered();
-		}
 		isFinished = true;
 	}
 	

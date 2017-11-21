@@ -1,9 +1,9 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head> 
-    <title>Bestätige Touren</title> 
+    <title>Liste aller Touren</title> 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<style>
+    <style>
   body {
     	background-color: lightblue;
     	text-align: center;
@@ -62,30 +62,37 @@ header
         </div>
     <hr width="75%"></hr>   
 	</section>
-	<h1>Liste offener Touren</h1>
-		<form action="#" th:action="@{/tour/confirm}" th:object="${tourId}" method="post">
-			<table class ="center">
-				<thead>
-					<tr>
-						<th>TourId</th>
-						<th>Name des Fahrers</th>
-						<th>Pakete</th>
-						<th>Bestätige</th>
-					</tr>
-				</thead>
-			<tbody>
-				<tr th:each="tour : ${toursNotConfirmed}">
-				<td th:text="${tour.id}"> </td>
-				<td th:text="${tour.driver.name}"> </td>
-				<td th:text="${tour.order}"> </td>
-				<td> <input type="checkbox" name="tourId" th:value="${tour.id}" /> </td>
+<h1>Meine Tour</h1>
+<form action="#" th:action="@{/tour/confirmMyTour}" th:object="${packageId}" method="post">
+	<table class ="center">
+		<thead>
+			<tr>
+				<th>Paket ID</th>
+				<th>Lieferadresse</th>
+				<th>Gewicht (in kg)</th>
+				<th>Höhe (in cm)</th>
+				<th>Länge (in cm)</th>
+				<th>Breite (in cm)</th>
+				<th>Status</th>
+				<th>Wurde Zugestellt?</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="package : ${myTour?.getPacks()}">
+				<td th:text="${package.id}"> </td>
+				<td th:text="${package.address}"> </td>
+				<td th:text="${package.weight}"> </td>
+				<td th:text="${package.height}"> </td>
+				<td th:text="${package.length}"> </td>
+				<td th:text="${package.width}"> </td>
+				<td th:text="${package.isStatus}"> </td>
+				<td> <input type="checkbox" name="packageId" th:value="${package.id}" /> </td>
 			</tr>
 		</tbody>
-		</table>
-	
-		<p><input type="submit" value="Übermitteln" /> </p>
-		</form>
-	<br></br>
-	<p><a href="/">Zurück zum Startbildschirm</a></p>
+	</table>
+	<p><input type="submit" value="Bestätigen" onclick="return confirm(' Sind sie sicher? Tour kann nach Bestätigung nicht mehr bearbeitet werden.')" /> </p>
+</form>
+<br></br>
+<p><a href="/">Zurück zum Startbildschirm</a></p>
 </body>
 </html>
