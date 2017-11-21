@@ -77,6 +77,13 @@ public class TourController {
     	return "tour/listAllTours";
     }
     
+    @PostMapping("/listSelectedTour")
+    public String listSelectedTour(@RequestParam("tourId") Integer tourId, Model model) {
+    	Tour tour = tourRepository.findById(tourId);
+    	model.addAttribute("selectedTour", tour);
+    	return "tour/selectedTour";
+    }
+    
     User getCurrentUser() {
     	Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		User user = userService.findUserByName(auth.getName());
