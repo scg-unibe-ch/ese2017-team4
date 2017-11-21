@@ -9,6 +9,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Transient;
+import javax.validation.constraints.Min;
+
+import org.hibernate.validator.constraints.Length;
 
 import ese4.model.Status;
 
@@ -37,16 +40,22 @@ public class Package {
     @JoinColumn(name = "tourId")
     private Tour tour;
     
+	@Length(max = 50, message = "*Adresse ist zu lange")
 	private String address;
 	
+	@Min(value=0, message = "*Nur Positive Zahlen")
 	private double weight;
+	@Min(value=0, message = "*Nur Positive Zahlen")
 	private double height;
+	@Min(value=0, message = "*Nur Positive Zahlen")
 	private double length;
+	@Min(value=0, message = "*Nur Positive Zahlen")
 	private double width;
 
 	private Status isDelivered;
 	
 	private String isStatus = "pendent";
+	@Min(value=0, message = "*Nur Positive Zahlen")
 	private int expectedDeliveryTime; //expected time in minutes???
 	
 	
