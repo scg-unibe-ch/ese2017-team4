@@ -65,6 +65,7 @@
 	</section>
 	<h1>Fahrerauswahl</h1>
 	<p>Wählen Sie den Fahrer aus, für welchen Sie eine Tour erstellen wollen.</p>
+
     <form action="#" th:action="@{/tour/driverSelection}" th:object="${driverId}" method="post">
 		<table class="center">
 		<thead>
@@ -82,7 +83,7 @@
 			</tr>
 		</tbody>
 		</table>
-        <p><input type="submit" value="Fahrer bestätigen" /> </p>
+        <p><input type="submit" value="Weiter" /> </p>
     </form>
     <br></br>
 <p><a href="/">Zurück zum Startbildschirm</a></p>

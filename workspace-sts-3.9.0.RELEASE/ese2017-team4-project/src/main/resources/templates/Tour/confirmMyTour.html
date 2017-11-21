@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head> 
-    <title>Liste aller Touren</title> 
+    <title>Meine Tour bestätigen</title> 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <style>
   body {
@@ -62,7 +62,8 @@ header
         </div>
     <hr width="75%"></hr>   
 	</section>
-<h1>Tour abschliessen</h1>
+<h1>Meine Tour</h1>
+<p>Wählen Sie die Pakete aus, die Sie ausgeliefert haben, und klicken sie auf 'Abschliessen'</p>
 <form action="#" th:action="@{/tour/confirmMyTour}" th:object="${packageId}" method="post">
 	<table class ="center">
 		<thead>

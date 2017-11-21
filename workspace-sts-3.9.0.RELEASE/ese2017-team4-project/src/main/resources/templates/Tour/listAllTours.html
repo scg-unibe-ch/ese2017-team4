@@ -63,6 +63,7 @@ tr:nth-child(even) {
     <hr width="75%"></hr>   
 	</section>
 <h1>Liste aller Touren</h1>
+<p>Wählen Sie eine Tour zum betrachten</p>
 <form action="#" th:action="@{/tour/listSelectedTour}" th:object="${tourId}" method="post">
 	<table class ="center">
 		<thead>
@@ -86,7 +87,7 @@ tr:nth-child(even) {
 			</tr>
 		</tbody>
 	</table>
-	<p><input type="submit" value="Tour auswählen" /> </p>
+	<p><input type="submit" value="Tour anzeigen" /> </p>
 </form>
 <br></br>
 <p><a href="/">Zurück zum Startbildschirm</a></p>
