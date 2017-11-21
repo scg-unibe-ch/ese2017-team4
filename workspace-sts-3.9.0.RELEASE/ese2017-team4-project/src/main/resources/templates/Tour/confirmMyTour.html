@@ -62,12 +62,12 @@ header
         </div>
     <hr width="75%"></hr>   
 	</section>
-<h1>Meine Tour</h1>
+<h1>Tour abschliessen</h1>
 <form action="#" th:action="@{/tour/confirmMyTour}" th:object="${packageId}" method="post">
 	<table class ="center">
 		<thead>
 			<tr>
-				<th>Paket ID</th>
+				<th>Paket Nr.</th>
 				<th>Lieferadresse</th>
 				<th>Gewicht (in kg)</th>
 				<th>Höhe (in cm)</th>
@@ -90,7 +90,7 @@ header
 			</tr>
 		</tbody>
 	</table>
-	<p><input type="submit" value="Bestätigen" onclick="return confirm(' Sind sie sicher? Tour kann nach Bestätigung nicht mehr bearbeitet werden.')" /> </p>
+	<p><input type="submit" value="Tour abschliessen" onclick="return confirm(' Sind sie sicher? Tour kann nach Bestätigung nicht mehr bearbeitet werden.')" /> </p>
 </form>
 <br></br>
 <p><a href="/">Zurück zum Startbildschirm</a></p>

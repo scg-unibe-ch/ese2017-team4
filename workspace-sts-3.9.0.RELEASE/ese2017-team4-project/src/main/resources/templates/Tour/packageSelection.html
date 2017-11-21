@@ -63,17 +63,17 @@
     <hr width="75%"></hr>   
 	</section>
 	<h1>Paketauswahl</h1>
-		<p>Wählen Sie nun die Pakete aus, welche Sie im nächsten Schritt einem Fahrer zuordnen möchten.</p>
+		<p>Wählen Sie nun die Pakete aus, welche Sie dem Fahrer zuordnen möchten.</p>
     <form action="#" th:action="@{/tour/packageSelection}" th:object="${packageIds}" method="post">
 		<table class="center">
 		<thead>
 			<tr>
-				<th>PaketId</th>
+				<th>Paket Nr.</th>
 				<th>Lieferadresse</th>
-				<th>Gewicht</th>
-				<th>Höhe</th>
-				<th>Länge</th>
-				<th>Breite</th>
+				<th>Gewicht (in kg)</th>
+				<th>Höhe (in cm)</th>
+				<th>Länge (in cm)</th>
+				<th>Breite (in cm)</th>
 				<th> </th>
 			</tr>
 		</thead>
@@ -90,7 +90,7 @@
 		</tbody>
 		</table>	
 
-        <p><input type="submit" value="Übermitteln" /> </p>
+        <p><input type="submit" value="Tour erstellen" /> </p>
     </form>
     <br></br>
 <p><a href="/">Zurück zum Startbildschirm</a></p>
