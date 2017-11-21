@@ -30,6 +30,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 			.passwordEncoder(bCryptPasswordEncoder);
 	}
 
+	/**
+	 * Takes care of permissions for each user.
+	 */
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		
@@ -58,6 +61,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.accessDeniedPage("/access-denied");
 	}
 	
+	/**
+	 * Allows the webpage to have acces to certain folders.
+	 */
 	@Override
 	public void configure(WebSecurity web) throws Exception {
 	    web
