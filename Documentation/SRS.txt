@@ -1,0 +1,247 @@
+
+
+
+ESE 2017	
+
+(Team 4)
+
+
+Software Requirements Specification
+
+Document
+
+
+(Original from http://www.computing.dcu.ie/~renaat/CA326/srs_template2.doc)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Version: (2.0)	Date: (21/11/2017)
+ 
+
+Table of Contents
+
+1.  Introduction	5
+1.1  Purpose	5
+1.2  Scope	5
+1.3  Definitions, Acronyms, and Abbreviations	5
+1.4  References	5
+1.5  Overview
+	6
+2.  The Overall Description	6
+2.1  Product Perspective	6
+2.1.1 System Interfaces	6
+2.1.2 Interfaces	7
+2.1.3 Hardware Interfaces	7
+2.1.4 Software Interfaces	7
+2.1.5 Communications Interfaces	8
+2.1.6 Memory Constraints	8
+2.1.7 Operations	8
+2.1.8 Site Adaptation Requirements	9
+2.2  Product Functions	9
+2.3  User Characteristics	10
+2.4  Constraints	10
+2.5 Assumptions and Dependencies	10
+2.6 Apportioning of Requirements
+	10
+3.  Specific Requirements	11
+3.1 External interfaces	12
+3.2 Functions	12
+3.3 Performance Requirements	13
+3.4 Logical Database Requirements	14
+3.5 Design Constraints	14
+3.5.1  Standards Compliance	14
+3.6 Software System Attributes	14
+3.6.1 Reliability	15
+3.6.2 Availability	15
+3.6.3 Security	15
+3.6.4 Maintainability	15
+3.6.5 Portability	16
+3.7 Organizing the Specific Requirements	17
+3.7.1 System Mode	17
+3.7.2 User Class	17
+3.7.3 Objects	17
+3.7.4 Feature	17
+3.7.5 Stimulus	17
+3.7.6 Response	18
+3.7.7 Functional Hierarchy	18
+3.8 Additional Comments
+	18
+4.  Change Management Process
+
+
+ 
+
+1.  Introduction  
+
+Team Members and their Github names are:
+Fabian Loosli / LoosliF
+Michael Rötheli / mroetheli
+Robin Steiner / Robin481
+Simon Sidler / sidler92
+
+We’ve also set up a Discord channel for advanced communication. Which has a Github channel which shows us each time someone commits something.
+
+1.1  Purpose  
+
+The project is to build a logistics application for a small delivery company with which they can register packages they receive, keep track of them and add them to a driver who then gets a list of all packages which he has to deliver in one day.
+
+The SRS is used for the developers to keep track of everything and as a line of contact between developer and customer.
+
+1.2  Scope 
+
+(1)	We do not yet have a definitive name for our project.
+(2)	It is a logistics management program for a delivery company. That will be able to take care of all the planning and possibly even create the routes for the delivery drivers.
+(3)	The goal of the application is to facilitate the companys planning process and improve delivery route planning.
+(4)	It also should take into account package sizes and measurements.
+
+
+1.3  Definitions, Acronyms, and Abbreviations.  
+
+Admin – Role is only here to have someone that can create users.
+Logistician – Worker in the Warehouse, takes in packages.
+Driver – Drives and delivers packages.
+Package – Well packages with a size and weight which need to be delivered.
+Tours – Several packages form a route.
+1.4  References  
+
+No references yet.
+1.5  Overview  
+
+-
+
+2.  The Overall Description  
+
+2.1  Product Perspective  
+
+2.1.1 System Interfaces
+	No real interfaces since the work used to be done on Paper.
+2.1.2 Interfaces
+		
+	Interface is just a simple GUI.
+	Packages can be registered with simple input fields which should not allow wrong inputs
+	
+2.1.3 Hardware Interfaces
+Programm runs on windows computers.
+2.1.4 Software Interfaces
+	
+2.1.5 Communications Interfaces
+
+2.1.6 Memory Constraints
+
+2.1.7 Operations
+
+2.1.8 Site Adaptation Requirements
+
+
+2.2  Product Functions 
+
+(1)	Manage the logistics
+(2)	Get rid of on-paper planning
+(3)	Allow drivers to print out their tours.
+(4)	Automatically assemble tours
+(5)	Give drivers the ability to mark deliveries as successful or not, this should still allow us to keep track of single deliveries and not lose them in the process and allow for them to be rescheduled.
+(6)	Monitor if some tours took longer than expected. Based on the logisticians experience.
+(7)	Will be in german.
+(8)	Requeue packages that weren’t successfully delivered and keep track of those so that after some failed deliveries they can be handled separately.
+
+2.3  User Characteristics .
+
+The logisticians: 
+
+We want less logisticians, this means the remaining ones need to be able to 
+work more efficient this is why the system should be able to assemble tours by itself.
+The logisticians bring a lot of experience which will be useful in route planning since he can input an estimated delivery time which makes tour planning for one day easier.
+
+The drivers:
+
+Need to be able to mark single deliveries as successful or not so we don’t lose any single deliveries in the process. There needs to be some way for the driver to view his tour, access from mobile phone is enough.
+Also have a GPS in their car which makes optimization not a top priority.
+
+
+2.4  Constraints  
+
+(1)	Interface needs to be simple and understandable, since the drivers possibly need to see it on their mobile phones and it should be simple so that packages can be registered fast without making the customer wait.
+
+2.5 Assumptions and Dependencies
+
+Windows is assumed on the computers.
+
+2.6 Apportioning of Requirements.
+
+Possible future goals:
+- Route optimization
+- Change order of packages in a tour
+- Not just delete packages after a tour is finished
+- Maybe some statistics if we keep every package ever sent.
+3.  Specific Requirements  
+
+3.1 External Interfaces
+
+Input into the software happens through the logisticians when they get a new package in, they do the inputs manually which creates a new package in the database.
+
+Output is a list of deliveries/tours for each driver.
+
+
+3.2 Functions
+
+Since the application is not huge and we don’t intend to optimize routes and weight/packing of the cars it is reasonable to expect very fast outputs of the delivery routes. A driver should be able to look them up instantly.
+
+3.3 Performance Requirements
+
+The company currently has 4 Drivers and 2 Logisticians meaning at this time the system only needs to support 6 logins at the same time but since the company might grow in the future we will strive for 10.
+
+3.4 Logical Database Requirements
+
+A database is used for all the packages in delivery and delivered. It holds information such as address, a package ID, estimated time (which is input by the logisticians) and each package has a delivered/not delivered status which lets us keep track of each package individually.
+
+3.5 Design Constraints
+3.5.1  Standards Compliance  
+
+3.6 Software System Attributes
+3.6.1 Reliability
+
+3.6.2 Availability
+
+The system must be available from 07:00 until 19:00 since those are the working times and the last packages are accepted until 17:00 so we have some leeway. This allows for updates if necessary during night time.
+Also if the system goes offline it should be back very fast since we cant afford to keep customers waiting in line with their packages.
+
+3.6.3 Security
+
+Each driver and each logistician has his own login so they cant acces anyone elses delivery routes. 
+There is one admin login which allows creation of new accounts.
+
+3.6.4 Maintainability
+
+The software should be extendable especially for the amount of people that work there since it’s a company that intends to grow.
+4.	Change Management Process
+ 
+Additional features can only be taken into planning when the whole team agrees that is is a feasable goal in the given time frame.
+
+
+
