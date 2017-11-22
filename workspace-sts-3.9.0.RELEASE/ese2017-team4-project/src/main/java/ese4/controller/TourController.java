@@ -72,7 +72,9 @@ public class TourController {
 	}
 	
 	@PostMapping("/createTour")
-	public String createTour(@RequestParam("driverId") Integer driverId, @RequestParam("packageId") List<Integer> packageIds)
+	public String createTour(@RequestParam("driverId") Integer driverId,
+			@RequestParam("packageId") List<Integer> packageIds,
+			@RequestParam("estimatedDeliveryTime") int estimatedDeliveryTime)
 	{
 		Tour tour = new Tour();
 		
@@ -84,6 +86,8 @@ public class TourController {
     		}
     	
     		tour.setDriver(userRepository.findById(driverId));
+    		
+    		tour.setEstimatedDeliveryTime(estimatedDeliveryTime);
     	
     		tourRepository.save(tour);	
 		
