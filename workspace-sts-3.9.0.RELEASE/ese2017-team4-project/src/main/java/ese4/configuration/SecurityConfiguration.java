@@ -44,6 +44,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.antMatchers("/user/**").hasAuthority("ADMIN")
 				.antMatchers("/tour/confirm").hasAuthority("DRIVER")
 				.antMatchers("/tour/makeTour").hasAuthority("LOGISTICIAN")
+				.antMatchers("/tour/createTour").hasAuthority("LOGISTICIAN")
 				.antMatchers("/tour/driverSelection").hasAuthority("LOGISTICIAN")
 				.antMatchers("/tour/packageSelection").hasAuthority("LOGISTICIAN")
 				.antMatchers("/tour/listAll").hasAuthority("LOGISTICIAN")

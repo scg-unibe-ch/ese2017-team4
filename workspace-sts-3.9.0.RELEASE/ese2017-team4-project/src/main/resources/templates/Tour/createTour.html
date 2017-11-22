@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Tour erstellen</title>
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style>
+body  {
+	background-color: lightblue;
+    text-align: center;
+}
+table {
+    font-family: "Times New Roman";
+    border-collapse: collapse;
+    width: 50%;
+    text-align: center;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+}
+
+table.center{
+	margin-left: auto;
+    margin-right: auto;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+  	
+	header
+	{
+	vertical-align: top;
+	}
+	.container {
+    width: 75%;
+    height: 30px;
+    padding: 10px;
+	}
+	.left {
+    width: 40%;
+    height:30px;
+    float: left;
+	}
+	.right {
+    margin-left: 60%;
+    height: 30px;
+	}
+    </style>
+</head>
+<body>
+	<section class="header">
+		<p></p>
+		<div class="left">
+			<header th:inline="text">Willkommen <strong>[[${#httpServletRequest.remoteUser}]]!</strong></header>
+		</div>
+        <div class="right">
+        		<form th:action="@{/logout}" method="post">
+            		<input type="submit" value="Abmelden"/>
+            	</form>
+        </div>
+    <hr width="75%"></hr>   
+	</section>
+	<h1>Tour erstellen</h1>
+	<div class="container_registration">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<form autocomplete="off" action="#" th:action="@{/tour/createTour}"
+					th:object="${tour}" method="post" class="form-horizontal"
+					role="form">
+					<div class="form-group">
+						<div class="col-sm-9">
+						<h3>Fahrer auswählen</h3>
+							<table class="center">
+								<thead>
+									<tr>
+										<th>BenutzerId</th>
+										<th>Name</th>
+										<th> </th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="user : ${drivers}">
+										<td th:text="${user.id}"> </td>
+							  			<td th:text="${user.name}"> </td>
+							  			<td> <input type="radio" name="driverId" th:value="${user.id}" /> </td>		 
+									</tr>
+								</tbody>
+							</table> 
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<div class="col-sm-9">
+						<h3>Pakete auswählen</h3>
+							<table class="center">
+								<thead>
+									<tr>
+										<th>Paket Nr.</th>
+										<th>Lieferadresse</th>
+										<th>Gewicht (in kg)</th>
+										<th>Höhe (in cm)</th>
+										<th>Länge (in cm)</th>
+										<th>Breite (in cm)</th>
+										<th> </th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="package : ${packagesNotDelivered}">
+										<td th:text="${package.id}"> </td>
+							  			<td th:text="${package.address}"> </td>	
+							  			<td th:text="${package.weight}"> </td>
+										<td th:text="${package.height}"> </td>
+										<td th:text="${package.length}"> </td>
+										<td th:text="${package.width}"> </td>
+							  			<td> <input type="checkbox" name="packageId" th:value="${package.id}" /> </td>		 
+									</tr>
+								</tbody>
+							</table>	
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-9">
+							<button type="submit" class="btn btn-primary btn-block">Tour erstellen</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+<br></br>
+<p><a href="/">Zurück zum Startbildschirm</a></p>
+</body>
+</html>

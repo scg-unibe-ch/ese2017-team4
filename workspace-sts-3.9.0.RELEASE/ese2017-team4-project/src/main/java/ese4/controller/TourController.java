@@ -51,10 +51,10 @@ public class TourController {
     }
 	
 	@GetMapping("/makeTour")
-	public String makeTour(Model model) {
+	public String makeTour() {
 		//List<Integer> packageIds = new ArrayList<Integer>();
 		//model.addAttribute("packageIds", packageIds );
-		return "tour/driverSelection";
+		return "tour/createTour";
 	}
 	
 	@PostMapping("/driverSelection")
@@ -65,9 +65,28 @@ public class TourController {
 	}
 	
 	@PostMapping("/packageSelection")
-	public String packageSelection(@RequestParam("packageId") List<Integer> packageIds) {
+	public String packageSelection(@RequestParam("packageId") List<Integer> packageIds){
 		tourForm.setPackIds(packageIds);
 		saveTourBuild();
+		return "homescreen";
+	}
+	
+	@PostMapping("/createTour")
+	public String createTour(@RequestParam("driverId") Integer driverId, @RequestParam("packageId") List<Integer> packageIds)
+	{
+		Tour tour = new Tour();
+		
+    		List<Package> packs = packageRepository.findByIdIn(packageIds);
+    		for(Package pack : packs) {
+    			pack.setTour(tour);
+    			pack.placedInTour();
+    			tour.addPackageToTour(pack);
+    		}
+    	
+    		tour.setDriver(userRepository.findById(driverId));
+    	
+    		tourRepository.save(tour);	
+		
 		return "homescreen";
 	}
 	
@@ -139,7 +158,6 @@ public class TourController {
     		pack.placedInTour();
     		tour.addPackageToTour(pack);
     	}
-    	tour.setOrder();
     	tour.setDriver(userRepository.findById(tourForm.getDriverId()));
     	tourRepository.save(tour);
     }

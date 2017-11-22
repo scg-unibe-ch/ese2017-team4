@@ -38,8 +38,7 @@ public class Tour {
 	
 	private boolean isFinished;		//true if the tour is finished aka all packages are delivered
 	
-	@Transient
-	public String order;
+	private int estimatedDeliveryTime;
 	
 	public Tour() {
 		isFinished=false;
@@ -171,23 +170,14 @@ public class Tour {
 	{
 		return this.numberDeliveredPacks;
 	}
-	
-	/**
-	 * Creates a String representation of the order
-	 */
-	public String toString() {
-		 String Ids = " "; 
-		 for(Package pack : this.packages) {
-			 Ids += " " + pack.toString();
-		 }
-		return Ids;
+
+	public int getEstimatedDeliveryTime()
+	{
+		return estimatedDeliveryTime;
 	}
 	
-	public void setOrder() {
-		this.order = this.toString();
-	}
-	
-	public String getOrder() {
-		return this.order;
+	public void setEstimatedDeliveryTime(int time)
+	{
+		this.estimatedDeliveryTime = time;
 	}
 }
