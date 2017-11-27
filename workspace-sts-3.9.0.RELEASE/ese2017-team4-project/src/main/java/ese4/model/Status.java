@@ -9,7 +9,11 @@ package ese4.model;
 public enum Status {
 	ZUGESTELLT("zugestellt"),
 	GEPLANT("geplant"),
-	PENDENT("pendent");
+	PENDENT("pendent"),
+	NICHTZUSTELLBAR("nichtZustellbar"),
+	VERNICHTET("vernichtet"),
+	ZURÜCKSENDEN("zurückSenden");
+	
 	
 	private final String displayName;
 	

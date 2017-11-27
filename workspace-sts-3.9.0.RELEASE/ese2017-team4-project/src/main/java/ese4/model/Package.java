@@ -54,6 +54,10 @@ public class Package {
 
 	private Status isDelivered;
 	
+	private int deliveryCounter;
+	
+	private int notDeliverableCounter;
+	
 	private String isStatus = "pendent";
 	@Min(value=0, message = "*Nur Positive Zahlen")
 	private int expectedDeliveryTime; //expected time in minutes???
@@ -228,5 +232,25 @@ public class Package {
 	
 	public String getIsStatus() {
 		return this.isStatus;
+	}
+	
+	public int getDeliveryCounter()
+	{
+		return deliveryCounter;
+	}
+	
+	public void incrementDeliveryCounter()
+	{
+		deliveryCounter++;
+	}
+	
+	public int getNotDeliverableCounter()
+	{
+		return notDeliverableCounter;
+	}
+	
+	public void incrementNotDeliverableCounter()
+	{
+		notDeliverableCounter++;
 	}
 }

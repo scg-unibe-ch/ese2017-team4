@@ -80,6 +80,7 @@ public class TourController {
 		
     		List<Package> packs = packageRepository.findByIdIn(packageIds);
     		for(Package pack : packs) {
+    			pack.incrementDeliveryCounter();
     			pack.setTour(tour);
     			pack.placedInTour();
     			tour.addPackageToTour(pack);
@@ -131,17 +132,32 @@ public class TourController {
      * wir bekommen liste aller tour id's wo der fahrer als zugestellt angekreuzt hat
      */
     @PostMapping("/confirmMyTour")
-    public String confirmMyTour(@RequestParam("packageId") List<Integer> packageIds) {
+    public String confirmMyTour(@RequestParam("notDeliverablePackage") List<Integer> notDeliverablePackages, 
+    		@RequestParam("deliveredPackage") List<Integer> deliveredPackages) {
     	//setze pakete mit den Id's als zugestellt
-    	List<Package> packages = packageRepository.findByIdIn(packageIds);
     	Tour myTour = myTour();
+    	
+    	List<Package> packages = packageRepository.findByIdIn(deliveredPackages);
     	for(Package pack : packages) {
     		pack.setStatus(Status.ZUGESTELLT);
     	}
+    	
+    packages = packageRepository.findByIdIn(notDeliverablePackages);
+    	for(Package pack : packages) {
+    		pack.incrementNotDeliverableCounter();
+    	}
+    	
     	for(Package pack: myTour.getPacks())
     	{
     		if(pack.getIsDelivered() == Status.GEPLANT) {
-    			pack.setStatus(Status.PENDENT);			//falls ein packet nach bestätigen der tour noch geplant ist, wird es weder pendent gesetzt.
+    			if(pack.getNotDeliverableCounter() > 1)
+    			{
+    				pack.setStatus(Status.NICHTZUSTELLBAR);
+    			}
+    			else
+    			{
+    	   			pack.setStatus(Status.PENDENT);			//falls ein packet nach bestätigen der tour noch geplant ist, wird es weder pendent gesetzt.
+    			}
     		}
     	}
 
@@ -169,7 +185,8 @@ public class TourController {
             
     @ModelAttribute("packagesNotDelivered")
     public Iterable<Package> allPackagesAsList() {
-    	return this.packageRepository.findByIsStatus("pendent");
+    		return this.packageRepository.findByIsStatusOrderByDeliveryCounterDesc("pendent");
+    //	return this.packageRepository.findByIsStatus("pendent"); alt!
     }
     
     @ModelAttribute("drivers")

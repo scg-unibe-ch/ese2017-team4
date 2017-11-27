@@ -19,6 +19,8 @@ public interface PackageRepository extends CrudRepository<Package, Long> {
 	
 	List<Package> findByIsStatus(String isStatus);
 	
+	List<Package> findByIsStatusOrderByDeliveryCounterDesc(String isStatus); 
+	
 	//@Transactional
 	//void deleteByIsDelivered(String isStatus);
 	

@@ -64,7 +64,7 @@ header
 	</section>
 <h1>Meine Tour</h1>
 <p>Wählen Sie die Pakete aus, die Sie ausgeliefert haben, und klicken sie auf 'Abschliessen'</p>
-<form action="#" th:action="@{/tour/confirmMyTour}" th:object="${packageId}" method="post">
+<form action="#" th:action="@{/tour/confirmMyTour}" method="post">
 	<table class ="center">
 		<thead>
 			<tr>
@@ -75,7 +75,8 @@ header
 				<th>Länge (in cm)</th>
 				<th>Breite (in cm)</th>
 				<th>Status</th>
-				<th>Wurde Zugestellt?</th>
+				<th>Empfänger nicht erreicht</th>
+				<th>Zugestellt?</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -87,7 +88,8 @@ header
 				<td th:text="${package.length}"> </td>
 				<td th:text="${package.width}"> </td>
 				<td th:text="${package.isStatus}"> </td>
-				<td> <input type="checkbox" name="packageId" th:value="${package.id}" /> </td>
+				<td> <input type="checkbox" name="notDeliverablePackage" th:value="${package.id}" /> </td>
+				<td> <input type="checkbox" name="deliveredPackage" th:value="${package.id}" /> </td>
 			</tr>
 		</tbody>
 	</table>

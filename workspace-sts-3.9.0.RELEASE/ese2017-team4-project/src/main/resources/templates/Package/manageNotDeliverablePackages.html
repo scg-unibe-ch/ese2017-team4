@@ -1,35 +1,35 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-<head> 
-    <title>Momentane Tour</title> 
+<head>
+<title>Verwaltung der nicht zustellbaren Pakete</title> 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <style>
-  body {
-    	background-color: lightblue;
-    	text-align: center;
-    	}
-
-table.center {
-	margin-left: auto;
-	margin-right: auto;
+<style>
+body  {
+	background-color: lightblue;
+    text-align: center;
 }
-
 table {
     font-family: "Times New Roman";
     border-collapse: collapse;
     width: 50%;
+    text-align: center;
 }
 
 td, th {
     border: 1px solid #dddddd;
-    text-align: left;
+    text-align: center;
     padding: 8px;
+}
+
+table.center{
+	margin-left: auto;
+    margin-right: auto;
 }
 
 tr:nth-child(even) {
     background-color: #dddddd;
 }
-header
+	header
 	{
 	vertical-align: top;
 	}
@@ -62,7 +62,7 @@ header
         </div>
     <hr width="75%"></hr>   
 	</section>
-<h1>Meine Tour</h1>
+<h1>Verwaltung der nicht zustellbaren Pakete</h1>
 <table class ="center">
 	<thead>
 		<tr>
@@ -76,7 +76,7 @@ header
 		</tr>
 	</thead>
 	<tbody>
-		<tr th:each="package : ${myTour?.getPacks()}">
+		<tr th:each="package : ${notDeliverablePackages}">
 			<td th:text="${package.id}"> </td>
 			<td th:text="${package.address}"> </td>
 			<td th:text="${package.weight}"> </td>

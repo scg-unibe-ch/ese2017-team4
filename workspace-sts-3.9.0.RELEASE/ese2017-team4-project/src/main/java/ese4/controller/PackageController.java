@@ -54,8 +54,18 @@ public class PackageController {
     	return this.packageRepository.findAll();
     }
     
+    @ModelAttribute("notDeliverablePackages")
+    public Iterable<Package> notDeliverablePackagesAsList() {
+    	return this.packageRepository.findByIsStatus("nichtZustellbar");
+    }
+    
     @GetMapping("/listAll")
     public String viewAllPackages() {
     	return "package/listAllPackages";
-    }  
+    } 
+    
+    @GetMapping("/manageNotDeliverablePackages")
+    public String viewNotDeliverablePackages() {
+    	return "package/manageNotDeliverablePackages";
+    } 
 }
