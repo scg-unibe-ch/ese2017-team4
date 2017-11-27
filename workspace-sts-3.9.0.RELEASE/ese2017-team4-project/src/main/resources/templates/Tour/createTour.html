@@ -107,6 +107,7 @@ tr:nth-child(even) {
 										<th>Länge (in cm)</th>
 										<th>Breite (in cm)</th>
 										<th>Anzahl Zustellversuche</th>
+										<th>Status</th>
 										<th> </th>
 									</tr>
 								</thead>
@@ -119,6 +120,7 @@ tr:nth-child(even) {
 										<td th:text="${package.length}"> </td>
 										<td th:text="${package.width}"> </td>
 										<td th:text="${package.deliveryCounter}"> </td>
+										<td th:text="${package.isStatus}"> </td>
 							  			<td> <input type="checkbox" name="packageId" th:value="${package.id}" /> </td>		 
 									</tr>
 								</tbody>

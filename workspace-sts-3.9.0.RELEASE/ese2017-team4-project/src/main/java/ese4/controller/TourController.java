@@ -185,7 +185,7 @@ public class TourController {
             
     @ModelAttribute("packagesNotDelivered")
     public Iterable<Package> allPackagesAsList() {
-    		return this.packageRepository.findByIsStatusOrderByDeliveryCounterDesc("pendent");
+    		return this.packageRepository.findByIsStatusOrIsStatusOrderByDeliveryCounterDesc("pendent", "zurückSenden");
     //	return this.packageRepository.findByIsStatus("pendent"); alt!
     }
     

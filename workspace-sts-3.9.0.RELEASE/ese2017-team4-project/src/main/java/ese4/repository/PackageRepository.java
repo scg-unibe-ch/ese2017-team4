@@ -19,7 +19,7 @@ public interface PackageRepository extends CrudRepository<Package, Long> {
 	
 	List<Package> findByIsStatus(String isStatus);
 	
-	List<Package> findByIsStatusOrderByDeliveryCounterDesc(String isStatus); 
+	List<Package> findByIsStatusOrIsStatusOrderByDeliveryCounterDesc(String isStatus1, String isStatus2); 
 	
 	//@Transactional
 	//void deleteByIsDelivered(String isStatus);

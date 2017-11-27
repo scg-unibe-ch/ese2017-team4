@@ -63,6 +63,7 @@ tr:nth-child(even) {
     <hr width="75%"></hr>   
 	</section>
 <h1>Verwaltung der nicht zustellbaren Pakete</h1>
+<form action="#" th:action="@{/package/manageNotDeliverablePackages}" th:object="${package}" method="post">
 <table class ="center">
 	<thead>
 		<tr>
@@ -72,7 +73,9 @@ tr:nth-child(even) {
 			<th>Höhe (in cm)</th>
 			<th>Länge (in cm)</th>
 			<th>Breite (in cm)</th>
-			<th>Status</th>
+			<th>Nächster Schritt</th>
+			<th>Neue Adresse</th>
+			
 		</tr>
 	</thead>
 	<tbody>
@@ -83,10 +86,20 @@ tr:nth-child(even) {
 			<td th:text="${package.height}"> </td>
 			<td th:text="${package.length}"> </td>
 			<td th:text="${package.width}"> </td>
-			<td th:text="${package.isStatus}"> </td>
+			<td> <select name="action">
+				<option value="nichtZustellbar">Nichts unternehmen</option>
+          		<option value="zurückSenden">An Absender zurücksenden</option>
+          		<option value="pendent">Zustellung erneut versuchen</option>
+          		<option value="vernichtet">Vernichten</option>
+			</select></td>
+			<td>
+				<input type="text" name="newAddress"></input>
+			</td>
 		</tr>
 	</tbody>
 	</table>
+	<button type="submit">Bestätigen</button>
+	</form>
 <br></br>
 <p><a href="/">Zurück zum Startbildschirm</a></p>
 </body>

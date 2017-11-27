@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import ese4.model.Package;
+import ese4.model.Status;
 import ese4.repository.PackageRepository;
 
 @Controller    // This means that this class is a Controller
@@ -67,5 +68,51 @@ public class PackageController {
     @GetMapping("/manageNotDeliverablePackages")
     public String viewNotDeliverablePackages() {
     	return "package/manageNotDeliverablePackages";
-    } 
+    }
+    
+    @PostMapping("/manageNotDeliverablePackages")
+    public String manageNotDeliverablePackages(@RequestParam("action") List<String> action,
+    		@RequestParam("newAddress") List<String> newAddresses)
+    {
+    		List<Package> notDeliverablePackages = this.packageRepository.findByIsStatus("nichtZustellbar");
+    		
+    		for (int counter = 0; counter < notDeliverablePackages.size(); counter++)
+    		{
+    			Status status = null;
+    			String newStatus = action.get(counter);
+    			String newAddress = newAddresses.get(counter);
+    			
+    			if (newAddress != "")
+    			{
+    				notDeliverablePackages.get(counter).setAddress(newAddress);
+    			}
+    			
+
+    			switch (newStatus)
+    			{
+    			case "nichtZustellbar":
+    				status = Status.NICHTZUSTELLBAR;
+    				break;
+    				
+    			case "zurückSenden":
+    				status = Status.ZURÜCKSENDEN;
+    				break;
+    				
+    			case "pendent":
+    				status = Status.PENDENT;
+    				break;
+    				
+    			case "vernichtet":
+    				status = Status.VERNICHTET;
+    				break;
+    			}
+
+    			notDeliverablePackages.get(counter).setStatus(status);
+    		}
+    		
+    		packageRepository.save(notDeliverablePackages);
+    		
+    		return "homeScreen";
+    }
+
 }
