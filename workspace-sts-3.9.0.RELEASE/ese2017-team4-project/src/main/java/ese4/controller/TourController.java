@@ -132,19 +132,24 @@ public class TourController {
      * wir bekommen liste aller tour id's wo der fahrer als zugestellt angekreuzt hat
      */
     @PostMapping("/confirmMyTour")
-    public String confirmMyTour(@RequestParam("notDeliverablePackage") List<Integer> notDeliverablePackages, 
-    		@RequestParam("deliveredPackage") List<Integer> deliveredPackages) {
+    public String confirmMyTour(@RequestParam(value = "notDeliverablePackage", required=false) List<Integer> notDeliverablePackages, 
+    		@RequestParam(value = "deliveredPackage", required=false) List<Integer> deliveredPackages) {
     	//setze pakete mit den Id's als zugestellt
     	Tour myTour = myTour();
+    	List<Package> packages;
     	
-    	List<Package> packages = packageRepository.findByIdIn(deliveredPackages);
-    	for(Package pack : packages) {
-    		pack.setStatus(Status.ZUGESTELLT);
+    	if(deliveredPackages != null) {
+	    	packages = packageRepository.findByIdIn(deliveredPackages);
+	    	for(Package pack : packages) {
+	    		pack.setStatus(Status.ZUGESTELLT);
+	    	}
     	}
     	
-    packages = packageRepository.findByIdIn(notDeliverablePackages);
-    	for(Package pack : packages) {
-    		pack.incrementNotDeliverableCounter();
+    	if(notDeliverablePackages != null) {
+    		packages = packageRepository.findByIdIn(notDeliverablePackages);
+	    	for(Package pack : packages) {
+	    		pack.incrementNotDeliverableCounter();
+	    	}
     	}
     	
     	for(Package pack: myTour.getPacks())
