@@ -74,6 +74,10 @@
         	<artifactId>spring-security-web</artifactId>
         </dependency>
 
+        <dependency>
+        	<groupId>org.hibernate</groupId>
+        	<artifactId>hibernate-envers</artifactId>
+        	</dependency>
     </dependencies>
 
     <properties>

@@ -42,9 +42,6 @@ public class TourController {
 	@Autowired
 	private UserService userService;
 	
-	private TourForm tourForm;
-	
-	
 	@GetMapping()
     public String get() {
     	return "homeScreen";
@@ -52,24 +49,9 @@ public class TourController {
 	
 	@GetMapping("/makeTour")
 	public String makeTour() {
-		//List<Integer> packageIds = new ArrayList<Integer>();
-		//model.addAttribute("packageIds", packageIds );
 		return "tour/createTour";
 	}
 	
-	@PostMapping("/driverSelection")
-	public String driverSelection(@RequestParam("driverId") Integer driverId) {
-		tourForm = new TourForm();
-		tourForm.setDriverId(driverId);		
-		return "tour/packageSelection";
-	}
-	
-	@PostMapping("/packageSelection")
-	public String packageSelection(@RequestParam("packageId") List<Integer> packageIds){
-		tourForm.setPackIds(packageIds);
-		saveTourBuild();
-		return "homescreen";
-	}
 	
 	@PostMapping("/createTour")
 	public String createTour(@RequestParam("driverId") Integer driverId,
@@ -156,7 +138,7 @@ public class TourController {
     			}
     			else
     			{
-    	   			pack.setStatus(Status.PENDENT);			//falls ein packet nach bestätigen der tour noch geplant ist, wird es weder pendent gesetzt.
+    	   			pack.setStatus(Status.PENDENT);
     			}
     		}
     	}
@@ -168,25 +150,10 @@ public class TourController {
     	tourRepository.save(myTour);
     	return "homeScreen";
     }
-    
-	
-    public void saveTourBuild() {
-    	Tour tour = new Tour();
-    	List<Package> packs = packageRepository.findByIdIn(tourForm.getPackIds());
-    	for(Package pack : packs) {
-    		pack.setTour(tour);
-    		pack.placedInTour();
-    		tour.addPackageToTour(pack);
-    	}
-    	tour.setDriver(userRepository.findById(tourForm.getDriverId()));
-    	tourRepository.save(tour);
-    }
-    
-            
+       
     @ModelAttribute("packagesNotDelivered")
     public Iterable<Package> allPackagesAsList() {
     		return this.packageRepository.findByIsStatusOrIsStatusOrderByDeliveryCounterDesc("pendent", "zurückSenden");
-    //	return this.packageRepository.findByIsStatus("pendent"); alt!
     }
     
     @ModelAttribute("drivers")

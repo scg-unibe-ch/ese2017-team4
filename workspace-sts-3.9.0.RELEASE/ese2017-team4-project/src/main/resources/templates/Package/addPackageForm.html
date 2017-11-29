@@ -63,11 +63,6 @@
     	</p>
     	</div>
     	<div>
-    	<p>ungefähre Lieferzeit(in min): : <input type="number" th:field="*{expectedDeliveryTime}" />
-    	<label th:if="${#fields.hasErrors('expectedDeliveryTime')}" th:errors="*{expectedDeliveryTime}" class="validation-message"></label>
-    	</p>
-    	</div>
-    	<div>
     	<p>Gewicht (in kg): <input type="number" th:field="*{weight}" />
     	<label th:if="${#fields.hasErrors('weight')}" th:errors="*{weight}" class="validation-message"></label>
     	</p>

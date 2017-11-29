@@ -13,6 +13,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
+import org.hibernate.envers.Audited;
+
 /**
  * Contains one or more packages.
  * Has methods to see where the next deliveryAddress is.
@@ -21,6 +23,7 @@ import javax.persistence.Transient;
  *
  */
 @Entity
+@Audited
 public class Tour {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -33,16 +36,12 @@ public class Tour {
 	@OneToMany(mappedBy="tour")
 	private List<Package> packages;
 	
-	@Transient
-	private int numberDeliveredPacks;	//TODO CHANGE
-	
 	private boolean isFinished;		//true if the tour is finished aka all packages are delivered
 	
 	private int estimatedDeliveryTime;
 	
 	public Tour() {
 		isFinished=false;
-		numberDeliveredPacks=0;
 		packages = new ArrayList<Package>();
 	}
 	
@@ -57,7 +56,6 @@ public class Tour {
 		this.packages = packages;
 		this.driver = driver;
 		isFinished=false;
-		numberDeliveredPacks=0;
 	}
 	
 	/**
@@ -125,24 +123,6 @@ public class Tour {
 	{
 		packages.add(pack);
 	}
-	
-	/**
-	 * Gets address of next package to be delivered.
-	 * 
-	 * TODO: use later 
-	 * 
-	 * @return the next address
-	 */
-	public String getNextAddress()
-	{
-		String address;
-		if(isFinished == false)
-			address = packages.get(numberDeliveredPacks).getAddress();
-		else
-			address = "No more Packages to deliver, go home";
-		return address;
-	}
-	
 		
 	/**
 	 * Sets boolean isFinished to true.
@@ -160,15 +140,6 @@ public class Tour {
 	public boolean getIsFinished() 
 	{
 		return isFinished;
-	}
-	
-	/**
-	 * 
-	 * @return amount of delivered Packs
-	 */
-	public int getDeliveredPacks() 
-	{
-		return this.numberDeliveredPacks;
 	}
 
 	public int getEstimatedDeliveryTime()

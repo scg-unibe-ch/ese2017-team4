@@ -11,6 +11,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Transient;
 import javax.validation.constraints.Min;
 
+import org.hibernate.envers.Audited;
 import org.hibernate.validator.constraints.Length;
 
 import ese4.model.Status;
@@ -31,6 +32,7 @@ import ese4.model.Status;
  *
  */
 @Entity
+@Audited
 public class Package {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
@@ -59,9 +61,6 @@ public class Package {
 	private int notDeliverableCounter;
 	
 	private String isStatus = "pendent";
-	@Min(value=0, message = "*Nur Positive Zahlen")
-	private int expectedDeliveryTime; //expected time in minutes???
-	
 	
 	/**
 	 * Constructor of a package. Takes its address, expected delivery time and content as
@@ -71,10 +70,9 @@ public class Package {
 	 * @param expectedDeliveryTime 
 	 * @param content
 	 */
-	public Package(String address, int expectedDeliveryTime, double weight, double height, double length, double width) 
+	public Package(String address, double weight, double height, double length, double width) 
 	{
 		this.address = address;
-		this.expectedDeliveryTime = expectedDeliveryTime;
 		this.weight = weight;
 		this.height = height;
 		this.length = length;
@@ -86,7 +84,6 @@ public class Package {
 	public Package()
 	{
 		this.isDelivered = Status.PENDENT;
-		this.expectedDeliveryTime = 0;
 	}
 	
 	public double getWeight() {
@@ -157,23 +154,6 @@ public class Package {
 	}
 	
 	/**
-	 * Returns its expected delivery time.
-	 * 
-	 * @return expectedDeliveryTime
-	 */
-	public int getExpectedDeliveryTime() {
-		return expectedDeliveryTime;
-	}
-	/**
-	 * Sets its parameter input as expectedDeliveryTime.
-	 * 
-	 * @param expectedDeliveryTime
-	 */
-	public void setExpectedDeliveryTime(int expectedDeliveryTime) {
-		this.expectedDeliveryTime = expectedDeliveryTime;
-	}
-	
-	/**
 	 * Returns its tour.
 	 * 
 	 * @return tour
@@ -189,13 +169,6 @@ public class Package {
 	 */
 	public void setTour(Tour tour) {
 		this.tour = tour;
-	}
-	
-	/**
-	 * Get the String representation of a Package
-	 */
-	public String toString() {
-		return this.getId().toString();
 	}
 	
 	/**
