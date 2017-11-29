@@ -48,6 +48,21 @@ header
     height: 30px;
 	}
     </style>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>$(function() {
+  enable_cb();
+  $("#1").click(enable_cb);
+});
+
+function enable_cb() {
+  if (this.checked) {
+    $("#2").attr("disabled", true);
+  } else {
+    $("#2").removeAttr("disabled");
+  }
+}
+</script>
 </head>
 <body>
 	<section class="header">
@@ -88,8 +103,8 @@ header
 				<td th:text="${package.length}"> </td>
 				<td th:text="${package.width}"> </td>
 				<td th:text="${package.isStatus}"> </td>
-				<td> <input type="checkbox" name="notDeliverablePackage" th:value="${package.id}" /> </td>
-				<td> <input type="checkbox" name="deliveredPackage" th:value="${package.id}" /> </td>
+				<td> <input type="checkbox" id="1" name="notDeliverablePackage" th:value="${package.id}" /> </td>
+				<td> <input type="checkbox" id="2" name="deliveredPackage" th:value="${package.id}" /> </td>
 			</tr>
 		</tbody>
 	</table>
