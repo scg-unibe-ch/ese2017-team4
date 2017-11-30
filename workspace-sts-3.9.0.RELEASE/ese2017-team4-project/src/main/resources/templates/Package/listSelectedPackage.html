@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>Liste aller Pakete</title> 
+<title>Paket-Historie</title> 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <style>
 body  {
@@ -62,11 +62,12 @@ tr:nth-child(even) {
         </div>
     <hr width="75%"></hr>   
 	</section>
-<h1>Liste aller Pakete</h1>
-<form action="#" th:action="@{listSelectedPackage}" method="post">
+<h1>Pakete-Historie</h1>
 <table class ="center">
 	<thead>
 		<tr>
+			<th>Revisionsnr.</th>
+			<th>Revisionstyp</th>
 			<th>Paket Nr.</th>
 			<th>Lieferadresse</th>
 			<th>Gewicht (in kg)</th>
@@ -74,11 +75,16 @@ tr:nth-child(even) {
 			<th>Länge (in cm)</th>
 			<th>Breite (in cm)</th>
 			<th>Status</th>
-			<th></th>
 		</tr>
 	</thead>
 	<tbody>
-		<tr th:each="package : ${packages}">
+		<tr th:each="package : ${specificPackageHistory}">
+			<td th:text="${package.rev}"> </td>
+			<td>
+			<div th:if="${package.revtype} == 0">erstellt</div>
+			<div th:if="${package.revtype} == 1">geändert</div>
+			<div th:if="${package.revtype} == 2">angepasst</div>
+			</td>
 			<td th:text="${package.id}"> </td>
 			<td th:text="${package.address}"> </td>
 			<td th:text="${package.weight}"> </td>
@@ -86,12 +92,9 @@ tr:nth-child(even) {
 			<td th:text="${package.length}"> </td>
 			<td th:text="${package.width}"> </td>
 			<td th:text="${package.isStatus}"> </td>
-			<td> <input type="radio" name="packageId" th:value="${package.id}" /></td>
 		</tr>
 	</tbody>
 	</table>
-	<p><input type="submit" value="Sendedetails anzeigen" /> </p>
-	</form>
 <br></br>
 <p><a href="/">Zurück zum Startbildschirm</a></p>
 </body>
