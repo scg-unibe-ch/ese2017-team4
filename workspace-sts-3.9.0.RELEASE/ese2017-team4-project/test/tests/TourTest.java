@@ -20,8 +20,8 @@ public class TourTest {
 	@Before
 	public void constructor()
 	{
-		testPackage1 = new Package("Bern", 4, 4, 4, 4, 4);
-		testPackage2 = new Package("Zürich", 5, 5, 5, 5, 5);
+		testPackage1 = new Package("Bern", 4, 4, 4, 4);
+		testPackage2 = new Package("Zürich", 5, 5, 5, 5);
 		testTour = new Tour(packages, testUser);
 	}
 	
@@ -34,39 +34,12 @@ public class TourTest {
 	}
 	
 	@Test
-	public void numberDeliveredPacksTest()
-	{
-		assertEquals(0, testTour.getDeliveredPacks());
-	}
-	
-	@Test
 	public void addPackagesToTourTest()
 	{
 		testTour.addPackageToTour(testPackage1);
 		assertEquals(testPackage1, testTour.getPacks().get(0));
-	}
-	
-	@Test
-	public void setPackageToDeliveredTest()
-	{
 		testTour.addPackageToTour(testPackage2);
-		testTour.setPackageToDelivered(testPackage2);
-		assertEquals(1, testTour.getDeliveredPacks());
-		assertTrue(testTour.getIsFinished());
-	}
-	
-	@Test
-	public void setOrderTest() {
-		testTour.setOrder();
-		assertEquals(" ", testTour.getOrder());
-		
-		testPackage1.setId(1);
-		testPackage2.setId(2);
-		testTour.addPackageToTour(testPackage1);
-		testTour.addPackageToTour(testPackage2);
-		testTour.setOrder();
-		
-		assertEquals("  1 2", testTour.getOrder());
+		assertEquals(testPackage2, testTour.getPacks().get(1));
 	}
 
 }
