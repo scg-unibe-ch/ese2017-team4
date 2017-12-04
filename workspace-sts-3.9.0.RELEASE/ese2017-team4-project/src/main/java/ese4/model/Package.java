@@ -42,7 +42,7 @@ public class Package {
     @JoinColumn(name = "tourId")
     private Tour tour;
     
-	@Length(max = 50, message = "*Adresse ist zu lange")
+	@Length(min =1, max = 50, message = "*Minimum 1 Zeichen, Maximum 50 Zeichen")
 	private String address;
 	
 	@Min(value=0, message = "*Nur Positive Zahlen")

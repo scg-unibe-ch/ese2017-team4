@@ -1,9 +1,12 @@
 package ese4.model;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.envers.RevisionEntity;
@@ -27,21 +30,21 @@ public class RevisionInfo {
 	 
 	@RevisionTimestamp
 	@Column(name="revtstmp")
-	private long timestamp;
+	private Date revtstmp;
 	 
 	@Column(name="revuser")
-	private String revisionUserName;
-	 
+	private String revuser;
+	
 	public String getUserName() {
-		return revisionUserName;
+		return revuser;
 	}
 
 	public void setUserName(String userName) {
-		this.revisionUserName = userName;
+		this.revuser = userName;
 	}
 	
-	public long getRevisionTimestamp()
+	public Date getRevisionTimestamp()
 	{
-		return timestamp;
+		return revtstmp;
 	}
 }

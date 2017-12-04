@@ -35,7 +35,7 @@ public class PackageAudited {
     private Integer revtype;
     
     @OneToOne
-    @JoinColumn(name = "revtstmp")
+    @JoinColumn(name = "rev", nullable=true)
     private RevisionInfo info;
     
     @Column(name="tour_id")
