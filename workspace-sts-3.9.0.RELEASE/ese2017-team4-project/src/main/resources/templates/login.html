@@ -3,33 +3,7 @@
 	xmlns:th="http://www.thymeleaf.org">
 
 <head>
-	<style>
-body  {
-	background-color: lightblue;
-    text-align: center;
-}
-table {
-    font-family: "Times New Roman";
-    border-collapse: collapse;
-    width: 50%;
-    text-align: center;
-}
-
-td, th {
-    border: 1px solid #dddddd;
-    text-align: center;
-    padding: 8px;
-}
-
-table.center{
-	margin-left: auto;
-    margin-right: auto;
-}
-
-tr:nth-child(even) {
-    background-color: #dddddd;
-}
-</style>
+	<link rel="stylesheet" type="text/css" href="../static/css/myStyle.css" th:href="@{/css/myStyle.css}" />
 	<title>Anmelden</title>
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>

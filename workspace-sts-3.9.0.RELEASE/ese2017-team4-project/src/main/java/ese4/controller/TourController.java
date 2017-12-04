@@ -42,7 +42,7 @@ public class TourController {
 	@Autowired
 	private UserService userService;
 	
-	@GetMapping()
+	@GetMapping("/home")
     public String get() {
     	return "homeScreen";
     }
