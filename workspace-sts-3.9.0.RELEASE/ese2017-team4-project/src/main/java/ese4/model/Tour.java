@@ -141,12 +141,22 @@ public class Tour {
 	{
 		return isFinished;
 	}
-
+	
+	/**
+	 * Returns its estimatedDeliveryTime
+	 * 
+	 * @return estimatedDeliveryTime
+	 */
 	public int getEstimatedDeliveryTime()
 	{
 		return estimatedDeliveryTime;
 	}
 	
+	/**
+	 * Sets its parameter input as estimatedDeliveryTime
+	 * 
+	 * @param time
+	 */
 	public void setEstimatedDeliveryTime(int time)
 	{
 		this.estimatedDeliveryTime = time;
