@@ -5,10 +5,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 
 @Controller
+@RequestMapping()
 public class HomeController {
 	
-	
-	@RequestMapping
+	@RequestMapping("/home")
     public String get() {
     	return "homeScreen";
     }	

@@ -1,54 +1,10 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head> 
+	<link rel="stylesheet" type="text/css" href="../static/css/myStyle.css" th:href="@{/css/myStyle.css}" />
     <title>Meine Tour bestätigen</title> 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <style>
-  body {
-    	background-color: lightblue;
-    	text-align: center;
-    	}
 
-table.center {
-	margin-left: auto;
-	margin-right: auto;
-}
-
-table {
-    font-family: "Times New Roman";
-    border-collapse: collapse;
-    width: 50%;
-}
-
-td, th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-}
-
-tr:nth-child(even) {
-    background-color: #dddddd;
-}
-header
-	{
-	vertical-align: top;
-	}
-	.container {
-    width: 75%;
-    height: 30px;
-    padding: 10px;
-	}
-	.left {
-    width: 40%;
-    height:30px;
-    float: left;
-	}
-	.right {
-    margin-left: 60%;
-    height: 30px;
-	}
-    </style>
-    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>$(function() {
   enable_cb();
@@ -111,6 +67,6 @@ function enable_cb() {
 	<p><input type="submit" value="Tour abschliessen" onclick="return confirm(' Sind sie sicher? Tour kann nach Bestätigung nicht mehr bearbeitet werden.')" /> </p>
 </form>
 <br></br>
-<p><a href="/">Zurück zum Startbildschirm</a></p>
+<p><a href="/home">Zurück zum Startbildschirm</a></p>
 </body>
 </html>
