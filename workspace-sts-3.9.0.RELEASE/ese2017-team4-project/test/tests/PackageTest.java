@@ -11,32 +11,40 @@ public class PackageTest {
 	private Package testPackage;
 	@Before
 	public void constructor(){
-		testPackage = new Package("ww",5, 5, 5, 5, 5);
+		testPackage = new Package("Bern",5, 6, 7, 8);
 	}
 
 	@Test
 	public void pendantPackageTest() {	
-		assertEquals(Status.PENDANT, testPackage.getIsDelivered());
-		assertEquals("pendant", testPackage.isStatus);
+		assertEquals(Status.PENDENT, testPackage.getIsDelivered());
+		assertEquals("pendent", testPackage.getIsStatus());
 	}
 	
 	@Test
 	public void isPlacedInTourTest() {
 		testPackage.placedInTour();
 		assertEquals(Status.GEPLANT, testPackage.getIsDelivered());
-		assertEquals("geplant", testPackage.isStatus);
+		assertEquals("geplant", testPackage.getIsStatus());
 	}
 	
 	@Test
 	public void setToDeliveredTest() {
 		testPackage.setToDelivered();
 		assertEquals( Status.ZUGESTELLT, testPackage.getIsDelivered());
-		assertEquals("zugestellt", testPackage.isStatus);
+		assertEquals("zugestellt", testPackage.getIsStatus());
 	}
 	
 	@Test
-	public void toStringTest() {
-		testPackage.setId(33);
-		assertEquals("33", testPackage.toString());
+	public void incrementDeliveryCounterTest() {
+		assertEquals(0, testPackage.getDeliveryCounter());
+		testPackage.incrementDeliveryCounter();
+		assertEquals(1, testPackage.getDeliveryCounter());
+	}
+	
+	@Test
+	public void incrementNotDeliverableCounterTest() {
+		assertEquals(0, testPackage.getNotDeliverableCounter());
+		testPackage.incrementNotDeliverableCounter();
+		assertEquals(1, testPackage.getNotDeliverableCounter());
 	}
 }

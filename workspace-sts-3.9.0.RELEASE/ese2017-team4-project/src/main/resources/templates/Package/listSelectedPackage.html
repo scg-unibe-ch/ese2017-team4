@@ -31,6 +31,7 @@
 			<th>Länge (in cm)</th>
 			<th>Breite (in cm)</th>
 			<th>Status</th>
+			<th>User</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -48,10 +49,12 @@
 			<td th:text="${package.length}"> </td>
 			<td th:text="${package.width}"> </td>
 			<td th:text="${package.isStatus}"> </td>
+			<td th:text="${package.revuser}"></td>
 		</tr>
 	</tbody>
 	</table>
 <br></br>
+<p><a href="/package/listAll">Zurück zur Liste aller Pakete</a></p>
 <p><a href="/home">Zurück zum Startbildschirm</a></p>
 </body>
 </html>

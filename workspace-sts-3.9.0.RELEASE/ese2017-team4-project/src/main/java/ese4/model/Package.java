@@ -42,7 +42,7 @@ public class Package {
     @JoinColumn(name = "tourId")
     private Tour tour;
     
-	@Length(max = 50, message = "*Adresse ist zu lange")
+	@Length(min =1, max = 50, message = "*Minimum 1 Zeichen, Maximum 50 Zeichen")
 	private String address;
 	
 	@Min(value=0, message = "*Nur Positive Zahlen")
@@ -86,34 +86,74 @@ public class Package {
 		this.isDelivered = Status.PENDENT;
 	}
 	
+	/**
+	 *Returns its weight
+	 *
+	 * @return weight
+	 */
 	public double getWeight() {
 		return this.weight;
 	}
 	
+	/**
+	 * Sets its parameter input as weight
+	 * 
+	 * @param weight
+	 */
 	public void setWeight(double weight) {
 		this.weight = weight;
 	}
 	
+	/**
+	 * Returns its height
+	 * 
+	 * @return height
+	 */
 	public double getHeight() {
 		return this.height;
 	}
 	
+	/**
+	 * Sets its parameter input as height
+	 * 
+	 * @param height
+	 */
 	public void setHeight(double height) {
 		this.height = height;
 	}
 	
+	/**
+	 * Returns its length
+	 * 
+	 * @return length
+	 */
 	public double getLength() {
 		return this.length;
 	}
 	
+	/**
+	 * Sets its parameter input as length
+	 * 
+	 * @param length
+	 */
 	public void setLength(double length) {
 		this.length = length;
 	}
 	
+	/**
+	 * Returns its width
+	 * 
+	 * @return width
+	 */
 	public double getWidth() {
 		return this.width;
 	}
 	
+	/**
+	 * Sets its parameter input as width
+	 * 
+	 * @param width
+	 */
 	public void setWidth(double width) {
 		this.width = width;
 	}
@@ -129,6 +169,7 @@ public class Package {
 	
 	/**
 	 * Sets its parameter input as id.
+	 * 
 	 * @param id
 	 */
 	public void setId(Integer id) {
@@ -181,7 +222,7 @@ public class Package {
 	}
 	
 	/**
-	 * Sets isDelivered parameter to geplant
+	 * Sets isDelivered parameter to 'geplant'
 	 * and updates isStatus
 	 */
 	public void placedInTour() {
@@ -190,7 +231,7 @@ public class Package {
 	}
 	
 	/**
-	 * Sets isDelivered parameter to zugestellt
+	 * Sets isDelivered parameter to 'zugestellt'
 	 * and updates isStatus
 	 */
 	public void setToDelivered() {
@@ -198,30 +239,56 @@ public class Package {
 		this.isStatus = this.isDelivered.getDisplayName();
 	}
 	
+	/**
+	 * Sets status according to the current 'isDelivered' status
+	 * 
+	 * @param status
+	 */
 	public void setStatus(Status status) {
 		this.isDelivered = status;
 		this.isStatus = this.isDelivered.getDisplayName();
 	}
 	
+	/**
+	 * Returns its isStatus
+	 * 
+	 * @return isStatus
+	 */
 	public String getIsStatus() {
 		return this.isStatus;
 	}
 	
+	/**
+	 * Returns its derliveryCounter
+	 * 
+	 * @return deliveryCounter
+	 */
 	public int getDeliveryCounter()
 	{
 		return deliveryCounter;
 	}
 	
+	/**
+	 * Increments deliveryCounter by 1
+	 */
 	public void incrementDeliveryCounter()
 	{
 		deliveryCounter++;
 	}
 	
+	/**
+	 * Returns its notDeliverableCounter
+	 * 
+	 * @return notDeliverableCounter;
+	 */
 	public int getNotDeliverableCounter()
 	{
 		return notDeliverableCounter;
 	}
 	
+	/**
+	 * Increments notDeliverableCounter by one
+	 */
 	public void incrementNotDeliverableCounter()
 	{
 		notDeliverableCounter++;
