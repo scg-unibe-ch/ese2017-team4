@@ -70,31 +70,15 @@ tr:nth-child(even) {
 			<th>Revisionstyp</th>
 			<th>Paket Nr.</th>
 			<th>Lieferadresse</th>
-			<th>Gewicht (in kg)</th>
-			<th>Höhe (in cm)</th>
-			<th>Länge (in cm)</th>
-			<th>Breite (in cm)</th>
-			<th>Status</th>
-			<th>User</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr th:each="package : ${specificPackageHistory}">
-			<td th:text="${package.rev}"> </td>
-			<td>
-			<div th:if="${package.revtype} == 0">erstellt</div>
-			<div th:if="${package.revtype} == 1">geändert</div>
-			<div th:if="${package.revtype} == 2">angepasst</div>
-			</td>
-			<td th:text="${package.id}"> </td>
-			<td th:text="${package.address}"> </td>
-			<td th:text="${package.weight}"> </td>
-			<td th:text="${package.height}"> </td>
-			<td th:text="${package.length}"> </td>
-			<td th:text="${package.width}"> </td>
-			<td th:text="${package.isStatus}"> </td>
-			<td th:text="${package.revuser}"></td>
-		</tr>
+    <td th:text="${package.info.rev}"> </td>
+    <td th:text="${package.id}"> </td>
+    <td th:text="${package.rev.revuser}"></td>
+    <td th:text="${package.rev.revtstmp}"></td>
+</tr>
 	</tbody>
 	</table>
 <br></br>

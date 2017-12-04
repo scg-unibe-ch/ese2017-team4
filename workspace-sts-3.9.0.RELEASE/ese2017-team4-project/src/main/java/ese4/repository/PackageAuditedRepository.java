@@ -13,7 +13,7 @@ import ese4.model.PackageAudited;
 public interface PackageAuditedRepository extends CrudRepository<PackageAudited, Long> {
 	
 	
-	@Query("SELECT p, c FROM PackageAudited p join p.info c WHERE p.id =:id AND p.rev = c.rev")
+	@Query("SELECT p FROM PackageAudited p join fetch p.info c WHERE p.id =:id")
 	List<PackageAudited> findById(@Param("id") Integer id);
 	
 	List<PackageAudited> findByIdIn(List<Integer> ids);
