@@ -13,4 +13,9 @@ public class HomeController {
     	return "homeScreen";
     }	
 	
+	@RequestMapping("/")
+    public String getSlash() {
+    	return "homeScreen";
+    }
+	
 }
