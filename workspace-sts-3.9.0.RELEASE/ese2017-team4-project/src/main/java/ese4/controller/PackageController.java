@@ -85,6 +85,7 @@ public class PackageController {
      } 
   
     		model.addAttribute("packages", packages);
+    		model.addAttribute("status", status);
 
     		return "package/listAllPackages";
     } 
