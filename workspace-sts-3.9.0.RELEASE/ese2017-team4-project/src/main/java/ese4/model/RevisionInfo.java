@@ -35,7 +35,7 @@ public class RevisionInfo {
 	@Column(name="revuser")
 	private String revuser;
 	
-	public String getUserName() {
+	public String getRevuser() {
 		return revuser;
 	}
 
@@ -43,7 +43,7 @@ public class RevisionInfo {
 		this.revuser = userName;
 	}
 	
-	public Date getRevisionTimestamp()
+	public Date getRevtstmp()
 	{
 		return revtstmp;
 	}
