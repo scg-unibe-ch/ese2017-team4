@@ -57,7 +57,7 @@ public class PackageController {
         return "homescreen";
     }
     
-    @ModelAttribute("allPackages")
+    @ModelAttribute("packages")
     public Iterable<Package> allPackagesAsList() {
     	return this.packageRepository.findAll();
     }
