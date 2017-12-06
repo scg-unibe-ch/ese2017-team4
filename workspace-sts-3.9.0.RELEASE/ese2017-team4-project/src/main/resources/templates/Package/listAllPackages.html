@@ -4,6 +4,33 @@
 <title>Liste aller Pakete</title> 
 	<link rel="stylesheet" type="text/css" href="../static/css/myStyle.css" th:href="@{/css/myStyle.css}" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>$(function() {
+  enable_cb1();
+  $("#1").click(enable_cb1);
+});
+
+function enable_cb1() {
+  if (this.checked) {
+    $("#2").attr("disabled", true);
+  } else {
+    $("#2").removeAttr("disabled");
+  }
+}
+</script>
+<script>$(function() {
+  enable_cb2();
+  $("#2").click(enable_cb2);
+});
+
+function enable_cb2() {
+  if (this.checked) {
+    $("#1").attr("disabled", true);
+  } else {
+    $("#1").removeAttr("disabled");
+  }
+}
+</script>
 </head>
 <body>
 	<section class="header">
@@ -43,7 +70,8 @@
 			<th>Länge (in cm)</th>
 			<th>Breite (in cm)</th>
 			<th>Status</th>
-			<th></th>
+			<th>History</th>
+			<th>Ändern</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -55,11 +83,12 @@
 			<td th:text="${package.length}"> </td>
 			<td th:text="${package.width}"> </td>
 			<td th:text="${package.statusDisplay}"> </td>
-			<td> <input type="radio" name="packageId" th:value="${package.id}" /></td>
+			<td> <input type="radio" name="historyPackageId" id="1" th:value="${package.id}" /></td>
+			<td> <input type="radio" name="editPackageId" id="2" th:value="${package.id}" /></td>
 		</tr>
 	</tbody>
 	</table>
-	<p><input type="submit" value="Sendedetails anzeigen" /> </p>
+	<p><input type="submit" value="Nächster Schritt" /> </p>
 	</form>
 <br></br>
 <p><a href="/home">Zurück zum Startbildschirm</a></p>

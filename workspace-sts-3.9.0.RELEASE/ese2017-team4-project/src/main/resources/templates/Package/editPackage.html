@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Paket anpassen</title> 
+	<link rel="stylesheet" type="text/css" href="../static/css/myStyle.css" th:href="@{/css/myStyle.css}" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<section class="header">
+		<p></p>
+		<div class="left">
+			<header th:inline="text">Willkommen <strong>[[${#httpServletRequest.remoteUser}]]!</strong></header>
+		</div>
+        <div class="right">
+        		<form th:action="@{/logout}" method="post">
+            		<input type="submit" value="Abmelden"/>
+            	</form>
+        </div>
+    <hr width="75%"></hr>   
+	</section>
+<h1>Paket anpassen</h1>
+
+<form action="#" th:action="@{editPackage}" method="post">
+<table class ="center">
+	<thead>
+		<tr>
+			<th>Paket Nr.</th>
+			<th>Lieferadresse</th>
+			<th>Gewicht (in kg)</th>
+			<th>Höhe (in cm)</th>
+			<th>Länge (in cm)</th>
+			<th>Breite (in cm)</th>
+			<th>Paket löschen</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td th:text="${editPackage.id}"></td>
+			<td><input type="text" name="newAddress" th:value="${editPackage.address}" /></td>
+			<td><input type="number" name="newWeight" th:value="${editPackage.weight}" /></td>
+			<td><input type="number" name="newHeight" th:value="${editPackage.height}" /></td>
+			<td><input type="number" name="newLength" th:value="${editPackage.length}" /></td>
+			<td><input type="number" name="newWidth" th:value="${editPackage.width}" /></td>
+			<td><input type="radio" name="delete" th:value="${editPackage.id}" /></td>
+		</tr>
+	</tbody>
+	</table>
+	<input type="hidden" th:value="${editPackage.id}" name="packageId" /> 
+	<p><input type="submit" value="Änderungen speichern" /> </p>
+	</form>
+<br></br>
+<p><a href="/home">Zurück zum Startbildschirm</a></p>
+</body>
+</html>
