@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head> 
 	<link rel="stylesheet" type="text/css" href="../static/css/myStyle.css" th:href="@{/css/myStyle.css}" />
-    <title>Momentane Tour</title> 
+    <title>Meine Tour</title> 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
@@ -19,7 +19,7 @@
     <hr width="75%"></hr>   
 	</section>
 <h1>Meine Tour</h1>
-<p th:text="${myTour?.getEstimatedDeliveryTime()}"></p>
+<p>Geschätzte Lieferzeit: <span th:text="${myTour?.getEstimatedDeliveryTime()}"></span> min</p>
 <table class ="center">
 	<thead>
 		<tr>

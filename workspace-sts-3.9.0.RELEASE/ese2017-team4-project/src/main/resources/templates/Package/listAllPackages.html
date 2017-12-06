@@ -19,7 +19,7 @@
     <hr width="75%"></hr>   
 	</section>
 <h1>Liste aller Pakete</h1>
-<p>Filterung:</p> <p th:text="${status}"></p>
+<p>Filterung: <span th:if="${status} == null">-</span><span th:if="${status} != null" th:text="${status}"></span></p>
 <form action="#" th:action="@{listAll}" method="post">
 <select name="status">
 	<option value="alle">alle</option>
