@@ -10,9 +10,9 @@ public enum Status {
 	ZUGESTELLT("zugestellt"),
 	GEPLANT("geplant"),
 	PENDENT("pendent"),
-	NICHTZUSTELLBAR("nichtZustellbar"),
+	NICHTZUSTELLBAR("nicht zustellbar"),
 	VERNICHTET("vernichtet"),
-	ZURÜCKSENDEN("zurückSenden");
+	ZURÜCKSENDEN("zurück gesendet");
 	
 	
 	private final String displayName;

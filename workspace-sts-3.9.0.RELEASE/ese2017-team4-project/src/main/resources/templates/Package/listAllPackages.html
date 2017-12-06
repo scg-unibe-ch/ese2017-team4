@@ -19,6 +19,17 @@
     <hr width="75%"></hr>   
 	</section>
 <h1>Liste aller Pakete</h1>
+<form action="#" th:action="@{listAll}" method="post">
+<select name="status">
+	<option value="alle">alle</option>
+	<option value="pendent">pendent</option>
+	<option value="geplant">geplant</option>
+	<option value="nicht zustellbar">nicht zustellbar</option>
+    <option value="zurück gesendet">zurück gesendet</option>
+    <option value="vernichtet">vernichtet</option>
+</select>
+<button type="submit">Bestätigen</button>
+</form>
 <form action="#" th:action="@{listSelectedPackage}" method="post">
 <table class ="center">
 	<thead>
@@ -41,7 +52,7 @@
 			<td th:text="${package.height}"> </td>
 			<td th:text="${package.length}"> </td>
 			<td th:text="${package.width}"> </td>
-			<td th:text="${package.isStatus}"> </td>
+			<td th:text="${package.statusDisplay}"> </td>
 			<td> <input type="radio" name="packageId" th:value="${package.id}" /></td>
 		</tr>
 	</tbody>

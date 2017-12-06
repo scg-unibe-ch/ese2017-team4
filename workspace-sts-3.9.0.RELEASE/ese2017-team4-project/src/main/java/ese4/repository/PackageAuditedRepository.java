@@ -15,18 +15,5 @@ public interface PackageAuditedRepository extends CrudRepository<PackageAudited,
 	
 	@Query("SELECT p FROM PackageAudited p join fetch p.info c WHERE p.id =:id")
 	List<PackageAudited> findById(@Param("id") Integer id);
-	
-	List<PackageAudited> findByIdIn(List<Integer> ids);
-	
-	List<PackageAudited> findByIsStatus(String isStatus);
-	
-	List<PackageAudited> findByIsStatusOrIsStatusOrderByDeliveryCounterDesc(String isStatus1, String isStatus2); 
-	
-	//@Transactional
-	//void deleteByIsDelivered(String isStatus);
-	
-	
-	// This will be AUTO IMPLEMENTED by Spring into a Bean called PackageRepository
-	// CRUD refers Create, Read, Update, Delete
 
 }

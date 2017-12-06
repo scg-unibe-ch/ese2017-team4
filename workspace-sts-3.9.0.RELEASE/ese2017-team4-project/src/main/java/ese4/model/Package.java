@@ -54,13 +54,13 @@ public class Package {
 	@Min(value=0, message = "*Nur Positive Zahlen")
 	private double width;
 
-	private Status isDelivered;
+	private Status status;
 	
 	private int deliveryCounter;
 	
 	private int notDeliverableCounter;
 	
-	private String isStatus = "pendent";
+	private String statusDisplay;
 	
 	/**
 	 * Constructor of a package. Takes its address, expected delivery time and content as
@@ -77,13 +77,14 @@ public class Package {
 		this.height = height;
 		this.length = length;
 		this.width = width;
-		this.isDelivered = Status.PENDENT;  
-		this.isStatus = "pendent";
+		this.status = Status.PENDENT;  
+		this.statusDisplay = status.getDisplayName();
 	}
 	
 	public Package()
 	{
-		this.isDelivered = Status.PENDENT;
+		this.status = Status.PENDENT;
+		this.statusDisplay = status.getDisplayName();
 	}
 	
 	/**
@@ -217,8 +218,8 @@ public class Package {
 	 * 
 	 * @return isDeliverd
 	 */
-	public Status getIsDelivered() {
-		return isDelivered;
+	public Status getStatus() {
+		return status;
 	}
 	
 	/**
@@ -226,8 +227,8 @@ public class Package {
 	 * and updates isStatus
 	 */
 	public void placedInTour() {
-		this.isDelivered = Status.GEPLANT;
-		this.isStatus = this.isDelivered.getDisplayName();
+		this.status = Status.GEPLANT;
+		this.setStatusDisplay(status);
 	}
 	
 	/**
@@ -235,8 +236,8 @@ public class Package {
 	 * and updates isStatus
 	 */
 	public void setToDelivered() {
-		isDelivered = Status.ZUGESTELLT;
-		this.isStatus = this.isDelivered.getDisplayName();
+		status = Status.ZUGESTELLT;
+		this.setStatusDisplay(status);
 	}
 	
 	/**
@@ -245,8 +246,8 @@ public class Package {
 	 * @param status
 	 */
 	public void setStatus(Status status) {
-		this.isDelivered = status;
-		this.isStatus = this.isDelivered.getDisplayName();
+		this.status = status;
+		this.setStatusDisplay(status);
 	}
 	
 	/**
@@ -254,8 +255,12 @@ public class Package {
 	 * 
 	 * @return isStatus
 	 */
-	public String getIsStatus() {
-		return this.isStatus;
+	public String getStatusDisplay() {
+		return this.statusDisplay;
+	}
+	
+	private void setStatusDisplay(Status status) {
+		statusDisplay = status.getDisplayName();
 	}
 	
 	/**
