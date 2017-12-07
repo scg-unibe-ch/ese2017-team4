@@ -30,11 +30,12 @@ body {
 	border-color: black;
 	border-style: solid;
 	color: black;
+	padding: 5px 10px;
 	text-align: center;
 	text-decoration: none;
 	display: inline-block;
-	font-size: 8px;
-	width: 10%;
+	font-size: 9px;
+	width: 15%;
 	cursor: pointer;
 	-webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.4s;
@@ -42,6 +43,26 @@ body {
 
 .logoutButton:hover {
 	background-color: red;
+}
+
+.inTableButton {
+	background-color: white;
+	border-color: black;
+	border-style: solid;
+	color: black;
+	padding: 8px 8px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 8px;
+	width: 100%;
+	cursor: pointer;
+	-webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;	
+}
+
+.inTableButton:hover {
+	background-color: #e7e7e7;
 }
 
 header {

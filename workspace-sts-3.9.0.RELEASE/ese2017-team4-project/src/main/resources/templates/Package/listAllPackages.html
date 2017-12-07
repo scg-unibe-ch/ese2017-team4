@@ -57,8 +57,8 @@
 			<td th:text="${package.length}"> </td>
 			<td th:text="${package.width}"> </td>
 			<td th:text="${package.statusDisplay}"> </td>
-			<td> <button type="submit" name="historyPackageId" th:value="${package.id}">History anzeigen</button></td>
-			<td> <button type="submit" name="editPackageId" th:value="${package.id}">Paket editieren</button></td>
+			<td> <button type="submit" class="inTableButton" name="historyPackageId" th:value="${package.id}">History anzeigen</button></td>
+			<td> <button type="submit" class="inTableButton" name="editPackageId" th:value="${package.id}">Paket editieren</button></td>
 		</tr>
 	</tbody>
 	</table>
