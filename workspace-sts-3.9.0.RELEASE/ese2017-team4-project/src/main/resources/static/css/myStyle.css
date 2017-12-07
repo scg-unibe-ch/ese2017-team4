@@ -120,6 +120,24 @@ th {
 }
 
 
+.formAligned  {
+	 display: table;  
+	 margin: auto;    
+}
+.formAligned p { 
+	display: table-row;  
+}
+
+.formAligned label { 
+	text-align: left;
+	display: table-cell; 
+}
+.formAligned input { 
+	
+	display: table-cell; 
+}
+
+
 
 
 

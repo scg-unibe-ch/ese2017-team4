@@ -20,35 +20,48 @@
     <hr width="75%"></hr>   
 	</section>
 	<h1>Paket hinzufügen</h1>
-    <form action="#" th:action="@{/package/addPackageForm}" th:object="${package}" method="post">
-    	<div>
-    	<p>Lieferadresse: <input type="text" th:field="*{address}" />
-    	<label th:if="${#fields.hasErrors('address')}" th:errors="*{address}" class="validation-message"></label>
-    	</p>
-    	</div>
-    	<div>
-    	<p>Gewicht (in kg): <input type="number" th:field="*{weight}" />
-    	<label th:if="${#fields.hasErrors('weight')}" th:errors="*{weight}" class="validation-message"></label>
-    	</p>
-    	</div>
-    	<div>
-    	<p>Höhe(in cm): <input type="number" th:field="*{height}" />
-    	<label th:if="${#fields.hasErrors('height')}" th:errors="*{height}" class="validation-message"></label>
-    	</p>
-    	</div>
-    	<div>
-    	<p>Länge(in cm): <input type="number" th:field="*{length}" />
-    	<label th:if="${#fields.hasErrors('length')}" th:errors="*{length}" class="validation-message"></label>
-    	</p>
-    	</div>
-    	<div>
-    	<p>Breite(in cm): <input type="number" th:field="*{width}" />
-    	<label th:if="${#fields.hasErrors('width')}" th:errors="*{width}" class="validation-message"></label>
-    	</p>
-    	</div>
-        <p><input type="submit" value="Paket erfassen" class ="button" /> 
-        	<input type="reset" value="Zurücksetzen" class ="button"/></p>
-    </form>
+	<div>
+    	<form action="#" th:action="@{/package/addPackageForm}" th:object="${package}" method="post">
+    		<div class="formAligned">
+    			<p> 
+    				<label> Lieferadresse: </label>
+    				<input type="text" th:field="*{address}" />
+    				<label th:if="${#fields.hasErrors('address')}" th:errors="*{address}" class="validation-message"></label>
+    			</p>
+    		
+    	
+    			<p> 
+    				<label> Gewicht (in kg): </label>
+    				<input type="number" th:field="*{weight}" />
+    				<label th:if="${#fields.hasErrors('weight')}" th:errors="*{weight}" class="validation-message"></label>
+    			</p>
+    		
+    		
+    			<p> 	
+    				<label> Höhe(in cm): </label>
+    				<input type="number" th:field="*{height}" />
+    				<label th:if="${#fields.hasErrors('height')}" th:errors="*{height}" class="validation-message"></label>
+    			</p>
+    		
+    			<p> 
+    				<label> Länge(in cm): </label>
+    				<input type="number" th:field="*{length}" />
+    				<label th:if="${#fields.hasErrors('length')}" th:errors="*{length}" class="validation-message"></label>
+    			</p>
+    		
+    			<p> 
+    				<label> Breite(in cm): </label>
+    				<input type="number" th:field="*{width}" />
+    				<label th:if="${#fields.hasErrors('width')}" th:errors="*{width}" class="validation-message"></label>
+    			</p>
+    		</div>
+       	 	<p>
+       	 		<input type="submit" value="Paket erfassen" class ="button" />
+        		<input type="reset" value="Zurücksetzen" class ="button"/>
+        	</p>
+        </form>
+    
+    </div>
     <br></br>
     <p><a href="/home">Zurück zum Startbildschirm</a></p>
 </body>
