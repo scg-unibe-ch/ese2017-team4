@@ -21,7 +21,6 @@ import ese4.listener.RevListener;
 public class RevisionInfo {
 	
 	
-	
 	@Id
 	@RevisionNumber
 	@GeneratedValue
