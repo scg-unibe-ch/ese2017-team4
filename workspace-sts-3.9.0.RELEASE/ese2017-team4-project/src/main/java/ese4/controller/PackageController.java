@@ -57,7 +57,7 @@ public class PackageController {
         return "homescreen";
     }
     
-    @ModelAttribute("allPackages")
+    @ModelAttribute("packages")
     public Iterable<Package> allPackagesAsList() {
     	return this.packageRepository.findAll();
     }
@@ -91,10 +91,55 @@ public class PackageController {
     } 
     
     @PostMapping("/listSelectedPackage")
-    public String selectedPackage(@RequestParam("packageId") Integer packageId, Model model) {
-    		Iterable<PackageAudited> specificPackageHistory = this.packageAuditedRepository.findById(packageId);
-    	  	model.addAttribute("specificPackageHistory", specificPackageHistory);
-    	  	return "/package/listSelectedPackage";
+    public String selectedPackage(@RequestParam(value = "historyPackageId", required=false) Integer historyPackageId,
+    		@RequestParam(value = "editPackageId", required=false) Integer editPackageId, Model model) {
+    		
+    		if (historyPackageId != null)
+    		{
+    			Iterable<PackageAudited> specificPackageHistory = this.packageAuditedRepository.findById(historyPackageId);
+        	  	model.addAttribute("specificPackageHistory", specificPackageHistory);
+        	  	return "/package/listSelectedPackage";
+    		}
+    		else
+    		{
+    			if (editPackageId != null)
+    			{
+    			Package editPackage;
+    			editPackage = this.packageRepository.findById(editPackageId).get(0);
+    			model.addAttribute("editPackage", editPackage);
+    	    	  	return "/package/editPackage";
+    			}
+    			else
+    			{
+    				return "package/listAllPackages";
+    			}
+    		}
+    }
+    
+    @PostMapping("/editPackage")
+    public String editPackage(@RequestParam(value = "newAddress", required = false) String newAddress,
+    		@RequestParam("newWeight") double newWeight, @RequestParam("newLength") double newLength,
+    		@RequestParam("newHeight") double newHeight, @RequestParam("newWidth") double newWidth,
+    		@RequestParam(value="delete", required=false) Integer delete, @RequestParam("packageId") Integer packageId){
+    		
+    		Package editPackage = this.packageRepository.findById(packageId).get(0);
+    	
+    		if (delete != null)
+    		{
+    			packageRepository.delete(editPackage);
+    		}
+    		else
+    		{
+    			editPackage.setAddress(newAddress);
+    			editPackage.setWeight(newWeight);
+           	editPackage.setLength(newLength);
+           	editPackage.setHeight(newHeight);
+            	editPackage.setWidth(newWidth);
+        		
+        		packageRepository.save(editPackage);
+    		}
+    	
+    	  	return "package/listAllPackages";
     }
     
     @GetMapping("/manageNotDeliverablePackages")

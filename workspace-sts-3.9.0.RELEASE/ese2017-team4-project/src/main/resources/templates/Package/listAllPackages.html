@@ -20,12 +20,13 @@
     <hr width="75%"></hr>   
 	</section>
 <h1>Liste aller Pakete</h1>
-<p>Filterung: <span th:if="${status} == null">-</span><span th:if="${status} != null" th:text="${status}"></span></p>
+<p>Filterung: <span th:if="${status} == null">alle</span><span th:if="${status} != null" th:text="${status}"></span></p>
 <form action="#" th:action="@{listAll}" method="post">
 <select name="status">
 	<option value="alle">alle</option>
 	<option value="pendent">pendent</option>
 	<option value="geplant">geplant</option>
+	<option value="zugestellt">zugestellt</option>
 	<option value="nicht zustellbar">nicht zustellbar</option>
     <option value="zurück gesendet">zurück gesendet</option>
     <option value="vernichtet">vernichtet</option>
@@ -44,6 +45,7 @@
 			<th>Breite (in cm)</th>
 			<th>Status</th>
 			<th></th>
+			<th></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -55,7 +57,8 @@
 			<td th:text="${package.length}"> </td>
 			<td th:text="${package.width}"> </td>
 			<td th:text="${package.statusDisplay}"> </td>
-			<td> <input type="radio" name="packageId" th:value="${package.id}" /></td>
+			<td> <button type="submit" name="historyPackageId" th:value="${package.id}">History anzeigen</button></td>
+			<td> <button type="submit" name="editPackageId" th:value="${package.id}">Paket editieren</button></td>
 		</tr>
 	</tbody>
 	</table>

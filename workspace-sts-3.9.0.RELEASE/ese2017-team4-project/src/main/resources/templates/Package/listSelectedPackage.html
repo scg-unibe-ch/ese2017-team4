@@ -23,17 +23,39 @@
 	<thead>
 		<tr>
 			<th>Revisionsnr.</th>
+			<th>Revisionsbenutzer</th>
+			<th>Revisionszeitpunkt</th>
 			<th>Revisionstyp</th>
 			<th>Paket Nr.</th>
 			<th>Lieferadresse</th>
+			<th>Gewicht (in kg)</th>
+			<th>Höhe (in cm)</th>
+			<th>Länge (in cm)</th>
+			<th>Breite (in cm)</th>
+			<th>Zustellversuche</th>
+			<th>Empfänger nicht erreichbar</th>
+			<th>Status</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr th:each="package : ${specificPackageHistory}">
-    <td th:text="${package.info.rev}"> </td>
+    <td th:text="${package.rev}"> </td>
+    <td th:text="${package.info?.getRevuser()}"> </td>
+	<td th:text="${package.info?.getRevtstmp()}"> </td>
+	<td>
+	<div th:if="${package.revtype} == 0">erstellt</div>
+	<div th:if="${package.revtype} == 1">geändert</div>
+	<div th:if="${package.revtype} == 2">gelöscht</div>
+	</td>
     <td th:text="${package.id}"> </td>
-    <td th:text="${package.rev.revuser}"></td>
-    <td th:text="${package.rev.revtstmp}"></td>
+	<td th:text="${package.address}"> </td>
+	<td th:text="${package.weight}"> </td>
+	<td th:text="${package.height}"> </td>
+	<td th:text="${package.length}"> </td>
+	<td th:text="${package.width}"> </td>
+	<td th:text="${package.deliveryCounter}"> </td>
+	<td th:text="${package.notDeliverableCounter}"> </td>
+	<td th:text="${package.statusDisplay}"> </td>
 </tr>
 	</tbody>
 	</table>

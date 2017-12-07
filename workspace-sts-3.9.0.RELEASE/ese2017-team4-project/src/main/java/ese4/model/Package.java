@@ -88,8 +88,8 @@ public class Package {
 	}
 	
 	/**
-	 *Returns its weight
-	 *
+	 * Returns its weight
+	 * 
 	 * @return weight
 	 */
 	public double getWeight() {
@@ -98,7 +98,7 @@ public class Package {
 	
 	/**
 	 * Sets its parameter input as weight
-	 * 
+	 * Is bigger than 0
 	 * @param weight
 	 */
 	public void setWeight(double weight) {
@@ -116,7 +116,7 @@ public class Package {
 	
 	/**
 	 * Sets its parameter input as height
-	 * 
+	 * Is bigger than 0
 	 * @param height
 	 */
 	public void setHeight(double height) {
@@ -134,7 +134,7 @@ public class Package {
 	
 	/**
 	 * Sets its parameter input as length
-	 * 
+	 * Is bigger than 0
 	 * @param length
 	 */
 	public void setLength(double length) {
@@ -152,7 +152,7 @@ public class Package {
 	
 	/**
 	 * Sets its parameter input as width
-	 * 
+	 * Is bigger than 0
 	 * @param width
 	 */
 	public void setWidth(double width) {
@@ -170,7 +170,7 @@ public class Package {
 	
 	/**
 	 * Sets its parameter input as id.
-	 * 
+	 * Is bigger than 0
 	 * @param id
 	 */
 	public void setId(Integer id) {

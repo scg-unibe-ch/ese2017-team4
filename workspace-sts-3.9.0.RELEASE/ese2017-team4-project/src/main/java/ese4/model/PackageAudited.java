@@ -56,8 +56,8 @@ public class PackageAudited {
 	@Column(name="width")
 	private double width;
 	
-	@Column(name="is_delivered")
-	private Status isDelivered;
+	@Column(name="status")
+	private Status status;
 	
 	@Column(name="delivery_counter")
 	private int deliveryCounter;
@@ -65,8 +65,8 @@ public class PackageAudited {
 	@Column(name="not_deliverable_counter")
 	private int notDeliverableCounter;
 	
-	@Column(name="is_status")
-	private String isStatus;
+	@Column(name="status_display")
+	private String statusDisplay;
 	
 	
 	public PackageAudited() 
@@ -97,12 +97,12 @@ public class PackageAudited {
 		return address;
 	}
 
-	public Status getIsDelivered() {
-		return isDelivered;
+	public Status getStatus() {
+		return status;
 	}
 	
-	public String getIsStatus() {
-		return isDelivered.getDisplayName();
+	public String getStatusDisplay() {
+		return statusDisplay;
 	}
 	
 	public int getDeliveryCounter()
@@ -121,5 +121,9 @@ public class PackageAudited {
 	
 	public int getRevtype() {
 		return revtype;
+	}
+	
+	public RevisionInfo getInfo() {
+		return info;
 	}
 }
