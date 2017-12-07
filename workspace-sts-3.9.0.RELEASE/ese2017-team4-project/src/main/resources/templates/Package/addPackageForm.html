@@ -25,30 +25,24 @@
     		<div class="formAligned">
     			<p> 
     				<label> Lieferadresse: </label>
-    				<input type="text" th:field="*{address}" />
+    				<input type="text" placeholder="-" th:field="*{address}" />
     				<label th:if="${#fields.hasErrors('address')}" th:errors="*{address}" class="validation-message"></label>
     			</p>
-    		
-    	
     			<p> 
     				<label> Gewicht (in kg): </label>
     				<input type="number" th:field="*{weight}" />
     				<label th:if="${#fields.hasErrors('weight')}" th:errors="*{weight}" class="validation-message"></label>
     			</p>
-    		
-    		
     			<p> 	
     				<label> Höhe(in cm): </label>
     				<input type="number" th:field="*{height}" />
     				<label th:if="${#fields.hasErrors('height')}" th:errors="*{height}" class="validation-message"></label>
     			</p>
-    		
     			<p> 
     				<label> Länge(in cm): </label>
     				<input type="number" th:field="*{length}" />
     				<label th:if="${#fields.hasErrors('length')}" th:errors="*{length}" class="validation-message"></label>
     			</p>
-    		
     			<p> 
     				<label> Breite(in cm): </label>
     				<input type="number" th:field="*{width}" />
@@ -60,7 +54,6 @@
         		<input type="reset" value="Zurücksetzen" class ="button"/>
         	</p>
         </form>
-    
     </div>
     <br></br>
     <p><a href="/home">Zurück zum Startbildschirm</a></p>
