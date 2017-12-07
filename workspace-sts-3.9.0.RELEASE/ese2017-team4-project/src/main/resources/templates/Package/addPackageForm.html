@@ -4,6 +4,7 @@
 	<link rel="stylesheet" type="text/css" href="../static/css/myStyle.css" th:href="@{/css/myStyle.css}" />
     <title>Paket hinzufügen</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script> </script> <!-- this prevents a chrome bug where button animations trigger on page load -->
 </head>
 <body>
 	<section class="header">
@@ -45,7 +46,8 @@
     	<label th:if="${#fields.hasErrors('width')}" th:errors="*{width}" class="validation-message"></label>
     	</p>
     	</div>
-        <p><input type="submit" value="Paket erfassen" class ="button" /> <input type="reset" value="Zurücksetzen" class ="button"/></p>
+        <p><input type="submit" value="Paket erfassen" class ="button" /> 
+        	<input type="reset" value="Zurücksetzen" class ="button"/></p>
     </form>
     <br></br>
     <p><a href="/home">Zurück zum Startbildschirm</a></p>

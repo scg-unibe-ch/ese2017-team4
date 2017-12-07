@@ -1,20 +1,47 @@
 
 body {
-    background-color: pink;
+    background-color: white;
     text-align: center;
+    font-family: "Verdana";
 }
 
 .button {
-    background-color: #4CAF50; /* Green */
-    border: none;
-    color: white;
+	background-color: white;
+	border-color: black;
+    border-style: solid;
+    color: black;
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 13px;
     width: 20%;
     cursor: pointer;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;  
+}
+
+.button:hover {
+	background-color: #e7e7e7;
+}
+
+.logoutButton {
+	background-color: white;
+	border-color: black;
+	border-style: solid;
+	color: black;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 8px;
+	width: 10%;
+	cursor: pointer;
+	-webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+
+.logoutButton:hover {
+	background-color: red;
 }
 
 header {
@@ -29,6 +56,10 @@ header {
 }
 
 .left {
+	position: relative;
+	top: 6px;
+	font-family: "Verdana";
+	font-size: 13px;
     width: 40%;
     height:30px;
     float: left;
@@ -40,7 +71,8 @@ header {
 }
 
 table {
-    font-family: "Times New Roman";
+    font-family: "Verdana";
+    font-size: 13px;
     border-collapse: collapse;
     width: 50%;
     text-align: center;
@@ -54,11 +86,16 @@ td, th {
 
 table.center{
 	margin-left: auto;
-    margin-right: auto;
+    margin-right: auto;	
 }
 
 tr:nth-child(even) {
     background-color: #dddddd;
+}
+
+th {
+    background-color: white;
+    color: black;
 }
 
 

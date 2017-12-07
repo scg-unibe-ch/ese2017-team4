@@ -4,6 +4,7 @@
 <title>Liste aller Pakete</title> 
 	<link rel="stylesheet" type="text/css" href="../static/css/myStyle.css" th:href="@{/css/myStyle.css}" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script> </script> <!-- this prevents a chrome bug where button animations trigger on page load -->
 </head>
 <body>
 	<section class="header">
@@ -13,7 +14,7 @@
 		</div>
         <div class="right">
         		<form th:action="@{/logout}" method="post">
-            		<input type="submit" value="Abmelden"/>
+            		<input type="submit" class="logoutButton" value="Abmelden"/>
             	</form>
         </div>
     <hr width="75%"></hr>   
@@ -58,7 +59,7 @@
 		</tr>
 	</tbody>
 	</table>
-	<p><input type="submit" value="Sendedetails anzeigen" /> </p>
+	<p><input type="submit" class ="button" value="Sendedetails anzeigen" /> </p>
 	</form>
 <br></br>
 <p><a href="/home">Zurück zum Startbildschirm</a></p>

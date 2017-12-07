@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+	<link rel="stylesheet" type="text/css" href="../static/css/myStyle.css" th:href="@{/css/myStyle.css}" />
+    <meta charset="UTF-8"/>
+    <title th:text="${status}">404</title>
+</head>
+<body>
+<div>
+	<h1> Oops etwas ist komplett schiefgelaufen</h1>
+    <h2 th:text="${error}">Not found</h2>
+    <p th:text="${message}"> This page is not available</p>
+    <br/>
+    <p><a href="/home" class="button">Zurück zum Startbildschirm</a></p>
+</div>
+</body>
+</html>

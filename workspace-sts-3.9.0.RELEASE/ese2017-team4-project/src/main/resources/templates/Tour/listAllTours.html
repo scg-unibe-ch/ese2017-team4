@@ -4,6 +4,7 @@
 <title>Liste aller Touren</title> 
 	<link rel="stylesheet" type="text/css" href="../static/css/myStyle.css" th:href="@{/css/myStyle.css}" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script> </script> <!-- this prevents a chrome bug where button animations trigger on page load -->
 </head>
 <body>
 	<section class="header">
@@ -43,7 +44,7 @@
 			</tr>
 		</tbody>
 	</table>
-	<p><input type="submit" value="Tour anzeigen" /> </p>
+	<p><input type="submit" class="button" value="Tour anzeigen" /> </p>
 </form>
 <br></br>
 <p><a href="/home">Zurück zum Startbildschirm</a></p>
