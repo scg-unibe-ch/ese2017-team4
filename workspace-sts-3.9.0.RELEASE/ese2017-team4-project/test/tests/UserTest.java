@@ -28,4 +28,10 @@ public class UserTest {
 		testUser.setActive(true);
 		assertTrue(testUser.isActive());
 	}
+	
+	@Test
+	public void roleUserTest() {
+		testUser.setRoleInput("Driver");
+		assertEquals("Driver", testUser.getRoleInput());
+	}
 }
