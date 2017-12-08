@@ -96,7 +96,7 @@ public class PackageController {
     		
     		if (historyPackageId != null)
     		{
-    			Iterable<PackageAudited> specificPackageHistory = this.packageAuditedRepository.findById(historyPackageId);
+    			Iterable<PackageAudited> specificPackageHistory = this.packageAuditedRepository.findByIdOrderByRevDesc(historyPackageId);
         	  	model.addAttribute("specificPackageHistory", specificPackageHistory);
         	  	return "/package/listSelectedPackage";
     		}
@@ -139,7 +139,7 @@ public class PackageController {
         		packageRepository.save(editPackage);
     		}
     	
-    	  	return "package/listAllPackages";
+    	  	return "homescreen";
     }
     
     @GetMapping("/manageNotDeliverablePackages")
@@ -148,8 +148,8 @@ public class PackageController {
     }
     
     @PostMapping("/manageNotDeliverablePackages")
-    public String manageNotDeliverablePackages(@RequestParam("action") List<String> action,
-    		@RequestParam("newAddress") List<String> newAddresses)
+    public String manageNotDeliverablePackages(@RequestParam(value="action", required=false) List<String> action,
+    		@RequestParam(value="newAddress", required=false) List<String> newAddresses)
     {
     		List<Package> notDeliverablePackages = this.packageRepository.findByStatusDisplay("nicht zustellbar");
     		

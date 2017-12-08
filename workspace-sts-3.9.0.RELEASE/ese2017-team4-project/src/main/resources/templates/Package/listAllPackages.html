@@ -33,6 +33,7 @@
 </select>
 <button type="submit">Bestätigen</button>
 </form>
+<p></p>
 <form action="#" th:action="@{listSelectedPackage}" method="post">
 <table class ="center">
 	<thead>
@@ -63,6 +64,9 @@
 	</tbody>
 	</table>
 	</form>
+	<p th:if="${packages.size() == 0 and status != null}">keine Pakete vorhanden, welche dem Filter 
+	<strong><span th:text="${status}"></span></strong> entsprechen</p>
+	<p th:if="${packages.size() == 0 and status == null}">keine Pakete vorhanden</p>
 <br></br>
 <p><a href="/home">Zurück zum Startbildschirm</a></p>
 </body>

@@ -54,8 +54,8 @@
 		</tr>
 	</tbody>
 	</table>
-	<br></br>
-	<button type="submit" class="button">Bestätigen</button>
+	<p th:if="${notDeliverablePackages.size() == 0}">keine <i>nicht zustellbaren</i> Pakete vorhanden</p>
+	<p th:if="${notDeliverablePackages.size() > 0}"><button type="submit" class="button">Bestätigen</button></p>
 	</form>
 <br></br>
 <p><a href="/home">Zurück zum Startbildschirm</a></p>

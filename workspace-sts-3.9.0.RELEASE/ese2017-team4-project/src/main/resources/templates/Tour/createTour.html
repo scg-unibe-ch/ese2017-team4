@@ -45,7 +45,8 @@
 							  			<td> <input type="radio" name="driverId" th:value="${user.id}" /> </td>		 
 									</tr>
 								</tbody>
-							</table> 
+							</table>
+							<p th:if="${drivers.size() == 0}">keine Fahrer vorhanden oder diese haben noch nicht abgeschlossene Touren</p> 
 						</div>
 					</div>
 					
@@ -80,6 +81,7 @@
 									</tr>
 								</tbody>
 							</table>	
+							<p th:if="${packagesNotDelivered.size() == 0}">zurzeit gibt es keine auszuliefernde Pakete</p>
 						</div>
 					</div>
 					<h3>Geschätzte Lieferzeit (in min)</h3>

@@ -19,7 +19,7 @@
     <hr width="75%"></hr>   
 	</section>
 <h1>Meine Tour</h1>
-<p>Geschätzte Lieferzeit: <span th:text="${myTour?.getEstimatedDeliveryTime()}"></span> min</p>
+<p th:if="${myTour != null}">Geschätzte Lieferzeit: <span th:text="${myTour?.getEstimatedDeliveryTime()}"></span> min</p>
 <table class ="center">
 	<thead>
 		<tr>
@@ -44,6 +44,7 @@
 		</tr>
 	</tbody>
 	</table>
+	<p th:if="${myTour == null}">keine Tour vorhanden</p>
 <br></br>
 <p><a href="/home">Zurück zum Startbildschirm</a></p>
 </body>
