@@ -1,17 +1,31 @@
 package tests;
 
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
 import org.junit.Before;
 import org.junit.Test;
 import ese4.model.Package;
 import ese4.model.Status;
+import ese4.model.Tour;
+
 
 public class PackageTest {
 	
 	private Package testPackage;
+	private Package testPackageDefault;
+	private Tour testTour = mock(Tour.class);
+	
 	@Before
 	public void constructor(){
 		testPackage = new Package("Bern",5, 6, 7, 8);
+		testPackageDefault = new Package();
+		
+	}
+	
+	@Test
+	public void defaultConstructorTest() {
+		assertTrue(testPackageDefault.getStatus() == Status.PENDENT);
+		assertTrue(testPackageDefault.getStatusDisplay() == "pendent");
 	}
 	
 	@Test
@@ -30,11 +44,13 @@ public class PackageTest {
 		testPackage.setHeight(8);
 		testPackage.setLength(5);
 		testPackage.setWidth(6);
+		testPackage.setTour(testTour);
 		assertEquals("Zürich", testPackage.getAddress());
 		assertTrue((9.1 > testPackage.getWeight()) && (8.9 < testPackage.getWeight()));
 		assertTrue((8.1 > testPackage.getHeight()) && (7.9 < testPackage.getHeight()));
 		assertTrue((5.1 > testPackage.getLength()) && (4.9 < testPackage.getLength()));
 		assertTrue((6.1 > testPackage.getWidth()) && (5.9 < testPackage.getWidth()));
+		assertEquals(testTour, testPackage.getTour());
 	}
 	
 	@Test 
