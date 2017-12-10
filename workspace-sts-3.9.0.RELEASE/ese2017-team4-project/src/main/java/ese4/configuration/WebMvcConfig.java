@@ -6,6 +6,13 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
+/**
+ * 
+ * @author ese04
+ * 
+ * Creates the password encoder
+ *
+ */
 @Configuration
 public class WebMvcConfig extends WebMvcConfigurerAdapter {
 

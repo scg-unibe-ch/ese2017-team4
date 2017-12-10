@@ -9,6 +9,13 @@ import javax.persistence.Table;
 
 import org.hibernate.envers.Audited;
 
+/**
+ * 
+ * @author ese04
+ * 
+ * Keeps track of the types of user roles indicated by ID's
+ *
+ */
 @Entity
 @Audited
 @Table(name = "role")
