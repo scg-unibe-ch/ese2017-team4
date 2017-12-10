@@ -1,10 +1,11 @@
-
+/* the Standard body */
 body {
     background-color: white;
     text-align: center;
     font-family: "Verdana";
 }
 
+/* standard black and white button3 */
 .button {
 	background-color: white;
 	border-color: black;
@@ -21,30 +22,12 @@ body {
     transition-duration: 0.4s;  
 }
 
+/* what happens when you hover over the button (it gets grey) */
 .button:hover {
 	background-color: #e7e7e7;
 }
 
-.logoutButton {
-	background-color: white;
-	border-color: black;
-	border-style: solid;
-	color: black;
-	padding: 5px 10px;
-	text-align: center;
-	text-decoration: none;
-	display: inline-block;
-	font-size: 9px;
-	width: 15%;
-	cursor: pointer;
-	-webkit-transition-duration: 0.4s; /* Safari */
-    transition-duration: 0.4s;
-}
-
-.logoutButton:hover {
-	background-color: red;
-}
-
+/* the button used inside tables, similar to the standard one just smaller */
 .inTableButton {
 	background-color: white;
 	border-color: black;
@@ -120,6 +103,7 @@ th {
 }
 
 
+/* formAligned creates a CSS Table so the input fields are aligned */
 .formAligned  {
 	 display: table;  
 	 margin: auto;    

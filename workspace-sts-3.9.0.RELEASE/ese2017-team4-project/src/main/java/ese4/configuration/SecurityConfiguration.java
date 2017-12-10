@@ -31,7 +31,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	}
 
 	/**
-	 * Takes care of permissions for each user.
+	 * .authorizeRequests Takes care of permissions for each user.
+	 * .formLogin takes care of what to do after a successful login
+	 * .logout takes care of what to do after a successful logout
 	 */
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {

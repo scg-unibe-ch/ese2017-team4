@@ -21,6 +21,13 @@ import ese4.repository.TourRepository;
 import ese4.repository.UserRepository;
 import ese4.service.UserService;
 
+/**
+ * 
+ * @author ese04
+ * 
+ * Takes care of all requests under /tour
+ *
+ */
 @Controller
 @RequestMapping(path="/tour")
 public class TourController {

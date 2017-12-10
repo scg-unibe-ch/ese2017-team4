@@ -22,6 +22,12 @@ import ese4.model.Status;
 import ese4.repository.PackageRepository;
 import ese4.repository.PackageAuditedRepository;
 
+/**
+ * 
+ * @author ese04
+ * Takes care of all requests under /package
+ *
+ */
 @Controller
 @RequestMapping(path="/package")
 public class PackageController {

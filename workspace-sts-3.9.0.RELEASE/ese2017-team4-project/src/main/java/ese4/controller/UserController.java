@@ -16,6 +16,13 @@ import ese4.model.Package;
 import ese4.model.User;
 import ese4.repository.UserRepository;
 
+/**
+ * 
+ * @author ese04
+ * 
+ * Takes care of all requests under /user
+ *
+ */
 @Controller    // This means that this class is a Controller
 @RequestMapping(path="/user") // This means URL's start with /user (after Application path)
 public class UserController {

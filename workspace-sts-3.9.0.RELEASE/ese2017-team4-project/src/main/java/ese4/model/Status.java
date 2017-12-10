@@ -3,7 +3,8 @@ package ese4.model;
 /**
  * 
  * @author Ese Gruppe 4
- * The 3 Different statuses a package can have.
+ * 
+ * The Different statuses a package can have.
  *
  */
 public enum Status {

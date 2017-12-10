@@ -14,6 +14,14 @@ import org.springframework.web.servlet.ModelAndView;
 import ese4.model.User;
 import ese4.service.UserService;
 
+/**
+ * 
+ * @author ese04
+ * 
+ * Takes care of the /login page where the user logs in as well as the /registratrion page where
+ * we can create new users
+ *
+ */
 @Controller
 public class LoginController {
 	
