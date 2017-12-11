@@ -44,17 +44,21 @@ public class TourController {
 	@Autowired
 	private UserService userService;
 	
+	// Returns the user to the homescreen
 	@GetMapping("/home")
     public String get() {
     	return "homeScreen";
     }
 	
+	// Sends the user to the /makeTour site
 	@GetMapping("/makeTour")
 	public String makeTour() {
 		return "tour/createTour";
 	}
 	
-	
+	// The PostMapping for /createTour which creates the tour object
+	// adds all the packages to the Tour Object and sets the driver
+	// and estimated Time
 	@PostMapping("/createTour")
 	public String createTour(@RequestParam("driverId") Integer driverId,
 			@RequestParam("packageId") List<Integer> packageIds,
@@ -79,12 +83,13 @@ public class TourController {
 		return "homescreen";
 	}
 	
-	
+	// Sends the user to /listAll
     @GetMapping("/listAll")
     public String allTours() {    
     	return "tour/listAllTours";
     }
     
+    // Displays the selected tour
     @PostMapping("/listSelectedTour")
     public String listSelectedTour(@RequestParam("tourId") Integer tourId, Model model) {
     	Tour tour = tourRepository.findById(tourId);
@@ -92,23 +97,27 @@ public class TourController {
     	return "tour/selectedTour";
     }
     
+    // Gets the current user
     User getCurrentUser() {
     	Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		User user = userService.findUserByName(auth.getName());
     	return user;
     }
     
-
+    // Sends the user to /listMyTour
     @GetMapping("/listMyTour")
     public String listMyTour() {
     	return "tour/listMyTour";
     }
     
+    // Sends the user to /confirmMyTour
     @GetMapping("/confirmMyTour")
     public String listMyTourToConfirm() {
     	return "tour/confirmMyTour";
     }
     
+    // Sets the statuses that the driver set on the /confirmMyTourPage
+    // And finishes the Tour
     @PostMapping("/confirmMyTour")
     public String confirmMyTour(@RequestParam(value = "notDeliverablePackage", required=false) List<Integer> notDeliverablePackages, 
     		@RequestParam(value = "deliveredPackage", required=false) List<Integer> deliveredPackages) {
@@ -150,12 +159,14 @@ public class TourController {
     	tourRepository.save(myTour);
     	return "homeScreen";
     }
-       
+      
+    // Handles the request to the database getting the notDelivered Packages
     @ModelAttribute("packagesNotDelivered")
     public Iterable<Package> allPackagesAsList() {
     		return this.packageRepository.findByStatusDisplayOrStatusDisplayOrderByDeliveryCounterDesc("pendent", "zurück gesendet");
     }
     
+    // Handles the requests to the database for the users
     @ModelAttribute("drivers")
     public Iterable<User> allDriversAsList() {
     	List<User> allDrivers = (List<User>) this.userRepository.findbyRole("Driver");
@@ -175,16 +186,19 @@ public class TourController {
     	return driversWithoutTour;
     }
     
+    // Handles the database request for getting the tours
     @ModelAttribute("tours")
     public Iterable<Tour> allTourAsList() {
     	return this.tourRepository.findAll();
     }
     
+    // Handles the database request for finding a drivers tour
     @ModelAttribute("myTour")
     public Tour myTour() {
     	return this.tourRepository.findTourByDriverNotFinished(getCurrentUser());
     }
     
+    // Handles the database request for not confirmed tours
     @ModelAttribute("toursNotConfirmed")
     public Iterable<Tour> allToursAsList(){
     	return this.tourRepository.findByIsFinished(false);
