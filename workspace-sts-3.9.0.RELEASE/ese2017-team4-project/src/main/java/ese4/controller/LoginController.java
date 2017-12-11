@@ -28,7 +28,10 @@ public class LoginController {
 	@Autowired
 	private UserService userService;
 
-	// Sends the user to the Login page
+	/**
+	 * Sends the user to the Login page
+	 * @return the modelAndView of login
+	 */
 	@RequestMapping(value={"/login"}, method = RequestMethod.GET)
 	public ModelAndView login(){
 		ModelAndView modelAndView = new ModelAndView();
@@ -36,7 +39,10 @@ public class LoginController {
 		return modelAndView;
 	}
 	
-	// Sends the user to the registration page
+	/**
+	 *  Sends the user to the registration page
+	 * @return the modelAndView of registration
+	 */
 	@RequestMapping(value="/registration", method = RequestMethod.GET)
 	public ModelAndView registration(){
 		ModelAndView modelAndView = new ModelAndView();
@@ -46,7 +52,12 @@ public class LoginController {
 		return modelAndView;
 	}
 	
-	// Handles the requests to the registration page
+	/**
+	 * Handles the requests to the registration page
+	 * @param user the logged in user
+	 * @param bindingResult does form input validation
+	 * @return The specific modelAndView of where the user gets to 
+	 */
 	@RequestMapping(value = "/registration", method = RequestMethod.POST)
 	public ModelAndView createNewUser(@Valid User user, BindingResult bindingResult) {
 		ModelAndView modelAndView = new ModelAndView();

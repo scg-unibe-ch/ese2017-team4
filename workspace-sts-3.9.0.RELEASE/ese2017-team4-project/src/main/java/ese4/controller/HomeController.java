@@ -14,11 +14,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping()
 public class HomeController {
 	
+	/**
+	 * sends the user to the homescreen
+	 * @return the homescreen html
+	 */
 	@RequestMapping("/home")
     public String get() {
     	return "homeScreen";
     }	
 	
+	/**
+	 * sends the user to the homescreen
+	 * @return the homescreen html
+	 */
 	@RequestMapping("/")
     public String getSlash() {
     	return "homeScreen";
