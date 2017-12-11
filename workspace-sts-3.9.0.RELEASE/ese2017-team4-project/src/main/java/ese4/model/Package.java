@@ -17,18 +17,16 @@ import org.hibernate.validator.constraints.Length;
 import ese4.model.Status;
 
 /**
- * Keeps track of its size and weight, where it has to be delivered and it's expected delivery time.
- * The Package which status its currently in.
+ * Keeps track of its height, length, width and weight, where it has to be delivered.
+ * The Package knows in which status its currently in, how many times it got tried to deliver and how many and
+ * if the receiver didn't got the package
  * 
  * @author ese4
- *  id Used to differentiate all the packets even if they have the same dimensions and 
- *  address
- *  tour Tour The tour which a package is designated to
- *  address String Where the package goes to
- *  weight, height, length, width how big the package is and how much it weights.
- *  isDelivered enum where the package currently stands
- *  isStatus String represantation of isDelivered
- *  expectedDeliveryTime Int Time in minutes we get from the logisticians experience
+ * id Used to differentiate all the packets even if they have the same dimensions and 
+ * Tour shows the tour in which the package is delivered
+ * address String Where the package goes to
+ * weight, height, length, width how big the package is and how much it weights.
+ * isDelivered enum in which status the package currently locates
  *
  */
 @Entity
@@ -63,12 +61,14 @@ public class Package {
 	private String statusDisplay;
 	
 	/**
-	 * Constructor of a package. Takes its address, expected delivery time and content as
-	 * parameter and assigns them. Sets the boolean isDelivered to false.
+	 * Constructor of a package. Takes its address and dimensions,
+	 * Sets the Status "pendent" and creates a string-representation
 	 * 
 	 * @param address
-	 * @param expectedDeliveryTime 
-	 * @param content
+	 * @param weight
+	 * @param height
+	 * @param length
+	 * @param width
 	 */
 	public Package(String address, double weight, double height, double length, double width) 
 	{
@@ -81,6 +81,9 @@ public class Package {
 		this.statusDisplay = status.getDisplayName();
 	}
 	
+	/**
+	 * Default constructor if a package is create without any input
+	 */
 	public Package()
 	{
 		this.status = Status.PENDENT;
@@ -89,7 +92,6 @@ public class Package {
 	
 	/**
 	 * Returns its weight
-	 * 
 	 * @return weight
 	 */
 	public double getWeight() {
@@ -102,12 +104,12 @@ public class Package {
 	 * @param weight
 	 */
 	public void setWeight(double weight) {
+		assert(weight > 0);
 		this.weight = weight;
 	}
 	
 	/**
 	 * Returns its height
-	 * 
 	 * @return height
 	 */
 	public double getHeight() {
@@ -120,12 +122,12 @@ public class Package {
 	 * @param height
 	 */
 	public void setHeight(double height) {
+		assert(height > 0);
 		this.height = height;
 	}
 	
 	/**
 	 * Returns its length
-	 * 
 	 * @return length
 	 */
 	public double getLength() {
@@ -138,12 +140,12 @@ public class Package {
 	 * @param length
 	 */
 	public void setLength(double length) {
+		assert(length > 0);
 		this.length = length;
 	}
 	
 	/**
 	 * Returns its width
-	 * 
 	 * @return width
 	 */
 	public double getWidth() {
@@ -156,12 +158,12 @@ public class Package {
 	 * @param width
 	 */
 	public void setWidth(double width) {
+		assert(width > 0);
 		this.width = width;
 	}
 	
 	/**
 	 * Returns its id.
-	 * 
 	 * @return id
 	 */
 	public Integer getId() {
@@ -170,7 +172,6 @@ public class Package {
 	
 	/**
 	 * Sets its parameter input as id.
-	 * Is bigger than 0
 	 * @param id
 	 */
 	public void setId(Integer id) {
@@ -179,7 +180,6 @@ public class Package {
 	
 	/**
 	 * Returns its address.
-	 * 
 	 * @return address
 	 */
 	public String getAddress() {
@@ -188,16 +188,16 @@ public class Package {
 	
 	/**
 	 * Sets its parameter input as address.
-	 * 
 	 * @param address
 	 */
 	public void setAddress(String address) {
+		assert(address.length() > 0);
 		this.address = address;
 	}
 	
 	/**
 	 * Returns its tour.
-	 * 
+	 * Can be null if no tour has been assigned
 	 * @return tour
 	 */
 	public Tour getTour() {
@@ -206,7 +206,6 @@ public class Package {
 	
 	/**
 	 * Sets its parameter input as tour.
-	 * 
 	 * @param tour
 	 */
 	public void setTour(Tour tour) {
@@ -215,34 +214,15 @@ public class Package {
 	
 	/**
 	 * Returns its delivery status.
-	 * 
-	 * @return isDeliverd
+	 * @return status
 	 */
 	public Status getStatus() {
 		return status;
 	}
 	
 	/**
-	 * Sets isDelivered parameter to 'geplant'
-	 * and updates isStatus
-	 */
-	public void placedInTour() {
-		this.status = Status.GEPLANT;
-		this.setStatusDisplay(status);
-	}
-	
-	/**
-	 * Sets isDelivered parameter to 'zugestellt'
-	 * and updates isStatus
-	 */
-	public void setToDelivered() {
-		status = Status.ZUGESTELLT;
-		this.setStatusDisplay(status);
-	}
-	
-	/**
-	 * Sets status according to the current 'isDelivered' status
-	 * 
+	 * Sets status according to current situation of the package
+	 * Is a valid status according to the enum
 	 * @param status
 	 */
 	public void setStatus(Status status) {
@@ -251,21 +231,41 @@ public class Package {
 	}
 	
 	/**
-	 * Returns its isStatus
-	 * 
-	 * @return isStatus
+	 * Sets status parameter to 'geplant'
+	 * and updates status
+	 */
+	public void placedInTour() {
+		this.status = Status.GEPLANT;
+		this.setStatusDisplay(status);
+	}
+	
+	/**
+	 * Sets status parameter to 'zugestellt'
+	 * and updates status
+	 */
+	public void setToDelivered() {
+		status = Status.ZUGESTELLT;
+		this.setStatusDisplay(status);
+	}
+	
+	/**
+	 * Returns its status
+	 * @return status
 	 */
 	public String getStatusDisplay() {
 		return this.statusDisplay;
 	}
 	
+	/**
+	 * Updates statusDisplay according to the current status of the package
+	 * @param status
+	 */
 	private void setStatusDisplay(Status status) {
 		statusDisplay = status.getDisplayName();
 	}
 	
 	/**
 	 * Returns its derliveryCounter
-	 * 
 	 * @return deliveryCounter
 	 */
 	public int getDeliveryCounter()
@@ -283,7 +283,6 @@ public class Package {
 	
 	/**
 	 * Returns its notDeliverableCounter
-	 * 
 	 * @return notDeliverableCounter;
 	 */
 	public int getNotDeliverableCounter()

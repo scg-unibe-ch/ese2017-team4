@@ -63,35 +63,35 @@ public class PackageTest {
 	
 	@Test
 	public void pendantPackageTest() {	
-		assertEquals(Status.PENDENT, testPackage.getStatus());
-		assertEquals("pendent", testPackage.getStatusDisplay());
+		assertEquals("At the start the package is defined as PENDENT",Status.PENDENT, testPackage.getStatus());
+		assertEquals("String representation is according to the Status pendent", "pendent", testPackage.getStatusDisplay());
 	}
 	
 	@Test
 	public void isPlacedInTourTest() {
 		testPackage.placedInTour();
-		assertEquals(Status.GEPLANT, testPackage.getStatus());
-		assertEquals("geplant", testPackage.getStatusDisplay());
+		assertEquals("Package is defined as geplant after placed in a Tour", Status.GEPLANT, testPackage.getStatus());
+		assertEquals("Shows status as geplant in stringrepresentation","geplant" , testPackage.getStatusDisplay());
 	}
 	
 	@Test
 	public void setToDeliveredTest() {
 		testPackage.setToDelivered();
-		assertEquals( Status.ZUGESTELLT, testPackage.getStatus());
-		assertEquals("zugestellt", testPackage.getStatusDisplay());
+		assertEquals("Delivered Package shows as zugestellt after confirmation",Status.ZUGESTELLT, testPackage.getStatus());
+		assertEquals("String is according to zugestellt","zugestellt", testPackage.getStatusDisplay());
 	}
 	
 	@Test
 	public void incrementDeliveryCounterTest() {
-		assertEquals(0, testPackage.getDeliveryCounter());
+		assertEquals("Is zero at the start", 0, testPackage.getDeliveryCounter());
 		testPackage.incrementDeliveryCounter();
-		assertEquals(1, testPackage.getDeliveryCounter());
+		assertEquals("Equals 1 after incremention", 1, testPackage.getDeliveryCounter());
 	}
 	
 	@Test
 	public void incrementNotDeliverableCounterTest() {
-		assertEquals(0, testPackage.getNotDeliverableCounter());
+		assertEquals("Is zero at the start", 0, testPackage.getNotDeliverableCounter());
 		testPackage.incrementNotDeliverableCounter();
-		assertEquals(1, testPackage.getNotDeliverableCounter());
+		assertEquals("Is 1 after incremention", 1, testPackage.getNotDeliverableCounter());
 	}
 }
