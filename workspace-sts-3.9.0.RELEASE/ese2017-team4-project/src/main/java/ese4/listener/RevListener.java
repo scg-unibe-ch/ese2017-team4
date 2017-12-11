@@ -6,6 +6,12 @@ import org.springframework.security.core.context.SecurityContextHolder;
 
 import ese4.model.RevisionInfo;
 
+/**
+ * 
+ * @author ESE04
+ * Gets the user name of the currenty logged in user and saves it in a revision entity.
+ * 
+ */
 public class RevListener implements RevisionListener{
 
 	@Override

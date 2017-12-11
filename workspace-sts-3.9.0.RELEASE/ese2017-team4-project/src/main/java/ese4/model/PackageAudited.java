@@ -19,6 +19,12 @@ import org.hibernate.validator.constraints.Length;
 
 import ese4.model.Status;
 
+/**
+ * 
+ * @author ESE04
+ * Copy of a Package for a specific revision.
+ *
+ */
 @Entity
 @Table(name = "package_aud")
 public class PackageAudited {

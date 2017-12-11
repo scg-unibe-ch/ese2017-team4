@@ -15,6 +15,12 @@ import org.hibernate.envers.RevisionTimestamp;
 
 import ese4.listener.RevListener;
 
+/**
+ * 
+ * @author michael.roetheli
+ * Saves the time, revision number and the currently logged in user of a specific revision.
+ *
+ */
 @Entity
 @RevisionEntity(RevListener.class)
 @Table(name = "revinfo")

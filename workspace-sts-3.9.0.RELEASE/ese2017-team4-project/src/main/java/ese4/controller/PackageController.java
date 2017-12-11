@@ -249,14 +249,17 @@ public class PackageController {
     		{
     			Status status = null;
     			String newStatus = action.get(counter);
-    			String newAddress = newAddresses.get(counter);
     			
-    			if (newAddress != "")
+    			if (newAddresses.size() != 0)
     			{
-    				notDeliverablePackages.get(counter).setAddress(newAddress);
+    				String newAddress = newAddresses.get(counter);
+    				
+    				if (newAddress != "" || newAddress != null)
+        			{
+        				notDeliverablePackages.get(counter).setAddress(newAddress);
+        			}
     			}
     			
-
     			switch (newStatus)
     			{
     			case "nicht zustellbar":
