@@ -182,8 +182,7 @@ public class TourController {
      * @return the homescreen html
      */
     @PostMapping("/confirmMyTour")
-    public String confirmMyTour(@RequestParam(value = "notDelivered", required=false) List<Integer> notDeliverablePackages, 
-    		@RequestParam(value = "delivered", required=false) List<Integer> deliveredPackages, HttpServletRequest requests) {
+    public String confirmMyTour(HttpServletRequest requests) {
     	
     	Tour myTour = myTour();
     	List<Package> packages;
