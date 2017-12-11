@@ -79,6 +79,7 @@ public class Tour {
 	 */
 	public void setDriver(User driver)
 	{
+		assert(driver != null);
 		this.driver = driver;
 	}
 	
@@ -115,6 +116,7 @@ public class Tour {
 	 */
 	public void setId(int id)
 	{
+		assert(id >= 0);
 		this.id = id;
 	}
 	
@@ -160,6 +162,7 @@ public class Tour {
 	 */
 	public void setEstimatedDeliveryTime(int time)
 	{
+		assert(time > 0);
 		this.estimatedDeliveryTime = time;
 	}
 }

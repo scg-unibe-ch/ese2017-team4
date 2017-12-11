@@ -92,6 +92,7 @@ public class User {
 	 * @param password
 	 */
 	public void setPassword(String password) {
+		assert(password.length() > 0);
 		this.password = password;
 	}
 	
@@ -109,6 +110,7 @@ public class User {
 	 * @param name
 	 */
 	public void setName(String name) {
+		assert(name.length() > 0);
 		this.name = name;
 	}
 	
