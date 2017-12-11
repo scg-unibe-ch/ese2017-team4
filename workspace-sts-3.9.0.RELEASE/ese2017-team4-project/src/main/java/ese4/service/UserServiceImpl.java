@@ -22,6 +22,13 @@ import ese4.model.User;
 import ese4.repository.RoleRepository;
 import ese4.repository.UserRepository;
 
+/**
+ * Handles all the user interactions concerning creation 
+ * authorization and encryption.
+ * 
+ * @author ESE04
+ *
+ */
 @Service("userService")
 public class UserServiceImpl implements UserService, UserDetailsService {
 
@@ -53,6 +60,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 		List<GrantedAuthority> authorities = getUserAuthority(user.getRoles());
 		return buildUserForAuthentication(user, authorities);
 	}
+
 
 	private List<GrantedAuthority> getUserAuthority(Set<Role> userRoles) {
 		Set<GrantedAuthority> roles = new HashSet<GrantedAuthority>();
