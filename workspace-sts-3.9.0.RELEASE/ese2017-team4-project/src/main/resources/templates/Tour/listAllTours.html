@@ -45,6 +45,7 @@
 		</tbody>
 	</table>
 	<p th:if="${tours.size() == 0}">es sind noch keine Touren vorhanden</p>
+	<p th:text="${error}"></p>
 	<p th:if="${tours.size() > 0}"><input type="submit" class="button" value="Tour anzeigen" /> </p>
 </form>
 <br></br>
