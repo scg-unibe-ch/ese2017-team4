@@ -40,7 +40,7 @@ public class LoginController {
 	}
 	
 	/**
-	 *  Sends the user to the registration page
+	 * Sends the user to the registration page
 	 * @return the modelAndView of registration
 	 */
 	@RequestMapping(value="/registration", method = RequestMethod.GET)

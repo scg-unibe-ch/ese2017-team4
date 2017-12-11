@@ -13,7 +13,7 @@ import org.hibernate.envers.Audited;
  * 
  * @author ese04
  * 
- * Keeps track of the types of user roles indicated by IDs
+ * Keeps track of the types of user roles indicated by ids
  *
  */
 @Entity

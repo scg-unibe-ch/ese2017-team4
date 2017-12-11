@@ -24,7 +24,7 @@ import ese4.repository.UserRepository;
 
 /**
  * Handles all the user interactions concerning creation 
- * authorization and encryption.
+ * authorization and encryption. Implements UserService.
  * 
  * @author ESE04
  *

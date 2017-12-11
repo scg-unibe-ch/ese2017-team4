@@ -10,6 +10,12 @@ import org.springframework.data.repository.query.Param;
 import ese4.model.Role;
 import ese4.model.User;
 
+/**
+ * 
+ * @author ESE04
+ * Repository of the User objects. Finds, saves and deletes them.
+ *
+ */
 public interface UserRepository extends CrudRepository<User, Long> {
 
 	User findById(int id);

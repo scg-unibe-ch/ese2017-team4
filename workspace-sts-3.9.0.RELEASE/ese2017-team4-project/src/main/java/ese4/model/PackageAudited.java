@@ -22,7 +22,7 @@ import ese4.model.Status;
 /**
  * 
  * @author ESE04
- * Copy of a Package for a specific revision.
+ * Copy of a Package during a specific revision.
  *
  */
 @Entity

@@ -10,6 +10,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import ese4.model.PackageAudited;
 
+/**
+ * 
+ * @author ESE04
+ * Repository of the PackageAudited objects. Finds, saves and deletes them.
+ *
+ */
 public interface PackageAuditedRepository extends CrudRepository<PackageAudited, Long> {
 	
 	List<PackageAudited> findByIdOrderByRevDesc(@Param("id") Integer id);

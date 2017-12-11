@@ -50,8 +50,8 @@ public class PackageController {
     }	
     
     /**
-     *  The Get Mapping for the addPackageForm which creates a new Package Object
-     *  so we can work with it in the HTML and in the input Validation
+     * The Get Mapping for the addPackageForm which creates a new Package Object
+     * so we can work with it in the HTML and in the input Validation
      * @param model 
      * @return the specific html
      */

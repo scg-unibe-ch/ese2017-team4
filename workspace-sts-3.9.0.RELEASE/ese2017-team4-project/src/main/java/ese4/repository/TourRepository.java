@@ -9,6 +9,12 @@ import org.springframework.data.repository.query.Param;
 import ese4.model.Tour;
 import ese4.model.User;
 
+/**
+ * 
+ * @author ESE04
+ * Repository of the Tour objects. Finds, saves and deletes them.
+ *
+ */
 public interface TourRepository extends CrudRepository<Tour, Long> {
 	
 	List<Tour> findByIsFinished(boolean isFinished);
