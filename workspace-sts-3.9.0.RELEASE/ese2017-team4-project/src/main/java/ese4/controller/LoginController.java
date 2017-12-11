@@ -32,7 +32,6 @@ public class LoginController {
 	public void initializeAdmin() {
 		if(userService.findUserByName("admin") == null) {
 			User user = new User();
-			System.out.println(user.getId());
 			user.setName("admin");
 			user.setPassword("1234");
 			user.setRoleInput("ADMIN");

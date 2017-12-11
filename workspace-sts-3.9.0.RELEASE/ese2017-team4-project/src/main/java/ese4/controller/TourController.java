@@ -2,6 +2,10 @@ package ese4.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
+import javax.servlet.ServletRequest;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -10,6 +14,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.util.WebUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -176,40 +182,35 @@ public class TourController {
      * @return the homescreen html
      */
     @PostMapping("/confirmMyTour")
-    public String confirmMyTour(@RequestParam(value = "notDeliverablePackage", required=false) List<Integer> notDeliverablePackages, 
-    		@RequestParam(value = "deliveredPackage", required=false) List<Integer> deliveredPackages) {
-
+    public String confirmMyTour(@RequestParam(value = "notDelivered", required=false) List<Integer> notDeliverablePackages, 
+    		@RequestParam(value = "delivered", required=false) List<Integer> deliveredPackages, HttpServletRequest requests) {
+    	
     	Tour myTour = myTour();
     	List<Package> packages;
-    	
-    	if(deliveredPackages != null) {
-	    	packages = packageRepository.findByIdIn(deliveredPackages);
-	    	for(Package pack : packages) {
-	    		pack.setStatus(Status.ZUGESTELLT);
-	    	}
+    	for(Package pack : myTour.getPacks()) {
+    		String value = requests.getParameter(pack.getId().toString());
+    		if(value != null) {
+    			if(value.equals("delivered")) {
+        			pack.setStatus(Status.ZUGESTELLT);
+        		}
+        		if(value.equals("notDelivered")) {
+        			pack.incrementNotDeliverableCounter();
+        		}
+    		} else {
+    			
+    			if(pack.getStatus() == Status.GEPLANT) {
+        			if(pack.getNotDeliverableCounter() > 1)
+        			{
+        				pack.setStatus(Status.NICHTZUSTELLBAR);
+        			}
+        			else
+        			{
+        	   			pack.setStatus(Status.PENDENT);
+        			}
+        		}
+    		}	
     	}
-    	
-    	if(notDeliverablePackages != null) {
-    		packages = packageRepository.findByIdIn(notDeliverablePackages);
-	    	for(Package pack : packages) {
-	    		pack.incrementNotDeliverableCounter();
-	    	}
-    	}
-    	
-    	for(Package pack: myTour.getPacks())
-    	{
-    		if(pack.getStatus() == Status.GEPLANT) {
-    			if(pack.getNotDeliverableCounter() > 1)
-    			{
-    				pack.setStatus(Status.NICHTZUSTELLBAR);
-    			}
-    			else
-    			{
-    	   			pack.setStatus(Status.PENDENT);
-    			}
-    		}
-    	}
-
+  
     	packageRepository.save(myTour().getPacks());
     	
     	myTour.setFinished();

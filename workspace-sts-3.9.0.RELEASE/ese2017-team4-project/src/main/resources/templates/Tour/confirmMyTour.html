@@ -72,8 +72,8 @@ function enable_cb2() {
 				<td th:text="${package.length}"> </td>
 				<td th:text="${package.width}"> </td>
 				<td th:text="${package.statusDisplay}"> </td>
-				<td> <input type="checkbox" id="1" name="notDeliverablePackage" th:value="${package.id}" /> </td>
-				<td> <input type="checkbox" id="2" name="deliveredPackage" th:value="${package.id}" /> </td>
+				<td> <input type="radio" th:name="${package.id}" th:value="notDelivered" /> </td>
+				<td> <input type="radio" th:name="${package.id}" th:value="delivered" /> </td>
 			</tr>
 		</tbody>
 	</table>
