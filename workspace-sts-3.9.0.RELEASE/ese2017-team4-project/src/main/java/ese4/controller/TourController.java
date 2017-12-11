@@ -182,33 +182,32 @@ public class TourController {
      * @return the homescreen html
      */
     @PostMapping("/confirmMyTour")
-    public String confirmMyTour(@RequestParam(value = "notDelivered", required=false) List<Integer> notDeliverablePackages, 
-    		@RequestParam(value = "delivered", required=false) List<Integer> deliveredPackages, HttpServletRequest requests) {
+    public String confirmMyTour(HttpServletRequest requests) {
     	
     	Tour myTour = myTour();
-    	List<Package> packages;
     	for(Package pack : myTour.getPacks()) {
     		String value = requests.getParameter(pack.getId().toString());
-    		if(value != null) {
-    			if(value.equals("delivered")) {
-        			pack.setStatus(Status.ZUGESTELLT);
-        		}
-        		if(value.equals("notDelivered")) {
-        			pack.incrementNotDeliverableCounter();
-        		}
-    		} else {
-    			
-    			if(pack.getStatus() == Status.GEPLANT) {
-        			if(pack.getNotDeliverableCounter() > 1)
-        			{
-        				pack.setStatus(Status.NICHTZUSTELLBAR);
-        			}
-        			else
-        			{
-        	   			pack.setStatus(Status.PENDENT);
-        			}
-        		}
-    		}	
+    		
+    		if(value.equals("delivered")) {
+        		pack.setStatus(Status.ZUGESTELLT);
+        	}
+    		
+        	if(value.equals("notDeliverable")) {
+        		pack.incrementNotDeliverableCounter();
+        		if(pack.getNotDeliverableCounter() > 1)
+           	{
+            		pack.setStatus(Status.NICHTZUSTELLBAR);
+            	}
+            	else
+            	{
+            	   	pack.setStatus(Status.PENDENT);
+            	}
+        	}
+        	
+        	if(value.equals("notDelivered"))
+        	{
+        	   	pack.setStatus(Status.PENDENT);
+        	}
     	}
   
     	packageRepository.save(myTour().getPacks());
