@@ -60,10 +60,25 @@ public class TourController {
 	// adds all the packages to the Tour Object and sets the driver
 	// and estimated Time
 	@PostMapping("/createTour")
-	public String createTour(@RequestParam("driverId") Integer driverId,
-			@RequestParam("packageId") List<Integer> packageIds,
-			@RequestParam("estimatedDeliveryTime") int estimatedDeliveryTime)
+	public String createTour(@RequestParam(value="driverId", required=false) Integer driverId,
+			@RequestParam(value="packageId", required=false) List<Integer> packageIds,
+			@RequestParam(value="estimatedDeliveryTime", required=false) Integer estimatedDeliveryTime,
+			Model model)
 	{
+		if (driverId == null || packageIds == null || estimatedDeliveryTime == null)
+		{
+			String error = "Es wurden nicht alle benötigten Felder ausgefüllt.";
+			model.addAttribute("error", error);
+			return "tour/createTour";
+		}
+		
+		if (estimatedDeliveryTime <= 0)
+		{
+			String error = "Die geschätzte Lieferzeit muss grösser als 0 sein.";
+			model.addAttribute("error", error);
+			return "tour/createTour";
+		}
+		
 		Tour tour = new Tour();
 		
     		List<Package> packs = packageRepository.findByIdIn(packageIds);
@@ -95,6 +110,8 @@ public class TourController {
     		Model model) {
     if (tourId == null)
     {
+    		String error = "Es muss eine Tour angewählt werden.";
+    		model.addAttribute("error", error);
     		return "tour/listAllTours";
     }
     	
