@@ -121,6 +121,17 @@ th {
 	display: table-cell; 
 }
 
+/* We didn't want the links to turn violet when visited just plain blue all the time */
+/* Globally */
+.links { 
+	color: blue; 
+} 
+/* Each state */
+.links:visited { text-decoration: none;}
+.links:hover { text-decoration: none; color:blue; }
+.links:focus { text-decoration: none; color:blue; }
+.links:hover, a:active { text-decoration: none; color:blue }
+
 
 
 
