@@ -48,7 +48,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 			.authorizeRequests()
 				.antMatchers("/login").permitAll()
 				.antMatchers("/home").permitAll()
-				.antMatchers("/registration").permitAll() //später nur für ADMIN freigeben
+				.antMatchers("/registration").hasAuthority("ADMIN")
 				.antMatchers("/package/**").hasAuthority("LOGISTICIAN")
 				.antMatchers("/user/**").hasAuthority("ADMIN")
 				.antMatchers("/tour/confirm").hasAuthority("DRIVER")

@@ -1,5 +1,6 @@
 package ese4.controller;
 
+import javax.annotation.PostConstruct;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import ese4.model.User;
+import ese4.repository.UserRepository;
 import ese4.service.UserService;
 
 /**
@@ -27,6 +29,20 @@ public class LoginController {
 	
 	@Autowired
 	private UserService userService;
+		
+	/**
+	 * checks if there already exists an admin. if not, create the default one.
+	 */
+	public void initializeAdmin() {
+		if(userService.findUserByName("admin") == null) {
+			User user = new User();
+			System.out.println(user.getId());
+			user.setName("admin");
+			user.setPassword("1234");
+			user.setRoleInput("ADMIN");
+			userService.saveUser(user);
+		}
+	}
 
 	/**
 	 * Sends the user to the Login page
@@ -34,6 +50,7 @@ public class LoginController {
 	 */
 	@RequestMapping(value={"/login"}, method = RequestMethod.GET)
 	public ModelAndView login(){
+		initializeAdmin();		
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("login");
 		return modelAndView;
@@ -70,6 +87,8 @@ public class LoginController {
 		if (bindingResult.hasErrors()) {
 			modelAndView.setViewName("registration");
 		} else {
+			System.out.println(user.getId());
+
 			userService.saveUser(user);
 			modelAndView.addObject("successMessage", "Benutzer konnte erfolgreich registriert werden.");
 			modelAndView.addObject("user", new User());
