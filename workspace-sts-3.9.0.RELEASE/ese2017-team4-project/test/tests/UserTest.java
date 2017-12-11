@@ -26,9 +26,9 @@ public class UserTest {
 	
 	@Test
 	public void activeUserTest() {
-		assertFalse(testUser.isActive());
+		assertFalse("User is not active without activation", testUser.isActive());
 		testUser.setActive(true);
-		assertTrue(testUser.isActive());
+		assertTrue("After confirmation the user is active", testUser.isActive());
 	}
 	
 	@Test
@@ -41,6 +41,6 @@ public class UserTest {
 	
 	@Test
 	public void beginningTest() {
-		assertTrue(testUser.getTours() == null);
+		assertTrue("A new User doesn't have any tours appointed",testUser.getTours() == null);
 	}
 }

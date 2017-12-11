@@ -52,16 +52,16 @@ public class TourTest {
 	
 	@Test
 	public void isFinishedTest() {
-		assertFalse(testTour.getIsFinished());
+		assertFalse("At the start the Tour is not yet fnished", testTour.getIsFinished());
 		testTour.setFinished();
-		assertTrue(testTour.getIsFinished());
+		assertTrue("After confirmation the Tour is show as finished", testTour.getIsFinished());
 	}
 	
 	@Test
 	public void addPackagesToTourTest() {
 		testTour.addPackageToTour(testPackage1);
-		assertEquals(testPackage1, testTour.getPacks().get(0));
+		assertEquals("The package has been added to the Tour", testPackage1, testTour.getPacks().get(0));
 		testTour.addPackageToTour(testPackage2);
-		assertEquals(testPackage2, testTour.getPacks().get(1));
+		assertEquals("A second package has been added to the tour after teh first one", testPackage2, testTour.getPacks().get(1));
 	}
 }
