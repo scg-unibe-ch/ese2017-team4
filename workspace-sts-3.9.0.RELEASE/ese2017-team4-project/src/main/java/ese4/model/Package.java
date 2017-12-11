@@ -24,8 +24,8 @@ import ese4.model.Status;
  * @author ese4
  * id Used to differentiate all the packets even if they have the same dimensions and 
  * Tour shows the tour in which the package is delivered
- * address String Where the package goes to
- * weight, height, length, width how big the package is and how much it weights.
+ * address String where the package goes to
+ * weight, height, length, width how big the package is and how much it weights
  * isDelivered enum in which status the package currently locates
  *
  */

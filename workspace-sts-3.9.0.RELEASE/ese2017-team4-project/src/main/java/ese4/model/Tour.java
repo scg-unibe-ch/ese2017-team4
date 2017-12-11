@@ -16,11 +16,13 @@ import javax.persistence.Transient;
 import org.hibernate.envers.Audited;
 
 /**
- * Contains one or more packages.
- * Has methods to see where the next deliveryAddress is.
+ * Knows its Driver, if its finished, has a List of all packages it contains
+ * and has a estimated Delivery Time
  * 
  * @author ese4
- *
+ * id is used to differentiate all the tours
+ * estimatedDeliveryTime is based on the experience of the logistician
+ * 
  */
 @Entity
 @Audited
@@ -36,10 +38,14 @@ public class Tour {
 	@OneToMany(mappedBy="tour")
 	private List<Package> packages;
 	
-	private boolean isFinished;		//true if the tour is finished aka all packages are delivered
+	private boolean isFinished;		
 	
 	private int estimatedDeliveryTime;
 	
+	/**
+	 * Default constructor
+	 * If a Tour is created without any input
+	 */
 	public Tour() {
 		isFinished=false;
 		packages = new ArrayList<Package>();
@@ -48,9 +54,8 @@ public class Tour {
 	/**
 	 * Constructor of a tour. Takes its packages and driver as
 	 * parameter and assigns them.
-	 * 
-	 * @param packages
-	 * @param driver The driver which is responsible for this tour
+	 * @param packages assigned to the tour
+	 * @param driver which is responsible for this tour
 	 */
 	public Tour(List<Package> packages, User driver) {
 		this.packages = packages;
@@ -69,7 +74,7 @@ public class Tour {
 	
 	/**
 	 * Sets its parameter input as driver.
-	 * 
+	 * Is not null
 	 * @param driver
 	 */
 	public void setDriver(User driver)
@@ -87,7 +92,6 @@ public class Tour {
 	
 	/**
 	 * Sets its parameter input as packages.
-	 * 
 	 * @param packages
 	 */
 	public void setPacks(List<Package> packages)
@@ -97,7 +101,6 @@ public class Tour {
 	
 	/**
 	 * Returns its id.
-	 * 
 	 * @return id
 	 */
 	public int getId()
@@ -107,7 +110,7 @@ public class Tour {
 	
 	/**
 	 * Sets its parameter input as id.
-	 * 
+	 * Non negative integer
 	 * @param id
 	 */
 	public void setId(int id)
@@ -134,7 +137,6 @@ public class Tour {
 	
 	/**
 	 * Looks if the Tour is Finished
-	 * 
 	 * @return isFinished
 	 */
 	public boolean getIsFinished() 
@@ -144,7 +146,6 @@ public class Tour {
 	
 	/**
 	 * Returns its estimatedDeliveryTime
-	 * 
 	 * @return estimatedDeliveryTime
 	 */
 	public int getEstimatedDeliveryTime()
@@ -154,7 +155,7 @@ public class Tour {
 	
 	/**
 	 * Sets its parameter input as estimatedDeliveryTime
-	 * 
+	 * Positive integer
 	 * @param time
 	 */
 	public void setEstimatedDeliveryTime(int time)

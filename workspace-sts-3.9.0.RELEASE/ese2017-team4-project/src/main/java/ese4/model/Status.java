@@ -2,9 +2,10 @@ package ese4.model;
 
 /**
  * 
- * @author Ese Gruppe 4
+ * @author ese04
  * 
- * The Different statuses a package can have.
+ * Enum of different statuses a package can be in
+ * A package can only have one Status at the time
  *
  */
 public enum Status {
@@ -18,10 +19,17 @@ public enum Status {
 	
 	private final String displayName;
 	
+	/**
+	 * Creates a string representation of the Status
+	 * @param displayName
+	 */
 	Status(String displayName) {
 	       this.displayName = displayName;
 	   }
-
+	
+	   /**
+	    * @return String from of the Status
+	    */
 	   public String getDisplayName() {
 		   return displayName;
 	   }
