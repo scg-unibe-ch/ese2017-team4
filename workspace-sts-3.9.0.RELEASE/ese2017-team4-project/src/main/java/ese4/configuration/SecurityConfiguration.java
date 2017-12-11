@@ -15,7 +15,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 /**
  * 
  * @author ESE04
- * All the Security configurations
+ * All the security configurations.
  *
  */
 @Configuration

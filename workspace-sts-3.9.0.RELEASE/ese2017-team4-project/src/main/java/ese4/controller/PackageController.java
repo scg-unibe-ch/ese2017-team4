@@ -179,13 +179,32 @@ public class PackageController {
      * @return to homescreen html
      */
     @PostMapping("/editPackage")
-    public String editPackage(@RequestParam(value = "newAddress", required = false) String newAddress,
-    		@RequestParam("newWeight") double newWeight, @RequestParam("newLength") double newLength,
-    		@RequestParam("newHeight") double newHeight, @RequestParam("newWidth") double newWidth,
-    		@RequestParam(value="delete", required=false) Integer delete, @RequestParam("packageId") Integer packageId){
+    public String editPackage(@RequestParam(value = "newAddress", required=false) String newAddress,
+    		@RequestParam(value="newWeight", required=false) Double newWeight,
+    		@RequestParam(value="newLength", required=false) Double newLength,
+    		@RequestParam(value="newHeight", required=false) Double newHeight,
+    		@RequestParam(value="newWidth", required=false) Double newWidth,
+    		@RequestParam(value="delete", required=false) Integer delete,
+    		@RequestParam("packageId") Integer packageId, Model model){
     		
     		Package editPackage = this.packageRepository.findById(packageId).get(0);
     	
+    		if (newAddress == "" || newAddress == null || newWeight == null || newLength == null || newHeight == null || newWidth == null)
+    		{
+    			String error = "Es wurden nicht alle Felder ausgefüllt.";
+    			model.addAttribute("editPackage", editPackage);
+    			model.addAttribute("error", error);
+    			return "/package/editPackage";
+    		}
+    		
+    		if (newWeight < 0 || newLength < 0 || newHeight < 0 || newWidth < 0)
+    		{
+    			String error = "Es dürfen keine negativen Zahlen eingegeben werden.";
+    			model.addAttribute("editPackage", editPackage);
+    			model.addAttribute("error", error);
+    			return "/package/editPackage";
+    		}
+    		
     		if (delete != null)
     		{
     			packageRepository.delete(editPackage);

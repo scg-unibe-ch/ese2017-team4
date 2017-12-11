@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * 
- * @author Ese Team 4
+ * @author ESE04
  * From here our Application gets started as a Spring Boot App
  *
  */
