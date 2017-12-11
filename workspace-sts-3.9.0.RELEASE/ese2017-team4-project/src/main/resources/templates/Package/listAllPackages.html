@@ -44,6 +44,8 @@
 			<th>Höhe (in cm)</th>
 			<th>Länge (in cm)</th>
 			<th>Breite (in cm)</th>
+			<th>Zustellversuche</th>
+			<th>Empfänger nicht erreichbar</th>
 			<th>Status</th>
 			<th></th>
 			<th></th>
@@ -57,6 +59,8 @@
 			<td th:text="${package.height}"> </td>
 			<td th:text="${package.length}"> </td>
 			<td th:text="${package.width}"> </td>
+			<td th:text="${package.deliveryCounter}"> </td>
+			<td th:text="${package.notDeliverableCounter}"> </td>
 			<td th:text="${package.statusDisplay}"> </td>
 			<td> <button type="submit" class="inTableButton" name="historyPackageId" th:value="${package.id}">History anzeigen</button></td>
 			<td> <button type="submit" class="inTableButton" name="editPackageId" th:value="${package.id}">Paket editieren</button></td>

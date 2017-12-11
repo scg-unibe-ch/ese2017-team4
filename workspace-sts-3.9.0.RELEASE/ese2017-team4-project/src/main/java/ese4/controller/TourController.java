@@ -111,7 +111,13 @@ public class TourController {
      * @return the selectedTour html
      */
     @PostMapping("/listSelectedTour")
-    public String listSelectedTour(@RequestParam("tourId") Integer tourId, Model model) {
+    public String listSelectedTour(@RequestParam(value="tourId", required=false) Integer tourId,
+    		Model model) {
+    if (tourId == null)
+    {
+    		return "tour/listAllTours";
+    }
+    	
     	Tour tour = tourRepository.findById(tourId);
     	model.addAttribute("selectedTour", tour);
     	return "tour/selectedTour";

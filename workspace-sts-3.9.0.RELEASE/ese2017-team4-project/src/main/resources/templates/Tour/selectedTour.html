@@ -18,7 +18,11 @@
         </div>
     <hr width="75%"></hr>   
 	</section>
-<h1>Ausgewählte Tour</h1>
+<h1>Details zu Tour <span th:text="${selectedTour.id}"></span></h1>
+<p> Fahrer: <span th:text="${selectedTour.driver.name}"></span>, Status: 
+	<span th:if="${selectedTour.isFinished} == true">abgeschlossen</span>
+	<span th:if="${selectedTour.isFinished} == false">pendent</span>
+</p>
 <table class ="center">
 	<thead>
 		<tr>

@@ -147,6 +147,7 @@ public class PackageController {
     		{
     			Iterable<PackageAudited> specificPackageHistory = this.packageAuditedRepository.findByIdOrderByRevDesc(historyPackageId);
         	  	model.addAttribute("specificPackageHistory", specificPackageHistory);
+        	  	model.addAttribute("id", historyPackageId);
         	  	return "/package/listSelectedPackage";
     		}
     		else

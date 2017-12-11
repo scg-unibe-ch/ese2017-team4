@@ -18,7 +18,7 @@
         </div>
     <hr width="75%"></hr>   
 	</section>
-<h1>Pakete-Historie</h1>
+<h1>Historie des Pakets Nr. <span th:text="${id}"></span></h1>
 <table class ="center">
 	<thead>
 		<tr>
@@ -26,7 +26,6 @@
 			<th>Revisionsbenutzer</th>
 			<th>Revisionszeitpunkt</th>
 			<th>Revisionstyp</th>
-			<th>Paket Nr.</th>
 			<th>Lieferadresse</th>
 			<th>Gewicht (in kg)</th>
 			<th>Höhe (in cm)</th>
@@ -47,7 +46,6 @@
 	<div th:if="${package.revtype} == 1">geändert</div>
 	<div th:if="${package.revtype} == 2">gelöscht</div>
 	</td>
-    <td th:text="${package.id}"> </td>
 	<td th:text="${package.address}"> </td>
 	<td th:text="${package.weight}"> </td>
 	<td th:text="${package.height}"> </td>

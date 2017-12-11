@@ -29,6 +29,7 @@
 			<th>Höhe (in cm)</th>
 			<th>Länge (in cm)</th>
 			<th>Breite (in cm)</th>
+			<th>Anzahl Zustellversuche</th>
 			<th>Status</th>
 		</tr>
 	</thead>
@@ -40,6 +41,7 @@
 			<td th:text="${package.height}"> </td>
 			<td th:text="${package.length}"> </td>
 			<td th:text="${package.width}"> </td>
+			<td th:text="${package.deliveryCounter}"> </td>
 			<td th:text="${package.statusDisplay}"> </td>
 		</tr>
 	</tbody>

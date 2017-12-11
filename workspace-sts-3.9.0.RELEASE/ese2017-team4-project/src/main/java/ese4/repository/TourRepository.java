@@ -21,6 +21,4 @@ public interface TourRepository extends CrudRepository<Tour, Long> {
 	
 	@Query( "select t from Tour t where t.driver = :currentUser and t.isFinished = false" )
 	Tour findTourByDriverNotFinished(@Param("currentUser") User currentUser);
-
-	//Auto implemented
 }
