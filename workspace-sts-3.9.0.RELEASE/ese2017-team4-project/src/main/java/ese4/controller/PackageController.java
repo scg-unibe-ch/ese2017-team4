@@ -71,7 +71,6 @@ public class PackageController {
     @PostMapping("/addPackageForm")
     public String formSubmit(@Valid Package pack, BindingResult bindingResult) {
     	if (bindingResult.hasErrors()) {
-    		System.out.println("test");
     		return "package/addPackageForm";
     	}
     	

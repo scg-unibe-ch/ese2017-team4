@@ -82,8 +82,6 @@ public class LoginController {
 		if (bindingResult.hasErrors()) {
 			modelAndView.setViewName("registration");
 		} else {
-			System.out.println(user.getId());
-
 			userService.saveUser(user);
 			modelAndView.addObject("successMessage", "Benutzer konnte erfolgreich registriert werden.");
 			modelAndView.addObject("user", new User());
