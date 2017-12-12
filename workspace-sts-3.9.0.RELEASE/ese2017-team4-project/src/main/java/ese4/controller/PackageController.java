@@ -154,7 +154,7 @@ public class PackageController {
     			if (editPackageId != null)
     			{
     			Package editPackage;
-    			editPackage = this.packageRepository.findById(editPackageId).get(0);
+    			editPackage = this.packageRepository.findById(editPackageId);
     			model.addAttribute("editPackage", editPackage);
     	    	  	return "/package/editPackage";
     			}
@@ -186,7 +186,7 @@ public class PackageController {
     		@RequestParam(value="delete", required=false) Integer delete,
     		@RequestParam("packageId") Integer packageId, Model model){
     		
-    		Package editPackage = this.packageRepository.findById(packageId).get(0);
+    		Package editPackage = this.packageRepository.findById(packageId);
     	
     		if (newAddress == "" || newAddress == null || newWeight == null || newLength == null || newHeight == null || newWidth == null)
     		{

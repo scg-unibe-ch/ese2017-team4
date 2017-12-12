@@ -14,7 +14,7 @@ import ese4.model.Package;
  */
 public interface PackageRepository extends CrudRepository<Package, Long> {
 
-	List<Package> findById(Integer id);
+	Package findById(Integer id);
 	
 	List<Package> findByIdIn(List<Integer> ids);
 	
