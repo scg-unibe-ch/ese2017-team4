@@ -253,7 +253,7 @@ public class PackageController {
     			{
     				String newAddress = newAddresses.get(counter);
     				
-    				if (newAddress != "" || newAddress != null)
+    				if (newAddress != "" && newAddress != null)
         			{
         				notDeliverablePackages.get(counter).setAddress(newAddress);
         			}
